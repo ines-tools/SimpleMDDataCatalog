@@ -1,0 +1,47 @@
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://datacatalog.github.io/test_this#23456> a dcat:Distribution ;
+    dcterms:format "excel" ;
+    dcterms:modified "2024-10-15T00:00:00"^^xsd:date ;
+    dcat:accessURL <www.example.com/test.xslx> ;
+    dcat:hasCurrentVersion "0.1.0" .
+
+<https://datacatalog.github.io/test_this#73956> a dcat:Dataset ;
+    dcterms:description "a test dataset to see if we can get lineage right" ;
+    dcterms:license <https://opensource.org/licenses/Apache-2.0> ;
+    dcterms:publisher "jane doe" ;
+    dcterms:spatial "France" ;
+    dcterms:temporal "2011" ;
+    dcterms:title "derived data" ;
+    adms:status "test" ;
+    dcat:contactPoint "jane@example.org" ;
+    dcat:distribution <https://datacatalog.github.io/test_this#12345> ;
+    dcat:hasCurrentVersion "0.3.3" ;
+    dcat:theme "lineage",
+        "test" ;
+    prov:wasDerivedFrom <https://datacatalog.github.io/test_this#12345> .
+
+<https://datacatalog.github.io/test_this#94759> a dcat:Distribution ;
+    dcterms:format <https://avro.apache.org/docs/1.12.0/> ;
+    dcterms:modified "2024-10-17T00:00:00"^^xsd:date ;
+    dcat:accessURL <www.example.org/lineagetest.avro> ;
+    dcat:hasCurrentVersion "4.5.1" .
+
+<https://datacatalog.github.io/test_this#12345> a dcat:Dataset ;
+    dcterms:description "a test dataset" ;
+    dcterms:license "cc-by 4.0" ;
+    dcterms:publisher "john doe" ;
+    dcterms:spatial "EU" ;
+    dcterms:temporal "2010" ;
+    dcterms:title "test data" ;
+    adms:status "acceptence" ;
+    dcat:contactPoint "jdoe@example.com" ;
+    dcat:hasCurrentVersion "1.0.0" ;
+    dcat:theme "catalog",
+        "energy",
+        "test" .
+
