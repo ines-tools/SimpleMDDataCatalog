@@ -41,9 +41,11 @@ def parse_catalog(input_file: str, output_dir: str):
             
         wasDerivedFrom = graph.objects(s,PROV.wasDerivedFrom)
         wdf_list = ['was derived from'] # first entry has to be empty for table to look nice
+        
         for wdf in wasDerivedFrom:
             wdf_list.append(wdf)
-        
+        if len(wdf_list) == 1:
+            wdf_list.append('no information available')
         # initiate md object
         mdFile = MdUtils(
             file_name=output_dir+identifier,
