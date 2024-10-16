@@ -49,8 +49,8 @@ def parse_catalog(input_file: str, output_dir: str):
             file_name=output_dir+title,
             title=title)
         # title and description
-        mdFile.new_header(level=1  ,title= str(title))
-        mdFile.new_paragraph(description)
+        mdFile.new_header(level=1  ,title= 'description')
+        mdFile.new_line(description)
 
         # theme
         mdFile.new_header(level= 2, title='keywords')
