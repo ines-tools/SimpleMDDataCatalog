@@ -46,7 +46,7 @@ def parse_catalog(input_file: str, output_dir: str):
         
         # initiate md object
         mdFile = MdUtils(
-            file_name=output_dir+title,
+            file_name=output_dir+identifier,
             title=title)
         # title and description
         mdFile.new_header(level=1  ,title= 'description')
