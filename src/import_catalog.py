@@ -205,6 +205,19 @@ def create_concept_pages(catalog_graph=Graph,output_dir=str):
         concept_file.new_header(level= 1, title= 'Definition')
         concept_file.new_line(catalog_graph.value(c, SKOS.definition))
 
+        concept_file.new_header(level= 1, title= 'Examples')
+        examples= catalog_graph.objects(c, SKOS.example)
+        for e in examples:
+            concept_file.new_paragraph(e)
+
+        ## list datasets that have this as a theme
+
+        concept_file.new_header(level= 1, title= 'Datasets that have this concept as a theme')
+        datasets = catalog_graph.subjects(DCAT.theme, c)
+        for ds in datasets:
+            concept_file.new_line(get_local_link(uri=ds, property=DCTERMS.identifier, label= DCTERMS.title))
+            
+
 
 
         
