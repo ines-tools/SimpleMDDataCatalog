@@ -8,17 +8,60 @@ from mdutils.tools.Table import Table
 import os
 import pandas as pd
 
+def extract_org_repo(repo_url=str):
+    split_up_list = repo_url.split("/")
+    
+    org_name = split_up_list[len(split_up_list)-2]
+    repo_name= split_up_list[len(split_up_list)-1]
+
+    return org_name, repo_name
+        
+
+def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
+    repo_name= extract_org_repo(repo_url=repo_url)
+    os.makedirs(output_dir, exist_ok=True)
+    index_md = MdUtils(
+            file_name=output_dir+'index',
+            title=repo_name[1]+' Data Catalog Overview')
+    
+
+    # datasets per theme
+    themes= catalog_graph.objects(None, DCAT.theme)
+    
+    index_md.new_header(level=1, title= "Datasets organized by theme")
+
+    for th in themes :
+        
+        index_md.new_header(level= 2, title= th)
+
+        this_themes_datasets= catalog_graph.subjects(DCAT.theme, th)
+
+        for th_ds in this_themes_datasets:
+            ds_identifier = data_catalog.value(th_ds, DCTERMS.identifier)
+            ds_title= data_catalog.value(th_ds, DCTERMS.title)
+            
+            index_md.new_line(text=index_md.new_inline_link(link=ds_identifier+'.md', text=ds_title))
 
 
-def parse_catalog(input_file: str, output_dir: str):
+    index_md.create_md_file()
+
+    
+    
+
+
+def parse_catalog(input_file: str):
     os.makedirs(output_dir, exist_ok=True) 
     graph = Graph()
     adms_ns= Namespace("http://www.w3.org/ns/adms#")
     graph.bind("adms", Namespace(adms_ns))
 
     if input_file != None :
-        graph.parse(input_file)  
+        graph.parse(input_file)
 
+    return graph     
+
+def create_dataset_pages(catalog_graph: Graph, output_dir: str):
+    graph=catalog_graph
     for s, p, o in graph.triples((None, RDF.type, DCAT.Dataset)):
         
         identifier = graph.value(s, DCTERMS.identifier)
@@ -130,14 +173,18 @@ def parse_catalog(input_file: str, output_dir: str):
 
             
 
-        
 
    
 #### testing
 
 input_file= './tests/datacatalog.ttl'
 output_dir = './docs/'
-parse_catalog(input_file=input_file, output_dir= output_dir)
+repo_url= "https://github.com/uuidea/SimpleMDDataCatalog"
+# parse_catalog(input_file=input_file, output_dir= output_dir)
+
+data_catalog= parse_catalog(input_file=input_file)
+create_index(catalog_graph= data_catalog, output_dir=output_dir, repo_url=repo_url)
+
 
 
 
