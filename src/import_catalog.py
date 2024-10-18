@@ -31,7 +31,7 @@ def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
     index_md.new_header(level=1, title= "Datasets organized by theme")
 
     for th in themes :
-        print(th)
+        # print(th)
         title = catalog_graph.value(th, SKOS.prefLabel)
         title=get_local_link(th, property=DCTERMS.identifier, label=SKOS.prefLabel)
         index_md.new_header(level= 2, title= title)
@@ -61,7 +61,6 @@ def get_local_link(uri: URIRef, property: URIRef, label: URIRef):
 
 
 def parse_catalog(input_file: str):
-    os.makedirs(output_dir, exist_ok=True) 
     graph = Graph()
     adms_ns= Namespace("http://www.w3.org/ns/adms#")
     graph.bind("adms", Namespace(adms_ns))
@@ -92,7 +91,10 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
         theme = graph.objects(s, DCAT.theme)
         theme_list= [''] # first entry has to be empty for table to look nice
         for th in theme:
-            theme_list.append(th) 
+            theme_list.append(get_local_link(th,property=DCTERMS.identifier, label= SKOS.prefLabel)) 
+        if len(theme_list) == 1:
+            theme_list.append('no information available')
+        # initiate md object    
 
             
         wasDerivedFrom = graph.objects(s,PROV.wasDerivedFrom)
@@ -170,7 +172,7 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
 
         for dist in graph.objects(s, DCAT.distribution):
             access_url= graph.value(dist, DCAT.accessURL)
-            print(access_url)
+            # print(access_url)
             dist_list= dist_list+ [
                 graph.value(dist, DCTERMS.identifier),
                 graph.value(dist, DCTERMS.format),
@@ -183,6 +185,37 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
         mdFile.new_table(columns=5, rows= int(len(dist_list)/5), text= dist_list)
 
         mdFile.create_md_file()
+
+def create_concept_pages(catalog_graph=Graph,output_dir=str):
+    concepts= catalog_graph.subjects(RDF.type, SKOS.Concept)
+
+    for c in concepts:
+        title = catalog_graph.value(c, SKOS.prefLabel)
+        filename = catalog_graph.value(c, DCTERMS.identifier)
+        concept_file = MdUtils(
+             file_name=output_dir+filename,
+             title=title)
+        concept_file.new_header(level= 1, title= 'Preferred Label')
+        concept_file.new_line(catalog_graph.value(c, SKOS.prefLabel))
+        
+        concept_file.new_header(level=1, title= 'uri')
+        concept_file.new_line(str(c))
+
+
+        concept_file.new_header(level= 1, title= 'Definition')
+        concept_file.new_line(catalog_graph.value(c, SKOS.definition))
+
+
+
+        
+        concept_file.create_md_file()
+
+
+
+    
+    # concept_file.MdUtils(
+    #         file_name=output_dir+'index',
+    #         title=repo_name[1]+' Data Catalog Overview')
 
             
 
@@ -198,6 +231,7 @@ repo_url= "https://github.com/uuidea/SimpleMDDataCatalog"
 data_catalog= parse_catalog(input_file=input_file)
 create_index(catalog_graph= data_catalog, output_dir=output_dir, repo_url=repo_url)
 create_dataset_pages(catalog_graph=data_catalog, output_dir=output_dir)
+create_concept_pages(catalog_graph=data_catalog, output_dir=output_dir)
 
 
 
