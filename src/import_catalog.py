@@ -136,7 +136,7 @@ def parse_catalog(input_file: str, output_dir: str):
 #### testing
 
 input_file= './tests/datacatalog.ttl'
-output_dir = './tests/docs/'
+output_dir = './docs/'
 parse_catalog(input_file=input_file, output_dir= output_dir)
 
 
