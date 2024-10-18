@@ -2,12 +2,14 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://datacatalog.github.io/test_this#73956> a dcat:Dataset ;
     dcterms:description "a test dataset to see if we can get lineage right" ;
     dcterms:identifier "73956" ;
     dcterms:license <https://opensource.org/licenses/Apache-2.0> ;
+    dcterms:modified "2024-10-17T00:00:00"^^xsd:date ;
     dcterms:publisher "jane doe" ;
     dcterms:spatial "France" ;
     dcterms:temporal "2011" ;
@@ -15,8 +17,8 @@
     adms:status "test" ;
     dcat:contactPoint "jane@example.org" ;
     dcat:distribution <https://datacatalog.github.io/test_this#94759> ;
-    dcat:theme "lineage",
-        "test" ;
+    dcat:theme <https://datacatalog.github.io/test_this#fdcshjnfdscahjn>,
+        <https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> ;
     dcat:version "0.3.3" ;
     prov:wasDerivedFrom <https://datacatalog.github.io/test_this#12345> .
 
@@ -24,6 +26,7 @@
     dcterms:description "a test dataset" ;
     dcterms:identifier "12345" ;
     dcterms:license "cc-by 4.0" ;
+    dcterms:modified "2024-10-15T00:00:00"^^xsd:date ;
     dcterms:publisher "john doe" ;
     dcterms:spatial "EU" ;
     dcterms:temporal "2010" ;
@@ -32,9 +35,8 @@
     dcat:contactPoint "jdoe@example.com" ;
     dcat:distribution <https://datacatalog.github.io/test_this#23456>,
         <https://datacatalog.github.io/test_this#84753> ;
-    dcat:theme "catalog",
-        "energy",
-        "test" ;
+    dcat:theme <https://datacatalog.github.io/test_this#iu34jkAWD>,
+        <https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> ;
     dcat:version "1.0.0" .
 
 <https://datacatalog.github.io/test_this#23456> a dcat:Distribution ;
@@ -50,4 +52,20 @@
     dcterms:modified "2024-10-17T00:00:00"^^xsd:date ;
     dcat:accessURL "https://www.example.org/lineagetest.avro" ;
     dcat:version "4.5.1" .
+
+<https://datacatalog.github.io/test_this#fdcshjnfdscahjn> a skos:Concept ;
+    dcterms:identifier "fdcshjnfdscahjn" ;
+    skos:definition "A discription of where something comes from or how it was created" ;
+    skos:prefLabel "lineage" .
+
+<https://datacatalog.github.io/test_this#iu34jkAWD> a skos:Concept ;
+    dcterms:identifier "iu34jkAWD" ;
+    skos:definition "an excersize in determining if something works or behaves as expected" ;
+    skos:example "I’m testing if this works" ;
+    skos:prefLabel "test" .
+
+<https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> a skos:Concept ;
+    dcterms:identifier "sdfjlhgfvrkhlsfd" ;
+    skos:definition "a curated collection of datasets" ;
+    skos:prefLabel "catalog" .
 

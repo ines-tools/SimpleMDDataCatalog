@@ -10,12 +10,29 @@ def spreadsheet_to_ld_catalog(input_sheet: str, uri: str, output_graph) -> Graph
     uri=Namespace(uri)
     datasets_df = pd.read_excel(input_sheet, 'Datasets', converters={'dcterms:identifier': str, 'prov:wasDerivedFrom':str, 'dcat:distrbution':str})
     distributions_df = pd.read_excel(input_sheet, 'Distributions')
+    concepts_df= pd.read_excel(input_sheet, 'Concepts')
 
     ns=Namespace(uri)
 
     data_catalog = Graph()
     adms_ns= Namespace("http://www.w3.org/ns/adms#")
     data_catalog.bind("adms", Namespace(adms_ns))
+
+    # start with concepts so we can rely on rdf graph navigation to match themes
+    for n, row in concepts_df.iterrows():
+        identifier= row['dcterms:identifier']
+        concept_uri= identifier_to_uri(identifier, ns)
+        data_catalog.add((concept_uri, RDF.type, SKOS.Concept))
+        data_catalog.add((concept_uri, DCTERMS.identifier, Literal(identifier)))
+        pref_label= row['skos:prefLabel']
+        data_catalog.add((concept_uri, SKOS.prefLabel, Literal(pref_label)))
+        definition= row["skos:definition"]
+        data_catalog.add((concept_uri, SKOS.definition, Literal(definition)))
+
+        example = row['skos:example']
+        if type(example)== str: # this is hacky
+            data_catalog.add((concept_uri, SKOS.example, Literal(example)))
+
 
     for i, row in datasets_df.iterrows():
         dataset_uri= identifier_to_uri(row['dcterms:identifier'],ns)
@@ -55,9 +72,22 @@ def spreadsheet_to_ld_catalog(input_sheet: str, uri: str, output_graph) -> Graph
         # add themes
         theme_list= list(row['dcat:theme'].split(","))
         for j in theme_list:
-            data_catalog.add((dataset_uri,
-                            DCAT.theme,
-                            literal_or_uri(j.strip())))
+            j= j.lstrip()
+            theme= literal_or_uri(j)
+            if type(theme)==Literal:
+                theme_uri=data_catalog.value(predicate= SKOS.prefLabel, object=theme)
+                
+                if theme_uri==None:
+                    print('Warning: \''+ theme +'\' has not been defined in the concepts and will be ignored as a theme')
+                else :
+                    data_catalog.add((dataset_uri, DCAT.theme, theme_uri))     
+            elif type(theme)==URIRef:
+                data_catalog.add((dataset_uri, DCAT.theme, theme)) 
+
+
+            # data_catalog.add((dataset_uri,
+            #                 DCAT.theme,
+            #                 literal_or_uri(j.strip())))
         
         # add spatial 
         data_catalog.add((dataset_uri,
@@ -72,6 +102,11 @@ def spreadsheet_to_ld_catalog(input_sheet: str, uri: str, output_graph) -> Graph
         data_catalog.add((dataset_uri,
                         adms_ns.status, 
                         literal_or_uri(row['adms:status'])))
+        
+        # add modified
+        data_catalog.add((dataset_uri,
+                        DCTERMS.modified, 
+                        Literal(row['dcterms:modified'],datatype= XSD.date)))
         
         # add provenance
         prov =str(row['prov:wasDerivedFrom'])
@@ -114,6 +149,8 @@ def spreadsheet_to_ld_catalog(input_sheet: str, uri: str, output_graph) -> Graph
         data_catalog.add((distribution_uri,
                         DCTERMS.modified, 
                         Literal(row['dcterms:modified'],datatype= XSD.date)))
+        
+
 
 
 

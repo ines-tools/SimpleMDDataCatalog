@@ -26,26 +26,37 @@ def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
     
 
     # datasets per theme
-    themes= catalog_graph.objects(None, DCAT.theme)
+    themes= catalog_graph.subjects(RDF.type, SKOS.Concept)
     
     index_md.new_header(level=1, title= "Datasets organized by theme")
 
     for th in themes :
-        
-        index_md.new_header(level= 2, title= th)
+        print(th)
+        title = catalog_graph.value(th, SKOS.prefLabel)
+        title=get_local_link(th, property=DCTERMS.identifier, label=SKOS.prefLabel)
+        index_md.new_header(level= 2, title= title)
 
         this_themes_datasets= catalog_graph.subjects(DCAT.theme, th)
 
         for th_ds in this_themes_datasets:
-            ds_identifier = data_catalog.value(th_ds, DCTERMS.identifier)
-            ds_title= data_catalog.value(th_ds, DCTERMS.title)
-            
-            index_md.new_line(text=index_md.new_inline_link(link=ds_identifier+'.md', text=ds_title))
+           
+            index_md.new_line(text=get_local_link(uri=th_ds, property=DCTERMS.identifier, label=DCTERMS.title))
 
 
     index_md.create_md_file()
 
-    
+def get_local_link(uri: URIRef, property: URIRef, label: URIRef):
+    # uri = the uri of the object
+    # property = the value upon which the local file's name is based
+    #               e.g. for datasets, the local file is named after the dcterms:identifier
+    # label  = the value upon which the name of the link is to be based
+    #          e.g. for datasets, the local file is named after the dcterms:title 
+    #           while for skos:concepts the title is based on skos:prefLabel        
+    ds_identifier = data_catalog.value(uri, property)
+    ds_title= data_catalog.value(uri, label)
+    link= "["+ds_title+"]"+"("+ds_identifier+".md)"
+    return link
+
     
 
 
@@ -62,6 +73,8 @@ def parse_catalog(input_file: str):
 
 def create_dataset_pages(catalog_graph: Graph, output_dir: str):
     graph=catalog_graph
+    adms_ns= Namespace("http://www.w3.org/ns/adms#")
+    graph.bind("adms", Namespace(adms_ns))
     for s, p, o in graph.triples((None, RDF.type, DCAT.Dataset)):
         
         identifier = graph.value(s, DCTERMS.identifier)
@@ -86,7 +99,7 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
         wdf_list = ['was derived from'] # first entry has to be empty for table to look nice
         
         for wdf in wasDerivedFrom:
-            wdf_list.append(wdf)
+            wdf_list.append(get_local_link(uri=wdf, property=DCTERMS.identifier, label=DCTERMS.title))
         if len(wdf_list) == 1:
             wdf_list.append('no information available')
         # initiate md object
@@ -184,6 +197,7 @@ repo_url= "https://github.com/uuidea/SimpleMDDataCatalog"
 
 data_catalog= parse_catalog(input_file=input_file)
 create_index(catalog_graph= data_catalog, output_dir=output_dir, repo_url=repo_url)
+create_dataset_pages(catalog_graph=data_catalog, output_dir=output_dir)
 
 
 
