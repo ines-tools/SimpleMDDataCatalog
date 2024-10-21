@@ -1,26 +1,122 @@
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dqv: <http://www.w3.org/ns/dqv#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://datacatalog.github.io/test_this#73956> a dcat:Dataset ;
-    dcterms:description "a test dataset to see if we can get lineage right" ;
-    dcterms:identifier "73956" ;
-    dcterms:license <https://opensource.org/licenses/Apache-2.0> ;
+<https://datacatalog.github.io/test_this#asFSMAWBAS> a dqv:QualityMeasurement ;
+    dqv:computedOn <https://datacatalog.github.io/test_this#ewrcqwfeb> ;
+    dqv:isMeasurementOf <https://datacatalog.github.io/test_this#jkdsfAFdfgsdfg> ;
+    dqv:value 1e+00 ;
+    prov:generatedAtTime "2024-10-21T15:01:34+0000"^^<xsd:dateTime> .
+
+<https://datacatalog.github.io/test_this#jQ8PY1234LJ> a dqv:QualityMeasurement ;
+    dqv:computedOn <https://datacatalog.github.io/test_this#73956> ;
+    dqv:isMeasurementOf <https://datacatalog.github.io/test_this#kd84jsd8wksyf> ;
+    dqv:value 5.46e+00 ;
+    prov:generatedAtTime "2024-10-19T14:46:01+0000"^^<xsd:dateTime> .
+
+<https://datacatalog.github.io/test_this#keq3ek843> a dqv:QualityMeasurement ;
+    dqv:computedOn <https://datacatalog.github.io/test_this#12345> ;
+    dqv:isMeasurementOf <https://datacatalog.github.io/test_this#mwqd83k93k> ;
+    dqv:value 2.759376e+08 ;
+    prov:generatedAtTime "2024-11-19T14:46:51+0000"^^<xsd:dateTime> .
+
+<https://datacatalog.github.io/test_this#skekxmkr> a dqv:QualityMeasurement ;
+    dqv:computedOn <https://datacatalog.github.io/test_this#73956> ;
+    dqv:isMeasurementOf <https://datacatalog.github.io/test_this#ja9EJDS8E> ;
+    dqv:value 9.75e-01 ;
+    prov:generatedAtTime "2024-10-19T14:46:51+0000"^^<xsd:dateTime> .
+
+<https://datacatalog.github.io/test_this#23456> a dcat:Distribution ;
+    dcterms:format "excel" ;
+    dcterms:identifier "23456" ;
+    dcterms:modified "2024-10-15T00:00:00"^^xsd:date ;
+    dcat:accessURL "https://www.example.com/test.xslx" ;
+    dcat:version "0.1.0" .
+
+<https://datacatalog.github.io/test_this#94759> a dcat:Distribution ;
+    dcterms:format <https://avro.apache.org/docs/1.12.0/> ;
+    dcterms:identifier "94759" ;
     dcterms:modified "2024-10-17T00:00:00"^^xsd:date ;
-    dcterms:publisher "jane doe" ;
-    dcterms:spatial "France" ;
-    dcterms:temporal "2011" ;
-    dcterms:title "derived data" ;
-    adms:status "test" ;
-    dcat:contactPoint "jane@example.org" ;
-    dcat:distribution <https://datacatalog.github.io/test_this#94759> ;
-    dcat:theme <https://datacatalog.github.io/test_this#fdcshjnfdscahjn>,
-        <https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> ;
-    dcat:version "0.3.3" ;
-    prov:wasDerivedFrom <https://datacatalog.github.io/test_this#12345> .
+    dcat:accessURL "https://www.example.org/lineagetest.avro" ;
+    dcat:version "4.5.1" .
+
+<https://datacatalog.github.io/test_this#973I> a skos:Concept ;
+    dcterms:identifier "973I" ;
+    skos:definition "the fraction of installed capacity that was or is available at a given moment in time" ;
+    skos:prefLabel "capacity factor" .
+
+<https://datacatalog.github.io/test_this#ewrcqwfeb> a dcat:Dataset ;
+    dcterms:description "Data set contains data on capacity factors of on-shore wind across different GIS regions as a time series since 1980 to 2022 on hourly basis" ;
+    dcterms:identifier "ewrcqwfeb" ;
+    dcterms:license "cc-by 4.0" ;
+    dcterms:modified "2024-10-21T00:00:00"^^xsd:date ;
+    dcterms:publisher "DTU" ;
+    dcterms:spatial "Europe" ;
+    dcterms:temporal "1980-2022" ;
+    dcterms:title "existing wind on-shore" ;
+    adms:status "first version" ;
+    dcat:contactPoint "info@mopo.eu" ;
+    dcat:distribution <https://datacatalog.github.io/test_this#skfhafuku> ;
+    dcat:theme <https://datacatalog.github.io/test_this#973I>,
+        <https://datacatalog.github.io/test_this#fajfafl>,
+        <https://datacatalog.github.io/test_this#weruEF8> ;
+    dcat:version "0.4" .
+
+<https://datacatalog.github.io/test_this#fajfafl> a skos:Concept ;
+    dcterms:identifier "fajfafl" ;
+    skos:definition "wind as an energy source" ;
+    skos:prefLabel "wind" .
+
+<https://datacatalog.github.io/test_this#fdcshjnfdscahjn> a skos:Concept ;
+    dcterms:identifier "fdcshjnfdscahjn" ;
+    skos:definition "A discription of where something comes from or how it was created" ;
+    skos:prefLabel "lineage" .
+
+<https://datacatalog.github.io/test_this#iu34jkAWD> a skos:Concept ;
+    dcterms:identifier "iu34jkAWD" ;
+    skos:definition "an excersize in determining if something works or behaves as expected" ;
+    skos:example "I’m testing if this works" ;
+    skos:prefLabel "test" .
+
+<https://datacatalog.github.io/test_this#ja9EJDS8E> a dqv:Metric ;
+    skos:definition "the fraction (between 0 and 1) of the amount of records in the dataset that complies to the schema as defined by some specification" ;
+    skos:prefLabel "fraction of compliant records" ;
+    dqv:expectedDataType xsd:float ;
+    dqv:inDimension <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012/Compliance> .
+
+<https://datacatalog.github.io/test_this#jkdsfAFdfgsdfg> a dqv:Metric ;
+    skos:definition "we have data representing the capacity for all countries within the EU usecase. measured as a fraction between the collumns in the dataset and the expected columns" ;
+    skos:prefLabel "all countries present" ;
+    dqv:expectedDataType xsd:float ;
+    dqv:inDimension <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012/Completeness> .
+
+<https://datacatalog.github.io/test_this#kd84jsd8wksyf> a dqv:Metric ;
+    skos:definition "the time it takes between when a request was made and when a response was provided, measured in seconds" ;
+    skos:prefLabel "response time" ;
+    dqv:expectedDataType xsd:float ;
+    dqv:inDimension <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012/Availability> .
+
+<https://datacatalog.github.io/test_this#mwqd83k93k> a dqv:Metric ;
+    skos:definition "the number of unique records in the dataset" ;
+    skos:prefLabel "number of records" ;
+    dqv:expectedDataType xsd:int ;
+    dqv:inDimension <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012/Completeness> .
+
+<https://datacatalog.github.io/test_this#skfhafuku> a dcat:Distribution ;
+    dcterms:format "csv" ;
+    dcterms:identifier "skfhafuku" ;
+    dcterms:modified "2022-05-02"^^xsd:date ;
+    dcat:accessURL "https://data.dtu.dk/ndownloader/files/34972672" ;
+    dcat:version "0.4" .
+
+<https://datacatalog.github.io/test_this#weruEF8> a skos:Concept ;
+    dcterms:identifier "weruEF8" ;
+    skos:definition "installed on the sea" ;
+    skos:prefLabel "offshore" .
 
 <https://datacatalog.github.io/test_this#12345> a dcat:Dataset ;
     dcterms:description "a test dataset" ;
@@ -39,30 +135,22 @@
         <https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> ;
     dcat:version "1.0.0" .
 
-<https://datacatalog.github.io/test_this#23456> a dcat:Distribution ;
-    dcterms:format "excel" ;
-    dcterms:identifier "23456" ;
-    dcterms:modified "2024-10-15T00:00:00"^^xsd:date ;
-    dcat:accessURL "https://www.example.com/test.xslx" ;
-    dcat:version "0.1.0" .
-
-<https://datacatalog.github.io/test_this#94759> a dcat:Distribution ;
-    dcterms:format <https://avro.apache.org/docs/1.12.0/> ;
-    dcterms:identifier "94759" ;
+<https://datacatalog.github.io/test_this#73956> a dcat:Dataset ;
+    dcterms:description "a test dataset to see if we can get lineage right" ;
+    dcterms:identifier "73956" ;
+    dcterms:license <https://opensource.org/licenses/Apache-2.0> ;
     dcterms:modified "2024-10-17T00:00:00"^^xsd:date ;
-    dcat:accessURL "https://www.example.org/lineagetest.avro" ;
-    dcat:version "4.5.1" .
-
-<https://datacatalog.github.io/test_this#fdcshjnfdscahjn> a skos:Concept ;
-    dcterms:identifier "fdcshjnfdscahjn" ;
-    skos:definition "A discription of where something comes from or how it was created" ;
-    skos:prefLabel "lineage" .
-
-<https://datacatalog.github.io/test_this#iu34jkAWD> a skos:Concept ;
-    dcterms:identifier "iu34jkAWD" ;
-    skos:definition "an excersize in determining if something works or behaves as expected" ;
-    skos:example "I’m testing if this works" ;
-    skos:prefLabel "test" .
+    dcterms:publisher "jane doe" ;
+    dcterms:spatial "France" ;
+    dcterms:temporal "2011" ;
+    dcterms:title "derived data" ;
+    adms:status "test" ;
+    dcat:contactPoint "jane@example.org" ;
+    dcat:distribution <https://datacatalog.github.io/test_this#94759> ;
+    dcat:theme <https://datacatalog.github.io/test_this#fdcshjnfdscahjn>,
+        <https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> ;
+    dcat:version "0.3.3" ;
+    prov:wasDerivedFrom <https://datacatalog.github.io/test_this#12345> .
 
 <https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> a skos:Concept ;
     dcterms:identifier "sdfjlhgfvrkhlsfd" ;

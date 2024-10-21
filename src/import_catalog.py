@@ -30,6 +30,8 @@ def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
     
     index_md.new_header(level=1, title= "Datasets organized by theme")
 
+    index_md.new_line('Here you will find datasets organized by theme. The headers of each theme are links you can click to learn more about the definition')
+
     for th in themes :
         # print(th)
         title = catalog_graph.value(th, SKOS.prefLabel)
@@ -101,6 +103,7 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
         wdf_list = ['was derived from'] # first entry has to be empty for table to look nice
         
         for wdf in wasDerivedFrom:
+            print(wdf)
             wdf_list.append(get_local_link(uri=wdf, property=DCTERMS.identifier, label=DCTERMS.title))
         if len(wdf_list) == 1:
             wdf_list.append('no information available')
@@ -216,20 +219,32 @@ def create_concept_pages(catalog_graph=Graph,output_dir=str):
         datasets = catalog_graph.subjects(DCAT.theme, c)
         for ds in datasets:
             concept_file.new_line(get_local_link(uri=ds, property=DCTERMS.identifier, label= DCTERMS.title))
-            
-
-
-
         
         concept_file.create_md_file()
 
 
 
     
-    # concept_file.MdUtils(
-    #         file_name=output_dir+'index',
-    #         title=repo_name[1]+' Data Catalog Overview')
-
+def get_lineage(data_catalog: Graph, dataset=URIRef):
+    ds_uri_str=str("<"+dataset+">")
+    print(ds_uri_str)
+    direct_lineage_query=("""
+    SELECT DISTINCT ?lineage
+    WHERE{
+        %s prov:wasDerivedFrom ?lineageds
+    }
+    """ % (ds_uri_str))
+    indirect_lineage_query=("""
+    SELECT DISTINCT ?lineage
+    WHERE{
+        %s prov:wasDerivedFrom* ?lineageds
+    }
+    """ % (ds_uri_str))
+    lineage= data_catalog.query(direct_lineage_query)
+    indirect_lineage=data_catalog.query(indirect_lineage_query)
+    print(indirect_lineage)
+    
+    return lineage, indirect_lineage
             
 
 
@@ -239,12 +254,14 @@ def create_concept_pages(catalog_graph=Graph,output_dir=str):
 input_file= './tests/datacatalog.ttl'
 output_dir = './docs/'
 repo_url= "https://github.com/uuidea/SimpleMDDataCatalog"
+dataset= URIRef("https://datacatalog.github.io/test_this#73956")
 # parse_catalog(input_file=input_file, output_dir= output_dir)
 
 data_catalog= parse_catalog(input_file=input_file)
 create_index(catalog_graph= data_catalog, output_dir=output_dir, repo_url=repo_url)
 create_dataset_pages(catalog_graph=data_catalog, output_dir=output_dir)
 create_concept_pages(catalog_graph=data_catalog, output_dir=output_dir)
+get_lineage(data_catalog=data_catalog, dataset=dataset)
 
 
 
