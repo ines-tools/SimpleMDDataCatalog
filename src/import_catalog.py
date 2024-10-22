@@ -44,6 +44,9 @@ def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
            
             index_md.new_line(text=get_local_link(uri=th_ds, property=DCTERMS.identifier, label=DCTERMS.title))
 
+    index_md.new_header(level=2, title= "About this catalog")
+
+    index_md.new_line("This catalog was generated using the SimpleMDDataCatalog package that is is maintained [here](https://github.com/uuidea/SimpleMDDataCatalog).")
 
     index_md.create_md_file()
 

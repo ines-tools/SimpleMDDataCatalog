@@ -1,0 +1,55 @@
+@startuml
+
+class "dcat:Dataset" as dataset {
+    dcterms:identifier xsd:string
+    dcterms:description xsd:string
+    dscterms:publisher xsd:any
+    dcterms:contactPoint xsd:string
+    dcterms:license xsd:any
+    dcat:version xsd:str
+    dcterms:temporal xsd:any
+    dcterms:temporal xsd:any
+    dcterms:modified xsd:date
+}
+
+class "dcat:Distribution" as distribution {
+    dcterms:identifier xsd:string
+    dcat:accessURL rdf:Resource
+    dcterms:format xsd:any
+    dcat:version xsd:string
+    dcterms:modified xsd:date
+
+}
+
+class "skos:Concept" as concept {
+    skos:prefLabel xsd:string
+    dcterms:identifier xsd:string
+    skos:definition xsd:string
+    skos:example xsd:string
+    skos:altLabel xsd:string
+
+}
+
+class "dqv:Metric" as metric {
+    dcterms:identifier xsd:string
+    skos:prefLabel xsd:string
+    skos:definition xsd:string
+    dqv:expectedDataType rdf:Resource
+    dqv:inDimension rdf:Resource
+}
+
+class "dqv:QualityMeasurement" as qualitymeasurement {
+    dqv:value xsd:any
+    prov:generatedAtTime xsd:dateTime
+
+}
+
+dataset --> distribution : "dcat:distribution"
+dataset --> dataset : "prov:wasDerivedFrom"
+dataset --> concept : "dcat:theme"
+
+qualitymeasurement --> dataset : "dqv:computedOn"
+qualitymeasurement --> metric : "dqv:inDimension"
+
+
+@enduml
