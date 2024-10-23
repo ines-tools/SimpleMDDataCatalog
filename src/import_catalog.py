@@ -185,7 +185,8 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
                          text=wdf_list,
                          text_align='left')
         if len(wdf_list)>1:
-            image_path=was_derived_from_graphic(data_catalog=data_catalog, uri=s)[2:]
+            image_path=was_derived_from_graphic(data_catalog=data_catalog, uri=s)[7:]
+            print(image_path)
             mdFile.new_line(mdFile.new_inline_image(text="Lineage overview", path=image_path))
 
         # license

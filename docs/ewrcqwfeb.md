@@ -39,7 +39,7 @@ first version
 | :--- |
 |https://datacatalog.github.io/test_this#test_a: No additional information this dataset was provided.|
   
-![Lineage overview](docs/figures/ewrcqwfeb_lineage.svg)
+![Lineage overview](figures/ewrcqwfeb_lineage.svg)
 ## License
 
 
