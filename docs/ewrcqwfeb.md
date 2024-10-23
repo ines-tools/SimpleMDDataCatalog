@@ -55,3 +55,7 @@ cc-by 4.0
 |metric|value|time of evaluation|dimension|
 | :---: | :---: | :---: | :---: |
 |[all countries present](jkdsfAFdfgsdfg.md)|1.0|2024-10-21T15:01:34+0000|https://iso25000.com/index.php/en/iso-25000-standards/iso-25012/Completeness|
+
+## supply chain analysis
+  
+![supply chain analysis](figures/ewrcqwfeb_supply_chain.svg)

@@ -1,4 +1,4 @@
-from rdflib import Graph, Namespace, URIRef, Literal, BNode
+from rdflib import Graph, Namespace, URIRef, Literal, BNode, paths
 from rdflib.namespace import FOAF, DCTERMS, DCAT, PROV, OWL, RDFS, RDF, XMLNS, SKOS, SOSA, ORG, SSN, XSD
 # from dcat_model import Dataset, Distribution, Resource
 # from typing import List, Union
@@ -8,8 +8,7 @@ from mdutils.tools.Table import Table
 from mdutils.tools.Html import Html
 import os
 import pandas as pd
-from analysis_functions import was_derived_from_graphic, get_data_quality
-
+from analysis_functions import was_derived_from_graphic, get_data_quality, supply_chain_analysis
 def extract_org_repo(repo_url=str):
     split_up_list = repo_url.split("/")
     
@@ -169,15 +168,19 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
 
         wasDerivedFrom = graph.objects(s,PROV.wasDerivedFrom)
         wdf_list = ['was derived from'] # first entry has to be empty for table to look nice
+        has_lineage=True #assume lineage is known
         
         for wdf in wasDerivedFrom:
             
             if anything_known(catalog_graph=catalog_graph, uri=wdf):
                 wdf_list.append(get_local_link(uri=wdf, property=DCTERMS.identifier, label=DCTERMS.title))
+                
             else :
                 wdf_list.append(str(wdf)+': No additional information this dataset was provided.')    
         if len(wdf_list) == 1:
             wdf_list.append('no lineage information available')
+            has_lineage=False # lineage is not known
+            
 
         mdFile.new_header(level= 2, title='Data lineage')
         mdFile.new_table(columns=1, 
@@ -241,6 +244,13 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
                 dimension
             ]
         mdFile.new_table(columns=4, rows= int(len(qm_list)/4), text= qm_list)
+
+        if has_lineage:
+
+            mdFile.new_header(level=2, title="supply chain analysis")
+            pie_file=supply_chain_analysis(data_catalog=data_catalog,dataset_uri=s)
+
+            mdFile.new_line(mdFile.new_inline_image(text="supply chain analysis",path=str(pie_file)[7:]))
 
 
         mdFile.create_md_file()

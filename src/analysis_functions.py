@@ -1,5 +1,5 @@
 # from import_catalog import parse_catalog
-from rdflib import Graph, Namespace, URIRef, Literal, BNode
+from rdflib import Graph, Namespace, URIRef, Literal, BNode, paths
 from rdflib.namespace import FOAF, DCTERMS, DCAT, PROV, OWL, RDFS, RDF, XMLNS, SKOS, SOSA, ORG, SSN, XSD
 import pandas as pd
 import os
@@ -55,5 +55,35 @@ def get_data_quality(data_catalog= Graph, dataset_uri=URIRef):
     quality_measurements= data_catalog.subjects(dqv_ns.computedOn, dataset_uri)
     return quality_measurements
 
+
+
+def supply_chain_analysis(data_catalog=Graph, dataset_uri= URIRef):
+    dqv_ns=Namespace("http://www.w3.org/ns/dqv#")
+    identifier=str(data_catalog.value(URIRef(dataset_uri), DCTERMS.identifier))
+    filename= "./docs/figures/"+ identifier+"_supply_chain"
+
+    was_derived_from= data_catalog.objects(dataset_uri, (PROV.wasDerivedFrom* '+'))
+    ds_w_qm=0 # dataset with data quality measurement
+    ds_wo_qm= 0# dataset without quality
+    for wdf in was_derived_from:
+        print((None, dqv_ns.computedOn, wdf) in data_catalog)
+        if (None, dqv_ns.computedOn, wdf) in data_catalog:
+            ds_w_qm= ds_w_qm +1
+        else:
+            ds_wo_qm= ds_wo_qm+1
+
+    labels = 'with quality \nmeasurements', 'without quality \nmeasurements'
+    sizes = [ds_w_qm, ds_wo_qm]
+
+    fig, ax = plt.subplots()
+    ax.pie(sizes, labels=labels)
+    plt.legend(loc='lower right')
+    plt.title('fraction of input datasets that has \nquality measurements (more is better)')
+    
+
+    pie_file=filename+'.svg' 
+    fig.savefig(pie_file)
+
+    return pie_file
 
 
