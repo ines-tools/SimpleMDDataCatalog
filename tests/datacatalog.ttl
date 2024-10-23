@@ -12,6 +12,22 @@
     dqv:value 1e+00 ;
     prov:generatedAtTime "2024-10-21T15:01:34+0000"^^<xsd:dateTime> .
 
+<https://datacatalog.github.io/test_this#dsdfadf> a dcat:Dataset ;
+    dcterms:description "another test data set" ;
+    dcterms:identifier "dsdfadf" ;
+    dcterms:license "cc—by 4.0" ;
+    dcterms:modified "2024-10-21T00:00:00"^^xsd:date ;
+    dcterms:publisher "uuidea" ;
+    dcterms:spatial "Belgium" ;
+    dcterms:temporal "2019" ;
+    dcterms:title "tst data" ;
+    adms:status "unknown" ;
+    dcat:contactPoint "test@test.com" ;
+    dcat:distribution <https://datacatalog.github.io/test_this#asdfasdbf> ;
+    dcat:theme <https://datacatalog.github.io/test_this#fajfafl>,
+        <https://datacatalog.github.io/test_this#fdcshjnfdscahjn> ;
+    dcat:version "3.4" .
+
 <https://datacatalog.github.io/test_this#jQ8PY1234LJ> a dqv:QualityMeasurement ;
     dqv:computedOn <https://datacatalog.github.io/test_this#73956> ;
     dqv:isMeasurementOf <https://datacatalog.github.io/test_this#kd84jsd8wksyf> ;
@@ -49,6 +65,13 @@
     skos:definition "the fraction of installed capacity that was or is available at a given moment in time" ;
     skos:prefLabel "capacity factor" .
 
+<https://datacatalog.github.io/test_this#asdfasdbf> a dcat:Distribution ;
+    dcterms:format "csv" ;
+    dcterms:identifier "asdfasdbf" ;
+    dcterms:modified "2022-05-02"^^xsd:date ;
+    dcat:accessURL "https://www.example.comtst.csv" ;
+    dcat:version "4.6.1" .
+
 <https://datacatalog.github.io/test_this#ewrcqwfeb> a dcat:Dataset ;
     dcterms:description "Data set contains data on capacity factors of on-shore wind across different GIS regions as a time series since 1980 to 2022 on hourly basis" ;
     dcterms:identifier "ewrcqwfeb" ;
@@ -66,16 +89,6 @@
         <https://datacatalog.github.io/test_this#weruEF8> ;
     dcat:version "0.4" ;
     prov:wasDerivedFrom <https://datacatalog.github.io/test_this#test_a> .
-
-<https://datacatalog.github.io/test_this#fajfafl> a skos:Concept ;
-    dcterms:identifier "fajfafl" ;
-    skos:definition "wind as an energy source" ;
-    skos:prefLabel "wind" .
-
-<https://datacatalog.github.io/test_this#fdcshjnfdscahjn> a skos:Concept ;
-    dcterms:identifier "fdcshjnfdscahjn" ;
-    skos:definition "A discription of where something comes from or how it was created" ;
-    skos:prefLabel "lineage" .
 
 <https://datacatalog.github.io/test_this#iu34jkAWD> a skos:Concept ;
     dcterms:identifier "iu34jkAWD" ;
@@ -155,7 +168,18 @@
     dcat:theme <https://datacatalog.github.io/test_this#fdcshjnfdscahjn>,
         <https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> ;
     dcat:version "0.3.3" ;
-    prov:wasDerivedFrom <https://datacatalog.github.io/test_this#12345> .
+    prov:wasDerivedFrom <https://datacatalog.github.io/test_this#>,
+        <https://datacatalog.github.io/test_this#12345> .
+
+<https://datacatalog.github.io/test_this#fajfafl> a skos:Concept ;
+    dcterms:identifier "fajfafl" ;
+    skos:definition "wind as an energy source" ;
+    skos:prefLabel "wind" .
+
+<https://datacatalog.github.io/test_this#fdcshjnfdscahjn> a skos:Concept ;
+    dcterms:identifier "fdcshjnfdscahjn" ;
+    skos:definition "A discription of where something comes from or how it was created" ;
+    skos:prefLabel "lineage" .
 
 <https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> a skos:Concept ;
     dcterms:identifier "sdfjlhgfvrkhlsfd" ;
