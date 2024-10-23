@@ -39,7 +39,7 @@ first version
 | :--- |
 |https://datacatalog.github.io/test_this#test_a: No additional information this dataset was provided.|
   
-![Lineage overview](/docs/figures/ewrcqwfeb_lineage.svg)
+![Lineage overview](./docs/figures/ewrcqwfeb_lineage.svg)
 ## License
 
 
@@ -48,7 +48,7 @@ cc-by 4.0
 
 |identifier|format|version|last modified|access url|
 | :---: | :---: | :---: | :---: | :---: |
-|skfhafuku|csv|0.4|2022-05-02|https://data.dtu.dk/ndownloader/files/34972672|
+|skfhafuku|csv|0.4|2022-05-02|[https://data.dtu.dk/ndownloader/files/34972672](https://data.dtu.dk/ndownloader/files/34972672)|
 
 ## Data Quality
 

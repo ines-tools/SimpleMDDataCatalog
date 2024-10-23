@@ -185,7 +185,7 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
                          text=wdf_list,
                          text_align='left')
         if len(wdf_list)>1:
-            image_path=was_derived_from_graphic(data_catalog=data_catalog, uri=s)[1:]
+            image_path=was_derived_from_graphic(data_catalog=data_catalog, uri=s)
             mdFile.new_line(mdFile.new_inline_image(text="Lineage overview", path=image_path))
 
         # license
@@ -206,7 +206,7 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
                 graph.value(dist, DCTERMS.format),
                 graph.value(dist, DCAT.version),
                 graph.value(dist, DCTERMS.modified),
-                access_url,
+                "["+ str(access_url)+"]("+str(access_url)+")",
             ]
 
         mdFile.new_table(columns=5, rows= int(len(dist_list)/5), text= dist_list)
