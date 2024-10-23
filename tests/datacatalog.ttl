@@ -12,22 +12,6 @@
     dqv:value 1e+00 ;
     prov:generatedAtTime "2024-10-21T15:01:34+0000"^^<xsd:dateTime> .
 
-<https://datacatalog.github.io/test_this#dsdfadf> a dcat:Dataset ;
-    dcterms:description "another test data set" ;
-    dcterms:identifier "dsdfadf" ;
-    dcterms:license "cc—by 4.0" ;
-    dcterms:modified "2024-10-21T00:00:00"^^xsd:date ;
-    dcterms:publisher "uuidea" ;
-    dcterms:spatial "Belgium" ;
-    dcterms:temporal "2019" ;
-    dcterms:title "tst data" ;
-    adms:status "unknown" ;
-    dcat:contactPoint "test@test.com" ;
-    dcat:distribution <https://datacatalog.github.io/test_this#asdfasdbf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#fajfafl>,
-        <https://datacatalog.github.io/test_this#fdcshjnfdscahjn> ;
-    dcat:version "3.4" .
-
 <https://datacatalog.github.io/test_this#jQ8PY1234LJ> a dqv:QualityMeasurement ;
     dqv:computedOn <https://datacatalog.github.io/test_this#73956> ;
     dqv:isMeasurementOf <https://datacatalog.github.io/test_this#kd84jsd8wksyf> ;
@@ -71,6 +55,22 @@
     dcterms:modified "2022-05-02"^^xsd:date ;
     dcat:accessURL "https://www.example.comtst.csv" ;
     dcat:version "4.6.1" .
+
+<https://datacatalog.github.io/test_this#dsdfadf> a dcat:Dataset ;
+    dcterms:description "another test data set" ;
+    dcterms:identifier "dsdfadf" ;
+    dcterms:license "cc—by 4.0" ;
+    dcterms:modified "2024-10-21T00:00:00"^^xsd:date ;
+    dcterms:publisher "uuidea" ;
+    dcterms:spatial "Belgium" ;
+    dcterms:temporal "2019" ;
+    dcterms:title "tst data" ;
+    adms:status "unknown" ;
+    dcat:contactPoint "test@test.com" ;
+    dcat:distribution <https://datacatalog.github.io/test_this#asdfasdbf> ;
+    dcat:theme <https://datacatalog.github.io/test_this#fajfafl>,
+        <https://datacatalog.github.io/test_this#fdcshjnfdscahjn> ;
+    dcat:version "3.4" .
 
 <https://datacatalog.github.io/test_this#ewrcqwfeb> a dcat:Dataset ;
     dcterms:description "Data set contains data on capacity factors of on-shore wind across different GIS regions as a time series since 1980 to 2022 on hourly basis" ;
@@ -168,8 +168,8 @@
     dcat:theme <https://datacatalog.github.io/test_this#fdcshjnfdscahjn>,
         <https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> ;
     dcat:version "0.3.3" ;
-    prov:wasDerivedFrom <https://datacatalog.github.io/test_this#>,
-        <https://datacatalog.github.io/test_this#12345> .
+    prov:wasDerivedFrom <https://datacatalog.github.io/test_this#12345>,
+        <https://datacatalog.github.io/test_this#dsdfadf> .
 
 <https://datacatalog.github.io/test_this#fajfafl> a skos:Concept ;
     dcterms:identifier "fajfafl" ;
