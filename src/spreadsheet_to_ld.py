@@ -157,13 +157,15 @@ def spreadsheet_to_ld_catalog(input_sheet: str, uri: str, output_graph) -> Graph
         
     for n , row in metrics_df.iterrows():
         # print(row['dcterms:identifier'])
-        metrics_uri= identifier_to_uri(row['dcterms:identifier'], ns)
+        identifier= row['dcterms:identifier']
+        metrics_uri= identifier_to_uri(identifier, ns)
         data_catalog.add((metrics_uri,RDF.type, dqv_ns.Metric))
+        data_catalog.add((metrics_uri, DCTERMS.identifier, Literal(identifier)))
         data_catalog.add((metrics_uri,SKOS.prefLabel, Literal(row['skos:prefLabel'])))
         data_catalog.add((metrics_uri, SKOS.definition, Literal(row['skos:definition'])))
         # print(row['dqv:expectedDataType'])
         datatype=URIRef(str_abbrev_namespace_to_full_namespace(row['dqv:expectedDataType']))
-        data_catalog.add((metrics_uri, dqv_ns.expectedDataType,datatype))
+        data_catalog.add((metrics_uri, dqv_ns.expectedDataType, datatype))
         quality_dimension=URIRef(str_abbrev_namespace_to_full_namespace(row['dqv:inDimension']))
         data_catalog.add((metrics_uri, dqv_ns.inDimension, quality_dimension))
 

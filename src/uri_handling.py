@@ -33,7 +33,8 @@ def identifier_to_uri(identifier: str, namespace: Namespace) -> URIRef :
     if validators.uri.uri(identifier):
         uri=identifier
     else :
-        uri= namespace[identifier]
+        no_space_id= identifier.replace(' ', '_')
+        uri= namespace[no_space_id]
     return uri
 
 def literal_or_uri(string = str):

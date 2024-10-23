@@ -17,10 +17,13 @@ Here you will find datasets organized by theme. The headers of each theme are li
 ## [test](iu34jkAWD.md)
   
 [test data](12345.md)
-## [offshore](weruEF8.md)
+## [onshore](weruEF8.md)
   
 [existing wind on-shore](ewrcqwfeb.md)
 ## [catalog](sdfjlhgfvrkhlsfd.md)
   
 [test data](12345.md)  
 [derived data](73956.md)
+## About this catalog
+  
+This catalog was generated using the SimpleMDDataCatalog package that is is maintained [here](https://github.com/uuidea/SimpleMDDataCatalog).

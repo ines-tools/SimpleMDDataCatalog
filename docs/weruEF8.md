@@ -1,16 +1,16 @@
 
-offshore
-========
+onshore
+=======
 
 # Preferred Label
   
-offshore
+onshore
 # uri
   
 https://datacatalog.github.io/test_this#weruEF8
 # Definition
   
-installed on the sea
+installed on land
 # Examples
 
 # Datasets that have this concept as a theme
