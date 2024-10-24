@@ -11,6 +11,7 @@ def was_derived_from_graphic(data_catalog=Graph, uri=URIRef):
     os.makedirs("./docs/figures/", exist_ok=True)
 
     identifier=str(data_catalog.value(URIRef(uri), DCTERMS.identifier))
+    label= str(data_catalog.value(URIRef(uri), DCTERMS.title))
     filename= "./docs/figures/"+ identifier+"_lineage"
 
     # find was derived from datasets and populate graph
@@ -18,14 +19,19 @@ def was_derived_from_graphic(data_catalog=Graph, uri=URIRef):
     was_derived_from= data_catalog.objects(URIRef(uri), PROV.wasDerivedFrom)
     g = ig.Graph(directed=True)
 
-    g.add_vertex(identifier, label=identifier, color='red')
+    g.add_vertex(identifier, label=label, color='red')
 
     counter=0
     for i in was_derived_from:
 
-        label2= str(i).split("#")[1]
-        g.add_vertex(label2, label=label2, )
-        g.add_edge(source= identifier, target=label2)
+        identifier2= str(data_catalog.value(URIRef(i), DCTERMS.identifier))
+        label2=str(data_catalog.value(URIRef(i), DCTERMS.title))
+
+        # print("################################################################################################################################################################################################################################################"+label2)
+        if label2=='None':
+            label2= str(i).split("#")[1]
+        g.add_vertex(identifier2, label=label2, )
+        g.add_edge(source= identifier, target=identifier2)
         counter= counter +1
 
     dataset_color= ["red"] 
