@@ -27,7 +27,6 @@ def was_derived_from_graphic(data_catalog=Graph, uri=URIRef):
         identifier2= str(data_catalog.value(URIRef(i), DCTERMS.identifier))
         label2=str(data_catalog.value(URIRef(i), DCTERMS.title))
 
-        # print("################################################################################################################################################################################################################################################"+label2)
         if label2=='None':
             label2= str(i).split("#")[1]
         g.add_vertex(identifier2, label=label2, )
@@ -119,7 +118,7 @@ def create_theme_word_cloud(catalog_graph= Graph):
     import matplotlib.pyplot as plt
     from wordcloud import WordCloud
 
-    wordcloud = WordCloud()
+    wordcloud = WordCloud(background_color='white')
     wordcloud.generate_from_frequencies(frequencies=d)
     plt.figure()
     plt.imshow(wordcloud, interpolation="bilinear")

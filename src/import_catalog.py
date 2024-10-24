@@ -31,6 +31,8 @@ def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
     repo_name= extract_org_repo(repo_url=repo_url)
     os.makedirs(output_dir, exist_ok=True)
     catalogs= data_catalog.subjects(RDF.type, DCAT.Catalog)
+    catalog_file_path = output_dir+'catalog.ttl'
+    catalog_graph.serialize(destination=catalog_file_path)
     
     for cat in catalogs:
         catalog_uri=cat
@@ -45,6 +47,8 @@ def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
     
     index_md.new_header(level=1, title="Description")
     index_md.new_paragraph(text=catalog_description)
+
+    index_md.new_line(index_md.new_inline_link(link= catalog_file_path[7:],text= "The machine readable version of the catalog (ttl) can be found here." ))
 
     index_md.new_header(level=2, title="Publisher")
     index_md.new_line(str(catalog_graph.value(catalog_uri, DCTERMS.publisher)))

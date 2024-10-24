@@ -5,7 +5,8 @@ test data catalog
 # Description
 
 
-This is a data catalog to test different functions of the SimpleMDDataCatalog project
+This is a data catalog to test different functions of the SimpleMDDataCatalog project  
+[The machine readable version of the catalog (ttl) can be found here.](catalog.ttl)
 ## Publisher
   
 SimpleMDDataCatalog
