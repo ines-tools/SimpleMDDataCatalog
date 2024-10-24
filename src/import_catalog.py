@@ -71,12 +71,13 @@ def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
     themes= catalog_graph.subjects(RDF.type, SKOS.Concept)
     
     index_md.new_header(level=1, title= "Datasets organized by theme")
-
-    index_md.new_line('Here you will find datasets organized by theme. The headers of each theme are links you can click to learn more about the definition')
+    index_md.new_line("the word cloud gives a sense of the themes that are covered by the datasets in this data catalog.")
     word_cloud= create_theme_word_cloud(catalog_graph=data_catalog)
     word_cloud_path=str(word_cloud)[7:]
     index_md.new_line(index_md.new_inline_image(text="word cloud of dataset themes and their occurrences",
                                                 path=word_cloud_path))
+    index_md.new_line('Here you will find datasets organized by theme. The headers of each theme are links you can click to learn more about the definition')
+    
     for th in themes :
        
         title = catalog_graph.value(th, SKOS.prefLabel)

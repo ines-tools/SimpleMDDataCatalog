@@ -20,8 +20,9 @@ cc-by-sa 4.0
 
 # Datasets organized by theme
   
-Here you will find datasets organized by theme. The headers of each theme are links you can click to learn more about the definition  
-![word cloud of dataset themes and their occurrences](figures/wordcloud.svg)
+the word cloud gives a sense of the themes that are covered by the datasets in this data catalog.  
+![word cloud of dataset themes and their occurrences](figures/wordcloud.svg)  
+Here you will find datasets organized by theme. The headers of each theme are links you can click to learn more about the definition
 ## theme: [capacity factor](973I.md)
   
 [existing wind on-shore](ewrcqwfeb.md)
