@@ -1,28 +1,46 @@
 
-SimpleMDDataCatalog Data Catalog Overview
-=========================================
+test data catalog
+=================
+
+# Description
+
+
+This is a data catalog to test different functions of the SimpleMDDataCatalog project
+## Publisher
+  
+SimpleMDDataCatalog
+## License
+  
+cc-by-sa 4.0
+## keywords
+
+||
+| :--- |
+|[test](iu34jkAWD.md)|
 
 # Datasets organized by theme
   
-Here you will find datasets organized by theme. The headers of each theme are links you can click to learn more about the definition
-## [capacity factor](973I.md)
+Here you will find datasets organized by theme. The headers of each theme are links you can click to learn more about the definition  
+![word cloud of dataset themes and their occurrences](figures/wordcloud.svg)
+## theme: [capacity factor](973I.md)
   
 [existing wind on-shore](ewrcqwfeb.md)
-## [test](iu34jkAWD.md)
-  
-[test data](12345.md)
-## [onshore](weruEF8.md)
+## theme: [onshore](weruEF8.md)
   
 [existing wind on-shore](ewrcqwfeb.md)
-## [wind](fajfafl.md)
+## theme: [wind](fajfafl.md)
   
 [tst data](dsdfadf.md)  
 [existing wind on-shore](ewrcqwfeb.md)
-## [lineage](fdcshjnfdscahjn.md)
+## theme: [lineage](fdcshjnfdscahjn.md)
   
 [tst data](dsdfadf.md)  
 [derived data](73956.md)
-## [catalog](sdfjlhgfvrkhlsfd.md)
+## theme: [test](iu34jkAWD.md)
+  
+[test data catalog](None.md)  
+[test data](12345.md)
+## theme: [catalog](sdfjlhgfvrkhlsfd.md)
   
 [test data](12345.md)  
 [derived data](73956.md)

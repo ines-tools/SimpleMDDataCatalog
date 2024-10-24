@@ -12,6 +12,13 @@
     dqv:value 1e+00 ;
     prov:generatedAtTime "2024-10-21T15:01:34+0000"^^<xsd:dateTime> .
 
+<https://datacatalog.github.io/test_this#asdsfvfakhflkauh> a dcat:Catalog ;
+    dcterms:description "This is a data catalog to test different functions of the SimpleMDDataCatalog project" ;
+    dcterms:license "cc-by-sa 4.0" ;
+    dcterms:publisher "SimpleMDDataCatalog" ;
+    dcterms:title "test data catalog" ;
+    dcat:theme <https://datacatalog.github.io/test_this#iu34jkAWD> .
+
 <https://datacatalog.github.io/test_this#jQ8PY1234LJ> a dqv:QualityMeasurement ;
     dqv:computedOn <https://datacatalog.github.io/test_this#73956> ;
     dqv:isMeasurementOf <https://datacatalog.github.io/test_this#kd84jsd8wksyf> ;
@@ -89,12 +96,6 @@
         <https://datacatalog.github.io/test_this#weruEF8> ;
     dcat:version "0.4" ;
     prov:wasDerivedFrom <https://datacatalog.github.io/test_this#test_a> .
-
-<https://datacatalog.github.io/test_this#iu34jkAWD> a skos:Concept ;
-    dcterms:identifier "iu34jkAWD" ;
-    skos:definition "an excersize in determining if something works or behaves as expected" ;
-    skos:example "I’m testing if this works" ;
-    skos:prefLabel "test" .
 
 <https://datacatalog.github.io/test_this#ja9EJDS8E> a dqv:Metric ;
     dcterms:identifier "ja9EJDS8E" ;
@@ -180,6 +181,12 @@
     dcterms:identifier "fdcshjnfdscahjn" ;
     skos:definition "A discription of where something comes from or how it was created" ;
     skos:prefLabel "lineage" .
+
+<https://datacatalog.github.io/test_this#iu34jkAWD> a skos:Concept ;
+    dcterms:identifier "iu34jkAWD" ;
+    skos:definition "an excersize in determining if something works or behaves as expected" ;
+    skos:example "I’m testing if this works" ;
+    skos:prefLabel "test" .
 
 <https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> a skos:Concept ;
     dcterms:identifier "sdfjlhgfvrkhlsfd" ;

@@ -10,8 +10,6 @@ import matplotlib.pyplot as plt
 def was_derived_from_graphic(data_catalog=Graph, uri=URIRef):
     os.makedirs("./docs/figures/", exist_ok=True)
 
-
-
     identifier=str(data_catalog.value(URIRef(uri), DCTERMS.identifier))
     filename= "./docs/figures/"+ identifier+"_lineage"
 
@@ -66,7 +64,7 @@ def supply_chain_analysis(data_catalog=Graph, dataset_uri= URIRef):
     ds_w_qm=0 # dataset with data quality measurement
     ds_wo_qm= 0# dataset without quality
     for wdf in was_derived_from:
-        print((None, dqv_ns.computedOn, wdf) in data_catalog)
+
         if (None, dqv_ns.computedOn, wdf) in data_catalog:
             ds_w_qm= ds_w_qm +1
         else:
@@ -87,3 +85,39 @@ def supply_chain_analysis(data_catalog=Graph, dataset_uri= URIRef):
     return pie_file
 
 
+def create_theme_word_cloud(catalog_graph= Graph):
+    
+    themes= catalog_graph.subjects(RDF.type, SKOS.Concept)
+
+    bag= pd.DataFrame(columns=["theme", "count"])
+
+    
+    for th in themes:
+        theme_instances=catalog_graph.subjects(DCAT.theme, th)
+        theme_label= catalog_graph.value(th, SKOS.prefLabel)
+        themecount=0
+        for ti in theme_instances:
+            themecount=themecount+1
+
+        bag.loc[len(bag)] ={"theme": theme_label, "count" : themecount}
+        # new_row={"theme": theme_label, "count" : themecount}
+        # bag.concat(new_row, ignore_index=True)
+         
+    
+
+    
+    d = {}
+    for a, x in bag.values:
+        d[a] = x
+
+    import matplotlib.pyplot as plt
+    from wordcloud import WordCloud
+
+    wordcloud = WordCloud()
+    wordcloud.generate_from_frequencies(frequencies=d)
+    plt.figure()
+    plt.imshow(wordcloud, interpolation="bilinear")
+    plt.axis("off")
+    cloud_file_path= "./docs/figures/"+ "wordcloud.svg"
+    plt.savefig(cloud_file_path)
+    return cloud_file_path

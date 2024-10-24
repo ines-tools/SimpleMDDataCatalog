@@ -8,7 +8,7 @@ from mdutils.tools.Table import Table
 from mdutils.tools.Html import Html
 import os
 import pandas as pd
-from analysis_functions import was_derived_from_graphic, get_data_quality, supply_chain_analysis
+from analysis_functions import was_derived_from_graphic, get_data_quality, supply_chain_analysis, create_theme_word_cloud
 def extract_org_repo(repo_url=str):
     split_up_list = repo_url.split("/")
     
@@ -30,9 +30,41 @@ def anything_known(catalog_graph: Graph, uri=URIRef):
 def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
     repo_name= extract_org_repo(repo_url=repo_url)
     os.makedirs(output_dir, exist_ok=True)
+    catalogs= data_catalog.subjects(RDF.type, DCAT.Catalog)
+    
+    for cat in catalogs:
+        catalog_uri=cat
+        print(catalog_uri)
+
+
+    catalog_title=str(catalog_graph.value(catalog_uri, DCTERMS.title))
+    catalog_description=str(catalog_graph.value(catalog_uri, DCTERMS.description))
     index_md = MdUtils(
-            file_name=output_dir+'index',
-            title=repo_name[1]+' Data Catalog Overview')
+            file_name=output_dir+'index.md',
+            title=catalog_title)
+    
+    index_md.new_header(level=1, title="Description")
+    index_md.new_paragraph(text=catalog_description)
+
+    index_md.new_header(level=2, title="Publisher")
+    index_md.new_line(str(catalog_graph.value(catalog_uri, DCTERMS.publisher)))
+
+    index_md.new_header(level=2, title="License")
+    index_md.new_line(str(catalog_graph.value(catalog_uri, DCTERMS.license)))
+
+    theme = data_catalog.objects(catalog_uri, DCAT.theme)
+    theme_list= [''] # first entry has to be empty for table to look nice
+    for th in theme:
+        theme_list.append(get_local_link(th,property=DCTERMS.identifier, label= SKOS.prefLabel)) 
+    if len(theme_list) == 1:
+        theme_list.append('no information available')
+    index_md.new_header(level= 2, title='keywords')
+    index_md.new_table(columns=1, 
+                         rows= len(theme_list),
+                         text=theme_list,
+                         text_align='left')
+
+        
     
 
     # datasets per theme
@@ -41,17 +73,19 @@ def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
     index_md.new_header(level=1, title= "Datasets organized by theme")
 
     index_md.new_line('Here you will find datasets organized by theme. The headers of each theme are links you can click to learn more about the definition')
-
+    word_cloud= create_theme_word_cloud(catalog_graph=data_catalog)
+    word_cloud_path=str(word_cloud)[7:]
+    index_md.new_line(index_md.new_inline_image(text="word cloud of dataset themes and their occurrences",
+                                                path=word_cloud_path))
     for th in themes :
        
         title = catalog_graph.value(th, SKOS.prefLabel)
         title=get_local_link(th, property=DCTERMS.identifier, label=SKOS.prefLabel)
-        index_md.new_header(level= 2, title= title)
+        index_md.new_header(level= 2, title= 'theme: '+title)
 
         this_themes_datasets= catalog_graph.subjects(DCAT.theme, th)
 
         for th_ds in this_themes_datasets:
-           
             index_md.new_line(text=get_local_link(uri=th_ds, property=DCTERMS.identifier, label=DCTERMS.title))
 
     index_md.new_header(level=2, title= "About this catalog")
@@ -67,8 +101,8 @@ def get_local_link(uri: URIRef, property: URIRef, label: URIRef):
     # label  = the value upon which the name of the link is to be based
     #          e.g. for datasets, the local file is named after the dcterms:title 
     #           while for skos:concepts the title is based on skos:prefLabel        
-    ds_identifier = data_catalog.value(uri, property)
-    ds_title= data_catalog.value(uri, label)
+    ds_identifier = str(data_catalog.value(uri, property))
+    ds_title= str(data_catalog.value(uri, label))
     link= "["+ds_title+"]"+"("+ds_identifier+".md)"
     return link
 
@@ -357,6 +391,7 @@ create_dataset_pages(catalog_graph=data_catalog, output_dir=output_dir)
 create_concept_pages(catalog_graph=data_catalog, output_dir=output_dir)
 get_lineage(data_catalog=data_catalog, dataset=dataset)
 create_metric_pages(catalog_graph=data_catalog, output_dir=output_dir)
+
 
 
 

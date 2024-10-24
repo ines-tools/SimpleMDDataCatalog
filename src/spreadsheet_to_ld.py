@@ -14,6 +14,7 @@ def spreadsheet_to_ld_catalog(input_sheet: str, uri: str, output_graph) -> Graph
     concepts_df= pd.read_excel(input_sheet, 'Concepts')
     metrics_df= pd.read_excel(input_sheet, 'Metrics')
     quality_measurements_df = pd.read_excel(input_sheet, 'QualityMeasurements')
+    data_catalog_df =pd.read_excel(input_sheet, 'DataCatalog')
 
     ns=Namespace(uri)
 
@@ -22,6 +23,10 @@ def spreadsheet_to_ld_catalog(input_sheet: str, uri: str, output_graph) -> Graph
     dqv_ns=Namespace("http://www.w3.org/ns/dqv#")
     data_catalog.bind("adms", Namespace(adms_ns))
     data_catalog.bind("dqv", dqv_ns)
+    
+    
+
+
 
     # start with concepts so we can rely on rdf graph navigation to match themes
     for n, row in concepts_df.iterrows():
@@ -37,7 +42,40 @@ def spreadsheet_to_ld_catalog(input_sheet: str, uri: str, output_graph) -> Graph
         example = row['skos:example']
         if type(example)== str: # this is hacky
             data_catalog.add((concept_uri, SKOS.example, Literal(example)))
+    
+    # adding data catalog
+    if len(data_catalog_df.index)>1:
+        print("WARNING: Spreadsheet contains more than 1 entry for data catalog, only the first entry is used")
+    
+    identifier= data_catalog_df.iloc[0]['dcterms:identifier']
+    catalog_uri= identifier_to_uri(identifier=identifier, namespace= ns)
+    title= data_catalog_df.iloc[0]['dcterms:title']
+    description= data_catalog_df.iloc[0]['dcterms:description']
+    license =data_catalog_df.iloc[0]['dcterms:license']
+    publisher= data_catalog_df.iloc[0]['dcterms:publisher']
+    themes= data_catalog_df.iloc[0]['dcat:theme']
 
+    data_catalog.add((catalog_uri, RDF.type, DCAT.Catalog))
+    data_catalog.add((catalog_uri, DCTERMS.title, Literal(title)))
+    data_catalog.add((catalog_uri, DCTERMS.description, Literal(description)))
+    data_catalog.add((catalog_uri, DCTERMS.license, literal_or_uri(license)))
+    data_catalog.add((catalog_uri, DCTERMS.publisher, literal_or_uri(publisher)))
+    theme_list= list(themes.split(","))
+    for j in theme_list:
+        j= j.lstrip()
+        theme= literal_or_uri(j)
+        if type(theme)==Literal:
+            theme_uri=data_catalog.value(predicate= SKOS.prefLabel, object=theme)
+            
+            if theme_uri==None:
+                print('Warning: \''+ theme +'\' has not been defined in the concepts and will be ignored as a theme')
+            else :
+                data_catalog.add((catalog_uri, DCAT.theme, theme_uri))     
+        elif type(theme)==URIRef:
+            data_catalog.add((catalog_uri, DCAT.theme, theme)) 
+
+
+    
 
     for i, row in datasets_df.iterrows():
         dataset_uri= identifier_to_uri(row['dcterms:identifier'],ns)
