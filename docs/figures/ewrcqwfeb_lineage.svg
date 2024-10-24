@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2024-10-24T17:25:11.892598</dc:date>
+    <dc:date>2024-10-24T18:26:40.472365</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -39,7 +39,7 @@ z
    </g>
    <g id="EdgeCollection_1">
     <defs>
-     <path id="m750f1634b5" d="M 116.197971 -178.2 
+     <path id="m0f6f1ec538" d="M 116.197971 -178.2 
 L 267.802029 -178.2 
 L 116.197971 -178.2 
 L 116.197971 -170.7 
@@ -48,8 +48,8 @@ L 116.197971 -185.7
 L 116.197971 -178.2 
 " style="stroke: #444444; stroke-width: 2"/>
     </defs>
-    <g clip-path="url(#p5bfecd37e1)">
-     <use xlink:href="#m750f1634b5" x="0" y="360" style="fill: #444444; stroke: #444444; stroke-width: 2"/>
+    <g clip-path="url(#p781e7cfc8a)">
+     <use xlink:href="#m0f6f1ec538" x="0" y="360" style="fill: #444444; stroke: #444444; stroke-width: 2"/>
     </g>
    </g>
    <g id="VertexCollection_1">
@@ -63,7 +63,7 @@ C 270.436186 168.810503 267.802029 175.169923 267.802029 181.8
 C 267.802029 188.430078 270.436186 194.789497 275.124359 199.47767 
 C 279.812532 204.165842 286.171951 206.8 292.802029 206.8 
 z
-" clip-path="url(#p5bfecd37e1)" style="fill: #ff0000; stroke: #000000"/>
+" clip-path="url(#p781e7cfc8a)" style="fill: #ff0000; stroke: #000000"/>
     <path d="M 76.197971 206.8 
 C 82.828049 206.8 89.187468 204.165842 93.875641 199.47767 
 C 98.563814 194.789497 101.197971 188.430077 101.197971 181.8 
@@ -74,10 +74,10 @@ C 53.832129 168.810503 51.197971 175.169922 51.197971 181.8
 C 51.197971 188.430077 53.832129 194.789497 58.520302 199.47767 
 C 63.208475 204.165842 69.567894 206.8 76.197971 206.8 
 z
-" clip-path="url(#p5bfecd37e1)" style="fill: #add8e6; stroke: #000000"/>
+" clip-path="url(#p781e7cfc8a)" style="fill: #add8e6; stroke: #000000"/>
    </g>
    <g id="text_1">
-    <g clip-path="url(#p5bfecd37e1)">
+    <g clip-path="url(#p781e7cfc8a)">
      <!-- existing wind on-shore -->
      <g transform="translate(224.980466 185.11125) scale(0.12 -0.12)">
       <defs>
@@ -373,7 +373,7 @@ z
     </g>
    </g>
    <g id="text_2">
-    <g clip-path="url(#p5bfecd37e1)">
+    <g clip-path="url(#p781e7cfc8a)">
      <!-- test_a -->
      <g transform="translate(57.999221 184.7775) scale(0.12 -0.12)">
       <defs>
@@ -432,7 +432,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p5bfecd37e1">
+  <clipPath id="p781e7cfc8a">
    <rect x="45" y="43.2" width="279" height="277.2"/>
   </clipPath>
  </defs>

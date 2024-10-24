@@ -45,6 +45,7 @@ def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
             file_name=output_dir+'index.md',
             title=catalog_title)
     
+    
     index_md.new_header(level=1, title="Description")
     index_md.new_paragraph(text=catalog_description)
 
@@ -96,7 +97,7 @@ def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
     index_md.new_header(level=2, title= "About this catalog")
 
     index_md.new_line("This catalog was generated using the SimpleMDDataCatalog package that is is maintained [here](https://github.com/uuidea/SimpleMDDataCatalog).")
-
+    index_md.new_table_of_contents(depth=2)
     index_md.create_md_file()
 
 def get_local_link(uri: URIRef, property: URIRef, label: URIRef):
