@@ -42,9 +42,11 @@ def was_derived_from_graphic(data_catalog=Graph, uri=URIRef):
     ig.plot(
         g,
         target=ax,
-        layout="circle", # print nodes in a circular layout
-        vertex_size=50,
+        layout="tree", # print nodes in a circular layout
+        vertex_size=25,
         vertex_color= vertex_color,
+        vertex_label_dist= 2,
+        edge_color = "gray"
     )
 
     graph_file=filename+'.svg' 

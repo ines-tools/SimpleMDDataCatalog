@@ -2,8 +2,10 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dqv: <http://www.w3.org/ns/dqv#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://datacatalog.github.io/test_this#asFSMAWBAS> a dqv:QualityMeasurement ;
@@ -12,12 +14,15 @@
     dqv:value 1e+00 ;
     prov:generatedAtTime "2024-10-21T15:01:34+0000"^^<xsd:dateTime> .
 
-<https://datacatalog.github.io/test_this#asdsfvfakhflkauh> a dcat:Catalog ;
+<https://datacatalog.github.io/test_this#asdsfvfakhflkauh> a dcat:Catalog,
+        foaf:Agent ;
     dcterms:description "This is a data catalog to test different functions of the SimpleMDDataCatalog project" ;
-    dcterms:license "cc-by-sa 4.0" ;
-    dcterms:publisher "SimpleMDDataCatalog" ;
+    dcterms:license [ a dcterms:LicenseDocument ;
+            dcterms:title "cc-by-sa 4.0" ] ;
+    dcterms:publisher [ ] ;
     dcterms:title "test data catalog" ;
-    dcat:theme <https://datacatalog.github.io/test_this#iu34jkAWD> .
+    dcat:theme <https://datacatalog.github.io/test_this#iu34jkAWD> ;
+    foaf:name "SimpleMDDataCatalog" .
 
 <https://datacatalog.github.io/test_this#jQ8PY1234LJ> a dqv:QualityMeasurement ;
     dqv:computedOn <https://datacatalog.github.io/test_this#73956> ;
@@ -66,14 +71,17 @@
 <https://datacatalog.github.io/test_this#dsdfadf> a dcat:Dataset ;
     dcterms:description "another test data set" ;
     dcterms:identifier "dsdfadf" ;
-    dcterms:license "cc—by 4.0" ;
+    dcterms:license [ a dcterms:LicenseDocument ;
+            dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "2024-10-21T00:00:00"^^xsd:date ;
-    dcterms:publisher "uuidea" ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "SimpleMDDataCatalog" ] ;
     dcterms:spatial "Belgium" ;
     dcterms:temporal "2019" ;
     dcterms:title "tst data" ;
     adms:status "unknown" ;
-    dcat:contactPoint "test@test.com" ;
+    dcat:contactPoint [ a vcard:Group ;
+            vcard:hasEmail "test@test.com" ] ;
     dcat:distribution <https://datacatalog.github.io/test_this#asdfasdbf> ;
     dcat:theme <https://datacatalog.github.io/test_this#fajfafl>,
         <https://datacatalog.github.io/test_this#fdcshjnfdscahjn> ;
@@ -82,14 +90,17 @@
 <https://datacatalog.github.io/test_this#ewrcqwfeb> a dcat:Dataset ;
     dcterms:description "Data set contains data on capacity factors of on-shore wind across different GIS regions as a time series since 1980 to 2022 on hourly basis" ;
     dcterms:identifier "ewrcqwfeb" ;
-    dcterms:license "cc-by 4.0" ;
+    dcterms:license [ a dcterms:LicenseDocument ;
+            dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "2024-10-21T00:00:00"^^xsd:date ;
-    dcterms:publisher "DTU" ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "SimpleMDDataCatalog" ] ;
     dcterms:spatial "Europe" ;
     dcterms:temporal "1980-2022" ;
     dcterms:title "existing wind on-shore" ;
     adms:status "first version" ;
-    dcat:contactPoint "info@mopo.eu" ;
+    dcat:contactPoint [ a vcard:Group ;
+            vcard:hasEmail "info@mopo.eu" ] ;
     dcat:distribution <https://datacatalog.github.io/test_this#skfhafuku> ;
     dcat:theme <https://datacatalog.github.io/test_this#973I>,
         <https://datacatalog.github.io/test_this#fajfafl>,
@@ -132,6 +143,15 @@
     dcat:accessURL "https://data.dtu.dk/ndownloader/files/34972672" ;
     dcat:version "0.4" .
 
+<https://datacatalog.github.io/test_this#vgsgr> a dcat:Dataset ;
+    dcterms:description "lineage chain" ;
+    dcterms:identifier "vgsgr" ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "SimpleMDDataCatalog" ] ;
+    dcterms:title "making a longer lineage chain" ;
+    dcat:contactPoint [ a vcard:Group ;
+            vcard:hasEmail "NaN"^^xsd:double ] .
+
 <https://datacatalog.github.io/test_this#weruEF8> a skos:Concept ;
     dcterms:identifier "weruEF8" ;
     skos:definition "installed on land" ;
@@ -140,31 +160,36 @@
 <https://datacatalog.github.io/test_this#12345> a dcat:Dataset ;
     dcterms:description "a test dataset" ;
     dcterms:identifier "12345" ;
-    dcterms:license "cc-by 4.0" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:modified "2024-10-15T00:00:00"^^xsd:date ;
-    dcterms:publisher "john doe" ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "SimpleMDDataCatalog" ] ;
     dcterms:spatial "EU" ;
     dcterms:temporal "2010" ;
     dcterms:title "test data" ;
     adms:status "acceptence" ;
-    dcat:contactPoint "jdoe@example.com" ;
+    dcat:contactPoint [ a vcard:Group ;
+            vcard:hasEmail "jdoe@example.com" ] ;
     dcat:distribution <https://datacatalog.github.io/test_this#23456>,
         <https://datacatalog.github.io/test_this#84753> ;
     dcat:theme <https://datacatalog.github.io/test_this#iu34jkAWD>,
         <https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> ;
-    dcat:version "1.0.0" .
+    dcat:version "1.0.0" ;
+    prov:wasDerivedFrom <https://datacatalog.github.io/test_this#vgsgr> .
 
 <https://datacatalog.github.io/test_this#73956> a dcat:Dataset ;
     dcterms:description "a test dataset to see if we can get lineage right" ;
     dcterms:identifier "73956" ;
     dcterms:license <https://opensource.org/licenses/Apache-2.0> ;
     dcterms:modified "2024-10-17T00:00:00"^^xsd:date ;
-    dcterms:publisher "jane doe" ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:name "SimpleMDDataCatalog" ] ;
     dcterms:spatial "France" ;
     dcterms:temporal "2011" ;
     dcterms:title "derived data" ;
     adms:status "test" ;
-    dcat:contactPoint "jane@example.org" ;
+    dcat:contactPoint [ a vcard:Group ;
+            vcard:hasEmail "jane@example.org" ] ;
     dcat:distribution <https://datacatalog.github.io/test_this#94759> ;
     dcat:theme <https://datacatalog.github.io/test_this#fdcshjnfdscahjn>,
         <https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> ;

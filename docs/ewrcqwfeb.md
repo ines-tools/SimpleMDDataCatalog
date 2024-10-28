@@ -21,7 +21,7 @@ first version
 
 |||
 | :--- | :--- |
-|Publisher|DTU|
+|Publisher|SimpleMDDataCatalog|
 |Contact|info@mopo.eu|
 
 ## About the data

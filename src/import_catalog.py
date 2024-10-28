@@ -97,7 +97,7 @@ def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
     index_md.new_header(level=2, title= "About this catalog")
 
     index_md.new_line("This catalog was generated using the SimpleMDDataCatalog package that is is maintained [here](https://github.com/uuidea/SimpleMDDataCatalog).")
-    index_md.new_table_of_contents(depth=2)
+    index_md.new_table_of_contents(depth=2,)
     index_md.create_md_file()
 
 def get_local_link(uri: URIRef, property: URIRef, label: URIRef):
@@ -119,8 +119,10 @@ def parse_catalog(input_file: str):
     data_catalog = Graph()
     adms_ns= Namespace("http://www.w3.org/ns/adms#")
     dqv_ns=Namespace("http://www.w3.org/ns/dqv#")
+    VCARD=Namespace('http://www.w3.org/2006/vcard/ns#')
     data_catalog.bind("adms", Namespace(adms_ns))
     data_catalog.bind("dqv", dqv_ns)
+    data_catalog.bind("vcard",VCARD)
 
     if input_file != None :
         data_catalog.parse(input_file)
@@ -131,15 +133,23 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
     graph=catalog_graph
     adms_ns= Namespace("http://www.w3.org/ns/adms#")
     dqv_ns=Namespace("http://www.w3.org/ns/dqv#")
+    VCARD=Namespace('http://www.w3.org/2006/vcard/ns#')
     graph.bind("adms", Namespace(adms_ns))
+    data_catalog.bind("vcard",VCARD)
     for s, p, o in graph.triples((None, RDF.type, DCAT.Dataset)):
         
         identifier = graph.value(s, DCTERMS.identifier)
         title = graph.value(s, DCTERMS.title)
         description = graph.value(s,DCTERMS.description)
         license = graph.value(s, DCTERMS.license)
+        if type(license)==BNode:
+            license=graph.value(s, DCTERMS.license/DCTERMS.title)
         publisher = graph.value(s,DCTERMS.publisher)
+        if type(publisher)==BNode:
+            publisher=graph.value(s,DCTERMS.publisher/FOAF.name)
         contactPoint = graph.value(s,DCAT.contactPoint)
+        if type(contactPoint)==BNode:
+            contactPoint=graph.value(s,DCAT.contactPoint/VCARD.hasEmail)
         version = graph.value(s,DCAT.version)
         status = graph.value(s,adms_ns.status)
         modified = graph.value(s,DCTERMS.modified)
@@ -172,23 +182,34 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
                          text_align='left')
 
         # status
-        mdFile.new_header(level=2, title='Status')
-        mdFile.new_paragraph(status)
+        if status != None:
+            mdFile.new_header(level=2, title='Status')
+            mdFile.new_paragraph(status)
 
         # publisher info
 
-        mdFile.new_header(level=2, title='Publisher')
-        publisher_list = [
-            "", "",
-            'Publisher', publisher,
-            'Contact', contactPoint,
-        ]
-        mdFile.new_table(columns=2, 
-                         rows= 3, 
-                         text=publisher_list,
-                         text_align='left')
+        if publisher !=None:
+            mdFile.new_header(level=2, title='Publisher')
+            publisher_list = [
+                "", "",
+                'Publisher', publisher,
+                'Contact', contactPoint,
+            ]
+            mdFile.new_table(columns=2, 
+                            rows= 3, 
+                            text=publisher_list,
+                            text_align='left')
         
         # about dataset
+
+        if modified==None:
+            modified="unknown"
+        if spatial == None :
+            spatial="unknown"    
+        if temporal== None:
+            temporal="unknown"
+        if version== None:
+            version== "unknown"
 
         mdFile.new_header(level=2, title='About the data')
         about_list= ["", "",
@@ -233,8 +254,9 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
             mdFile.new_line(mdFile.new_inline_image(text="Lineage overview", path=image_path))
 
         # license
-        mdFile.new_header(level= 2, title='License')
-        mdFile.new_paragraph(license)
+        if license!=None:
+            mdFile.new_header(level= 2, title='License')
+            mdFile.new_paragraph(license)
         
         
 
