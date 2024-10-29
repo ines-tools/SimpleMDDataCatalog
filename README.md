@@ -86,7 +86,10 @@ This tab contains the data sets. Each row is a different dataset. The definition
 
 
 ```
-A collection of data, published or curated by a single agent, and available for access or download in one or more representations.
+A collection of data, published or 
+curated by a single agent, and available 
+for access or download in one or more 
+representations.
 ```
 
 For datasets, the follwing information can be entered:
@@ -115,7 +118,14 @@ For datasets, the follwing information can be entered:
 This tab contains information on the distributions of the datasets. The definition of [distribution](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) according to DCAT is:
 
 ```
-A specific representation of a dataset. A dataset might be available in multiple serializations that may differ in various ways, including natural language, media-type or format, schematic organization, temporal and spatial resolution, level of detail or profiles (which might specify any or all of the above). 
+A specific representation of a dataset. 
+A dataset might be available in multiple 
+serializations that may differ in various 
+ways, including natural language, 
+media-type or format, schematic 
+organization, temporal and spatial 
+resolution, level of detail or profiles 
+(which might specify any or all of the above). 
 ```
 
 | attribute           | instruction                                                                                                                                             | optional? |
@@ -133,7 +143,11 @@ A specific representation of a dataset. A dataset might be available in multiple
 This tab contains definition information about the keywords that are used to annotate the datasets and the data catalog. The data in this tab is conform [SKOS (Simmple Knowledge Organization System)](https://www.w3.org/TR/skos-reference/). SKOS defines [Concept](https://www.w3.org/TR/skos-reference/) as:
 
 ```
-A SKOS concept can be viewed as an idea or notion; a unit of thought. However, what constitutes a unit of thought is subjective, and this definition is meant to be suggestive, rather than restrictive.
+A SKOS concept can be viewed as an idea 
+or notion; a unit of thought. However, 
+what constitutes a unit of thought is 
+subjective, and this definition is meant 
+to be suggestive, rather than restrictive.
 ```
 
 | attribute          | instruction                                                                                                                                             | optional? |
@@ -152,7 +166,9 @@ This tab contains information about the metrics with which data quality are eval
 DQC defines [Metric](https://www.w3.org/TR/vocab-dqv/#dqv:Metric) as
 
 ```
-Represents a standard to measure a quality dimension. An observation (instance of dqv:QualityMeasurement) assigns a value in a given unit to a Metric. 
+Represents a standard to measure a quality 
+dimension. An observation (instance of dqv:QualityMeasurement) assigns a value 
+in a given unit to a Metric. 
 ```
 
 
@@ -171,7 +187,9 @@ Represents a standard to measure a quality dimension. An observation (instance o
 This tab contains information on any quality measurements that have been performed on the datasets. The DQV defines a [QualityMeasure](https://www.w3.org/TR/vocab-dqv/#dqv:QualityMeasurement)
 
 ```
-Represents the evaluation of a given dataset (or dataset distribution) against a specific quality metric. 
+Represents the evaluation of a given 
+dataset (or dataset distribution) against 
+a specific quality metric. 
 ```
 
 
