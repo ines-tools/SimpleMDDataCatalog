@@ -1,20 +1,40 @@
 @startuml
+hide empty members
+skinparam class {
+    BackgroundColor<<BlankNodeOrIRI>> white
+}
 
 class "dcat:Dataset" as dataset {
-    dcterms:identifier xsd:string
-    dcterms:description xsd:string
-    dscterms:publisher xsd:any
-    dcterms:contactPoint xsd:string
-    dcterms:license xsd:any
+    dcterms:identifier xsd:string 1..1
+    dcterms:description xsd:string 1..1
     dcat:version xsd:str
     dcterms:temporal xsd:any
-    dcterms:temporal xsd:any
+    dcterms:spatial xsd:any
     dcterms:modified xsd:date
 }
 
+class "dcat:Catalog" as catalog{
+    dcterms:title xsd:string 1..1
+    dcterms:identifier xsd:string 1..1
+    dcterms:description xsd:string
+}
+
+class "foaf:Agent" as agent <<BlankNodeOrIRI>>{
+    foaf:name xsd:string
+
+}
+
+class "dcterms:License" as license <<BlankNodeOrIRI>>{
+    dcterms:title xsd:string
+}
+
+class "vcard:Kind" as kind <<BlankNodeOrIRI>>{
+    vcard:hasEmail xsd:any
+}
+
 class "dcat:Distribution" as distribution {
-    dcterms:identifier xsd:string
-    dcat:accessURL rdf:Resource
+    dcterms:identifier xsd:string 1..1
+    dcat:accessURL rdf:Resource 1..1
     dcterms:format xsd:any
     dcat:version xsd:string
     dcterms:modified xsd:date
@@ -22,8 +42,8 @@ class "dcat:Distribution" as distribution {
 }
 
 class "skos:Concept" as concept {
-    skos:prefLabel xsd:string
-    dcterms:identifier xsd:string
+    dcterms:identifier xsd:string 1..1
+    skos:prefLabel xsd:string 1..1
     skos:definition xsd:string
     skos:example xsd:string
     skos:altLabel xsd:string
@@ -31,14 +51,15 @@ class "skos:Concept" as concept {
 }
 
 class "dqv:Metric" as metric {
-    dcterms:identifier xsd:string
-    skos:prefLabel xsd:string
+    dcterms:identifier xsd:string 1..1
+    skos:prefLabel xsd:string 1..1
     skos:definition xsd:string
     dqv:expectedDataType rdf:Resource
     dqv:inDimension rdf:Resource
 }
 
 class "dqv:QualityMeasurement" as qualitymeasurement {
+    dcterms:identifier xsd:string 1..1
     dqv:value xsd:any
     prov:generatedAtTime xsd:dateTime
 
@@ -47,9 +68,16 @@ class "dqv:QualityMeasurement" as qualitymeasurement {
 dataset --> distribution : "dcat:distribution"
 dataset --> dataset : "prov:wasDerivedFrom"
 dataset --> concept : "dcat:theme"
+dataset --> agent :"dcat:publisher"
+dataset --> kind : "dcat:contactPoint"
+dataset --> license :"dcterms:License"
 
 qualitymeasurement --> dataset : "dqv:computedOn"
 qualitymeasurement --> metric : "dqv:inDimension"
+
+catalog --> license :"dcterms:License"
+catalog --> agent :"dcat:publisher"
+catalog --> dataset : "dcat:resource"
 
 
 @enduml
