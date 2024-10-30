@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2024-10-28T13:37:13.273387</dc:date>
+    <dc:date>2024-10-29T16:15:24.202761</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -40,7 +40,7 @@ z
    <g id="EdgeCollection_1"/>
    <g id="VertexCollection_1">
     <defs>
-     <path id="m5d16cc183f" d="M 0 12.5 
+     <path id="m9099ff67c5" d="M 0 12.5 
 C 3.315039 12.5 6.494748 11.182921 8.838835 8.838835 
 C 11.182921 6.494748 12.5 3.315039 12.5 0 
 C 12.5 -3.315039 11.182921 -6.494748 8.838835 -8.838835 
@@ -52,12 +52,12 @@ C -6.494748 11.182921 -3.315039 12.5 0 12.5
 z
 " style="stroke: #000000"/>
     </defs>
-    <g clip-path="url(#pb3918253b3)">
-     <use xlink:href="#m5d16cc183f" x="184.5" y="181.8" style="fill: #ff0000; stroke: #000000"/>
+    <g clip-path="url(#p9ff533db92)">
+     <use xlink:href="#m9099ff67c5" x="184.5" y="181.8" style="fill: #ff0000; stroke: #000000"/>
     </g>
    </g>
    <g id="text_1">
-    <g clip-path="url(#pb3918253b3)">
+    <g clip-path="url(#p9ff533db92)">
      <!-- tst data -->
      <g transform="translate(161.248125 210.11125) scale(0.12 -0.12)">
       <defs>
@@ -190,7 +190,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pb3918253b3">
+  <clipPath id="p9ff533db92">
    <rect x="45" y="43.2" width="279" height="277.2"/>
   </clipPath>
  </defs>

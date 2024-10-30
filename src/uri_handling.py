@@ -37,7 +37,7 @@ def identifier_to_uri(identifier: str, namespace: Namespace) -> URIRef :
         uri= namespace[no_space_id]
     return uri
 
-def literal_or_uri(string = str):
+def literal_or_uri(string : str):
     # checks if string is value or uri and returns as appropriate type
     string = str(string)
     split_str = string.split(":")
@@ -51,7 +51,7 @@ def literal_or_uri(string = str):
 
     return value   
 
-def str_abbrev_namespace_to_full_namespace(str_uri= str):
+def str_abbrev_namespace_to_full_namespace(str_uri: str):
     split_at_colon= str_uri.split(":")
     full_namespace_str= str(prefix_dictionary[split_at_colon[0]])+str(split_at_colon[1])
     full_namespace=URIRef(full_namespace_str)

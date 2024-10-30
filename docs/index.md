@@ -25,10 +25,10 @@ This is a data catalog to test different functions of the SimpleMDDataCatalog pr
 [The machine readable version of the catalog (ttl) can be found here.](catalog.ttl)
 ## Publisher
   
-n29e7fc1a7b8b4db892401f7a160ccb40b2
+n1bf283b5b4194262b76f2d55e319e303b2
 ## License
   
-n29e7fc1a7b8b4db892401f7a160ccb40b1
+n1bf283b5b4194262b76f2d55e319e303b1
 ## keywords
 
 ||

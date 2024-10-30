@@ -21,6 +21,11 @@
             dcterms:title "cc-by-sa 4.0" ] ;
     dcterms:publisher [ ] ;
     dcterms:title "test data catalog" ;
+    dcat:resource <https://datacatalog.github.io/test_this#12345>,
+        <https://datacatalog.github.io/test_this#73956>,
+        <https://datacatalog.github.io/test_this#dsdfadf>,
+        <https://datacatalog.github.io/test_this#ewrcqwfeb>,
+        <https://datacatalog.github.io/test_this#vgsgr> ;
     dcat:theme <https://datacatalog.github.io/test_this#iu34jkAWD> ;
     foaf:name "SimpleMDDataCatalog" .
 
@@ -68,6 +73,46 @@
     dcat:accessURL "https://www.example.comtst.csv" ;
     dcat:version "4.6.1" .
 
+<https://datacatalog.github.io/test_this#ja9EJDS8E> a dqv:Metric ;
+    dcterms:identifier "ja9EJDS8E" ;
+    skos:definition "the fraction (between 0 and 1) of the amount of records in the dataset that complies to the schema as defined by some specification" ;
+    skos:prefLabel "fraction of compliant records" ;
+    dqv:expectedDataType xsd:float ;
+    dqv:inDimension <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012/Compliance> .
+
+<https://datacatalog.github.io/test_this#jkdsfAFdfgsdfg> a dqv:Metric ;
+    dcterms:identifier "jkdsfAFdfgsdfg" ;
+    skos:definition "we have data representing the capacity for all countries within the EU usecase. measured as a fraction between the collumns in the dataset and the expected columns" ;
+    skos:prefLabel "all countries present" ;
+    dqv:expectedDataType xsd:float ;
+    dqv:inDimension <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012/Completeness> .
+
+<https://datacatalog.github.io/test_this#kd84jsd8wksyf> a dqv:Metric ;
+    dcterms:identifier "kd84jsd8wksyf" ;
+    skos:definition "the time it takes between when a request was made and when a response was provided, measured in seconds" ;
+    skos:prefLabel "response time" ;
+    dqv:expectedDataType xsd:float ;
+    dqv:inDimension <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012/Availability> .
+
+<https://datacatalog.github.io/test_this#mwqd83k93k> a dqv:Metric ;
+    dcterms:identifier "mwqd83k93k" ;
+    skos:definition "the number of unique records in the dataset" ;
+    skos:prefLabel "number of records" ;
+    dqv:expectedDataType xsd:int ;
+    dqv:inDimension <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012/Completeness> .
+
+<https://datacatalog.github.io/test_this#skfhafuku> a dcat:Distribution ;
+    dcterms:format "csv" ;
+    dcterms:identifier "skfhafuku" ;
+    dcterms:modified "2022-05-02"^^xsd:date ;
+    dcat:accessURL "https://data.dtu.dk/ndownloader/files/34972672" ;
+    dcat:version "0.4" .
+
+<https://datacatalog.github.io/test_this#weruEF8> a skos:Concept ;
+    dcterms:identifier "weruEF8" ;
+    skos:definition "installed on land" ;
+    skos:prefLabel "onshore" .
+
 <https://datacatalog.github.io/test_this#dsdfadf> a dcat:Dataset ;
     dcterms:description "another test data set" ;
     dcterms:identifier "dsdfadf" ;
@@ -108,40 +153,26 @@
     dcat:version "0.4" ;
     prov:wasDerivedFrom <https://datacatalog.github.io/test_this#test_a> .
 
-<https://datacatalog.github.io/test_this#ja9EJDS8E> a dqv:Metric ;
-    dcterms:identifier "ja9EJDS8E" ;
-    skos:definition "the fraction (between 0 and 1) of the amount of records in the dataset that complies to the schema as defined by some specification" ;
-    skos:prefLabel "fraction of compliant records" ;
-    dqv:expectedDataType xsd:float ;
-    dqv:inDimension <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012/Compliance> .
+<https://datacatalog.github.io/test_this#fajfafl> a skos:Concept ;
+    dcterms:identifier "fajfafl" ;
+    skos:definition "wind as an energy source" ;
+    skos:prefLabel "wind" .
 
-<https://datacatalog.github.io/test_this#jkdsfAFdfgsdfg> a dqv:Metric ;
-    dcterms:identifier "jkdsfAFdfgsdfg" ;
-    skos:definition "we have data representing the capacity for all countries within the EU usecase. measured as a fraction between the collumns in the dataset and the expected columns" ;
-    skos:prefLabel "all countries present" ;
-    dqv:expectedDataType xsd:float ;
-    dqv:inDimension <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012/Completeness> .
+<https://datacatalog.github.io/test_this#fdcshjnfdscahjn> a skos:Concept ;
+    dcterms:identifier "fdcshjnfdscahjn" ;
+    skos:definition "A discription of where something comes from or how it was created" ;
+    skos:prefLabel "lineage" .
 
-<https://datacatalog.github.io/test_this#kd84jsd8wksyf> a dqv:Metric ;
-    dcterms:identifier "kd84jsd8wksyf" ;
-    skos:definition "the time it takes between when a request was made and when a response was provided, measured in seconds" ;
-    skos:prefLabel "response time" ;
-    dqv:expectedDataType xsd:float ;
-    dqv:inDimension <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012/Availability> .
+<https://datacatalog.github.io/test_this#iu34jkAWD> a skos:Concept ;
+    dcterms:identifier "iu34jkAWD" ;
+    skos:definition "an excersize in determining if something works or behaves as expected" ;
+    skos:example "I’m testing if this works" ;
+    skos:prefLabel "test" .
 
-<https://datacatalog.github.io/test_this#mwqd83k93k> a dqv:Metric ;
-    dcterms:identifier "mwqd83k93k" ;
-    skos:definition "the number of unique records in the dataset" ;
-    skos:prefLabel "number of records" ;
-    dqv:expectedDataType xsd:int ;
-    dqv:inDimension <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012/Completeness> .
-
-<https://datacatalog.github.io/test_this#skfhafuku> a dcat:Distribution ;
-    dcterms:format "csv" ;
-    dcterms:identifier "skfhafuku" ;
-    dcterms:modified "2022-05-02"^^xsd:date ;
-    dcat:accessURL "https://data.dtu.dk/ndownloader/files/34972672" ;
-    dcat:version "0.4" .
+<https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> a skos:Concept ;
+    dcterms:identifier "sdfjlhgfvrkhlsfd" ;
+    skos:definition "a curated collection of datasets" ;
+    skos:prefLabel "catalog" .
 
 <https://datacatalog.github.io/test_this#vgsgr> a dcat:Dataset ;
     dcterms:description "lineage chain" ;
@@ -151,11 +182,6 @@
     dcterms:title "making a longer lineage chain" ;
     dcat:contactPoint [ a vcard:Group ;
             vcard:hasEmail "NaN"^^xsd:double ] .
-
-<https://datacatalog.github.io/test_this#weruEF8> a skos:Concept ;
-    dcterms:identifier "weruEF8" ;
-    skos:definition "installed on land" ;
-    skos:prefLabel "onshore" .
 
 <https://datacatalog.github.io/test_this#12345> a dcat:Dataset ;
     dcterms:description "a test dataset" ;
@@ -196,25 +222,4 @@
     dcat:version "0.3.3" ;
     prov:wasDerivedFrom <https://datacatalog.github.io/test_this#12345>,
         <https://datacatalog.github.io/test_this#dsdfadf> .
-
-<https://datacatalog.github.io/test_this#fajfafl> a skos:Concept ;
-    dcterms:identifier "fajfafl" ;
-    skos:definition "wind as an energy source" ;
-    skos:prefLabel "wind" .
-
-<https://datacatalog.github.io/test_this#fdcshjnfdscahjn> a skos:Concept ;
-    dcterms:identifier "fdcshjnfdscahjn" ;
-    skos:definition "A discription of where something comes from or how it was created" ;
-    skos:prefLabel "lineage" .
-
-<https://datacatalog.github.io/test_this#iu34jkAWD> a skos:Concept ;
-    dcterms:identifier "iu34jkAWD" ;
-    skos:definition "an excersize in determining if something works or behaves as expected" ;
-    skos:example "I’m testing if this works" ;
-    skos:prefLabel "test" .
-
-<https://datacatalog.github.io/test_this#sdfjlhgfvrkhlsfd> a skos:Concept ;
-    dcterms:identifier "sdfjlhgfvrkhlsfd" ;
-    skos:definition "a curated collection of datasets" ;
-    skos:prefLabel "catalog" .
 

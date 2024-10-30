@@ -2,15 +2,15 @@ import pandas as pd
 from validators import uri
 import validators
 from rdflib import Graph, Namespace, URIRef, Literal, BNode
-from rdflib.namespace import FOAF, DCTERMS, DCAT, PROV, OWL, RDFS, RDF, XMLNS, SKOS, SOSA, ORG, SSN, XSD
+from rdflib.namespace import FOAF, DCTERMS, DCAT, PROV, OWL, RDFS, RDF, XMLNS, SKOS, SOSA, ORG, SSN, XSD, TIME
 from uri_handling import literal_or_uri, identifier_to_uri, str_abbrev_namespace_to_full_namespace
 
 
 
-def spreadsheet_to_ld_catalog(input_sheet: str, uri: str, output_graph) -> Graph:
+def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl', input_sheet: str='./catalog.xlsx') -> Graph:
 
     uri=Namespace(uri)
-    datasets_df = pd.read_excel(input_sheet, 'Datasets', converters={'dcterms:identifier': str, 'prov:wasDerivedFrom':str, 'dcat:distrbution':str})
+    datasets_df = pd.read_excel(input_sheet, 'Datasets', converters={'dcterms:identifier': str, 'prov:wasDerivedFrom':str, 'dcat:distrbution':str, 'dcterms:temporal/time:hasBeginning': str,'dcterms:temporal/time:hasEnd': str })
     distributions_df = pd.read_excel(input_sheet, 'Distributions')
     concepts_df= pd.read_excel(input_sheet, 'Concepts')
     metrics_df= pd.read_excel(input_sheet, 'Metrics')
@@ -74,13 +74,13 @@ def spreadsheet_to_ld_catalog(input_sheet: str, uri: str, output_graph) -> Graph
     publisher_bnode=BNode()
     if str(publisher)!= 'nan':
         if validators.uri.uri(str(publisher)):
-            data_catalog.add((dataset_uri,
+            data_catalog.add((catalog_uri,
                         DCTERMS.publisher, 
                         literal_or_uri(publisher)))
         else:
             data_catalog.add((catalog_uri, DCTERMS.publisher, publisher_bnode))
-            data_catalog.add((catalog_uri, RDF.type, FOAF.Agent))
-            data_catalog.add((catalog_uri, FOAF.name, Literal(publisher)))
+            data_catalog.add((publisher_bnode, RDF.type, FOAF.Agent))
+            data_catalog.add((publisher_bnode, FOAF.name, Literal(publisher)))
 
     if str(license)!= 'nan':
             license_bnode=BNode()
@@ -117,6 +117,9 @@ def spreadsheet_to_ld_catalog(input_sheet: str, uri: str, output_graph) -> Graph
         if str(row['dcterms:identifier'])=='nan':
             raise Exception("ERROR: Datasets must have an identifier")
         dataset_uri= identifier_to_uri(row['dcterms:identifier'],ns)
+
+        # add that this dataset is in the catalog
+        data_catalog.add((catalog_uri, DCAT.resource, dataset_uri))
 
         # declare dataset
         data_catalog.add((dataset_uri,RDF.type, DCAT.Dataset))
@@ -156,7 +159,7 @@ def spreadsheet_to_ld_catalog(input_sheet: str, uri: str, output_graph) -> Graph
                         Literal(row['dcat:contactPoint'] )))
             else:
                 data_catalog.add((dataset_uri, DCAT.contactPoint, cp))
-                data_catalog.add((cp,RDF.type, VCARD.Group))
+                data_catalog.add((cp,RDF.type, VCARD.Kind))
                 data_catalog.add((cp, VCARD.hasEmail, Literal(row['dcat:contactPoint']) ))
 
         # data_catalog.add((dataset_uri,
@@ -207,15 +210,38 @@ def spreadsheet_to_ld_catalog(input_sheet: str, uri: str, output_graph) -> Graph
         
         # add spatial 
         if str(row['dcterms:spatial']) != 'nan':
-            data_catalog.add((dataset_uri,
-                        DCTERMS.spatial, 
-                        literal_or_uri(row['dcterms:spatial'])))
+            
+
+            if validators.uri.uri(str(row['dcterms:spatial'])):
+                data_catalog.add((dataset_uri,
+                                  DCTERMS.spatial, 
+                                  URIRef(row['dcterms:spatial'])))
+                data_catalog.add((URIRef(row['dcterms:spatial'],
+                                         RDF.type, DCTERMS.Location)))
+            else :    
+                # create blank node give it type location and a preflabel
+                sbn=BNode() 
+                data_catalog.add((dataset_uri,DCTERMS.spatial, sbn)) 
+                data_catalog.add((sbn, RDF.type, DCTERMS.Location))
+                
+                data_catalog.add((sbn, SKOS.prefLabel, 
+                            Literal(row['dcterms:spatial'])))
 
         # add temporal 
-        if str(row['dcterms:temporal']) != 'nan':
+        tbn= BNode()
+        if str(row['dcterms:temporal/time:hasBeginning']) != 'nan':
             data_catalog.add((dataset_uri,
                         DCTERMS.temporal, 
-                        literal_or_uri(row['dcterms:temporal'])))
+                        tbn))
+            data_catalog.add((tbn, RDF.type, DCTERMS.PeriodOfTime))
+            data_catalog.add((tbn, TIME.hasBeginning, Literal(str(row['dcterms:temporal/time:hasBeginning']))))
+        if str(row['dcterms:temporal/time:hasEnd']) != 'nan':
+            data_catalog.add((dataset_uri,
+                        DCTERMS.temporal, 
+                        tbn))
+            data_catalog.add((tbn, RDF.type, DCTERMS.PeriodOfTime))
+            data_catalog.add((tbn, TIME.hasEnd, Literal(row['dcterms:temporal/time:hasEnd'])))
+
         # add status
         if str(row['adms:status']) != 'nan':
             data_catalog.add((dataset_uri,
@@ -305,6 +331,6 @@ def spreadsheet_to_ld_catalog(input_sheet: str, uri: str, output_graph) -> Graph
 
 
 uri="https://datacatalog.github.io/test_this#"
-input_sheet= './tests/example_spreadsheet.xlsx'
-output_graph= './tests/datacatalog.ttl'
-spreadsheet_to_ld_catalog(input_sheet=input_sheet, uri=uri, output_graph=output_graph)
+input_sheet= './tests/catalog.xlsx'
+# output_graph= './docs/datacatalog.ttl'
+spreadsheet_to_ld_catalog( uri=uri, input_sheet=input_sheet)

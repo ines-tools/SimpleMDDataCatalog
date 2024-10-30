@@ -104,10 +104,11 @@ For datasets, the follwing information can be entered:
 | dcat:version        | Version information of the dataset. semantic versioning example: 1.0.4                                                                                              | yes       |
 | dcat:theme          | A comma separated list of key-words. These key-words also need to be defined in the 'Concepts' tab (make sure they are spelled the same, case sensitive), see below | yes       |
 | dcterms:spatial     | A description of the region the dataset covers. For example: Ireland                                                                                                | yes       |
-| dcterms:temporal    | The time that is covered by the dataset. For example: 2024 or 1980-2020                                                                                             | yes       |
+| dcterms:temporal/time:hasBeginning    | The  start of the time that is covered by the dataset. For example: 2024                                                                                              | yes       |
+| dcterms:temporal/time:hasEnd    | The end of the time that is covered by the dataset. For example: 2024                                                                                           | yes       |
 | adms:status         | Status information of the dataset. For example: "test" or "deprecated"                                                                                              | yes       |
 | prov:wasDerivedFrom | Data lineage information. A comma separated list of urls and/or dcterms:identifiers of other datasets that were used to produce this one. For example: 12345, 56789 | yes       |
-| dcat:distribution   | The distributions that are vailable of this dataset. A comma separated list of dcterms:identifiers of entries in the Distributions tab (see below)                  | yes       |
+| dcat:distribution   | The distributions that are available of this dataset. A comma separated list of dcterms:identifiers of entries in the Distributions tab (see below)                  | yes       |
 | dcterms:modified    | The date at which the dataset was last modified                                                                                                                     | yes       |
 
 

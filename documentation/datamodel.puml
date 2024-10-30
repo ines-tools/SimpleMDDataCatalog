@@ -32,6 +32,10 @@ class "vcard:Kind" as kind <<BlankNodeOrIRI>>{
     vcard:hasEmail xsd:any
 }
 
+class "dcterms:Location" as location <<BlankNodeOrIRI>>{
+    skos:prefLabel xsd:string
+}
+
 class "dcat:Distribution" as distribution {
     dcterms:identifier xsd:string 1..1
     dcat:accessURL rdf:Resource 1..1
@@ -58,6 +62,11 @@ class "dqv:Metric" as metric {
     dqv:inDimension rdf:Resource
 }
 
+class "dcterms:PeriodOfTime" as periodoftime <<BlankNodeOrIRI>>{
+    time:hasBeginning xsd:any
+    time:hasEnd xsd:any
+}
+
 class "dqv:QualityMeasurement" as qualitymeasurement {
     dcterms:identifier xsd:string 1..1
     dqv:value xsd:any
@@ -71,6 +80,8 @@ dataset --> concept : "dcat:theme"
 dataset --> agent :"dcat:publisher"
 dataset --> kind : "dcat:contactPoint"
 dataset --> license :"dcterms:License"
+dataset -->periodoftime : "dcterms:temporal"
+dataset --> location : "dcterms:spatial"
 
 qualitymeasurement --> dataset : "dqv:computedOn"
 qualitymeasurement --> metric : "dqv:inDimension"
