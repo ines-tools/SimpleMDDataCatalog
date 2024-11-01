@@ -174,6 +174,10 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
         status = graph.value(s,adms_ns.status)
         modified = graph.value(s,DCTERMS.modified)
         spatial = graph.value(s,DCTERMS.spatial)
+        if type(spatial)== BNode:
+            spatial=spatial = graph.value(s,DCTERMS.spatial/SKOS.prefLabel)
+            
+        
         temporal_begin = graph.value(s,DCTERMS.temporal/TIME.hasBeginning)
         temporal_end= graph.value(s,DCTERMS.temporal/TIME.hasEnd)
 
