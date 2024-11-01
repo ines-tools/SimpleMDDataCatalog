@@ -24,7 +24,7 @@ lineage chain
 | :--- | :--- |
 |last modified|unknown|
 |spatial cover|unknown|
-|temporal cover|unknown|
+|temporal cover|unknown - unknown|
 |version|None|
 
 ## Data lineage

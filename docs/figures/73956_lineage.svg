@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2024-10-29T16:15:24.518492</dc:date>
+    <dc:date>2024-11-01T08:52:00.063265</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -45,7 +45,7 @@ L 81.865042 102.174384
 L 81.818889 85.403938 
 L 95.262938 95.429283 
 L 88.56399 98.801833 
-" clip-path="url(#p7b9d61908e)" style="fill: #bebebe; stroke: #bebebe; stroke-width: 2"/>
+" clip-path="url(#p732c7fa2ec)" style="fill: #bebebe; stroke: #bebebe; stroke-width: 2"/>
     <path d="M 280.43601 98.801833 
 L 190.120918 278.196062 
 L 280.43601 98.801833 
@@ -53,7 +53,7 @@ L 273.737062 95.429283
 L 287.181111 85.403938 
 L 287.134958 102.174384 
 L 280.43601 98.801833 
-" clip-path="url(#p7b9d61908e)" style="fill: #bebebe; stroke: #bebebe; stroke-width: 2"/>
+" clip-path="url(#p732c7fa2ec)" style="fill: #bebebe; stroke: #bebebe; stroke-width: 2"/>
    </g>
    <g id="VertexCollection_1">
     <path d="M 184.5 301.860976 
@@ -66,7 +66,7 @@ C 173.317079 282.866227 172 286.045937 172 289.360976
 C 172 292.676014 173.317079 295.855724 175.661165 298.19981 
 C 178.005252 300.543897 181.184961 301.860976 184.5 301.860976 
 z
-" clip-path="url(#p7b9d61908e)" style="fill: #ff0000; stroke: #000000"/>
+" clip-path="url(#p732c7fa2ec)" style="fill: #ff0000; stroke: #000000"/>
     <path d="M 76.197971 86.739024 
 C 79.51301 86.739024 82.69272 85.421946 85.036806 83.077859 
 C 87.380893 80.733773 88.697971 77.554063 88.697971 74.239024 
@@ -77,7 +77,7 @@ C 65.01505 67.744276 63.697971 70.923986 63.697971 74.239024
 C 63.697971 77.554063 65.01505 80.733773 67.359137 83.077859 
 C 69.703223 85.421946 72.882933 86.739024 76.197971 86.739024 
 z
-" clip-path="url(#p7b9d61908e)" style="fill: #add8e6; stroke: #000000"/>
+" clip-path="url(#p732c7fa2ec)" style="fill: #add8e6; stroke: #000000"/>
     <path d="M 292.802029 86.739024 
 C 296.117067 86.739024 299.296777 85.421946 301.640863 83.077859 
 C 303.98495 80.733773 305.302029 77.554063 305.302029 74.239024 
@@ -88,10 +88,10 @@ C 281.619107 67.744276 280.302029 70.923986 280.302029 74.239024
 C 280.302029 77.554063 281.619107 80.733773 283.963194 83.077859 
 C 286.30728 85.421946 289.48699 86.739024 292.802029 86.739024 
 z
-" clip-path="url(#p7b9d61908e)" style="fill: #add8e6; stroke: #000000"/>
+" clip-path="url(#p732c7fa2ec)" style="fill: #add8e6; stroke: #000000"/>
    </g>
    <g id="text_1">
-    <g clip-path="url(#p7b9d61908e)">
+    <g clip-path="url(#p732c7fa2ec)">
      <!-- derived data -->
      <g transform="translate(146.391562 317.672226) scale(0.12 -0.12)">
       <defs>
@@ -258,7 +258,7 @@ z
     </g>
    </g>
    <g id="text_2">
-    <g clip-path="url(#p7b9d61908e)">
+    <g clip-path="url(#p732c7fa2ec)">
      <!-- test data -->
      <g transform="translate(49.254221 102.550274) scale(0.12 -0.12)">
       <defs>
@@ -307,7 +307,7 @@ z
     </g>
    </g>
    <g id="text_3">
-    <g clip-path="url(#p7b9d61908e)">
+    <g clip-path="url(#p732c7fa2ec)">
      <!-- tst data -->
      <g transform="translate(269.550154 102.550274) scale(0.12 -0.12)">
       <use xlink:href="#DejaVuSans-74"/>
@@ -326,7 +326,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p7b9d61908e">
+  <clipPath id="p732c7fa2ec">
    <rect x="45" y="43.2" width="279" height="277.2"/>
   </clipPath>
  </defs>

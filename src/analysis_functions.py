@@ -7,16 +7,16 @@ import igraph as ig
 import matplotlib.pyplot as plt
 
 
-def was_derived_from_graphic(data_catalog=Graph, uri=URIRef):
+def was_derived_from_graphic(catalog_graph=Graph, uri=URIRef):
     os.makedirs("./docs/figures/", exist_ok=True)
 
-    identifier=str(data_catalog.value(URIRef(uri), DCTERMS.identifier))
-    label= str(data_catalog.value(URIRef(uri), DCTERMS.title))
+    identifier=str(catalog_graph.value(URIRef(uri), DCTERMS.identifier))
+    label= str(catalog_graph.value(URIRef(uri), DCTERMS.title))
     filename= "./docs/figures/"+ identifier+"_lineage"
 
     # find was derived from datasets and populate graph
 
-    was_derived_from= data_catalog.objects(URIRef(uri), PROV.wasDerivedFrom)
+    was_derived_from= catalog_graph.objects(URIRef(uri), PROV.wasDerivedFrom)
     g = ig.Graph(directed=True)
 
     g.add_vertex(identifier, label=label, color='red')
@@ -24,8 +24,8 @@ def was_derived_from_graphic(data_catalog=Graph, uri=URIRef):
     counter=0
     for i in was_derived_from:
 
-        identifier2= str(data_catalog.value(URIRef(i), DCTERMS.identifier))
-        label2=str(data_catalog.value(URIRef(i), DCTERMS.title))
+        identifier2= str(catalog_graph.value(URIRef(i), DCTERMS.identifier))
+        label2=str(catalog_graph.value(URIRef(i), DCTERMS.title))
 
         if label2=='None':
             label2= str(i).split("#")[1]
@@ -55,24 +55,24 @@ def was_derived_from_graphic(data_catalog=Graph, uri=URIRef):
     return graph_file
 
 
-def get_data_quality(data_catalog= Graph, dataset_uri=URIRef):
+def get_data_quality(catalog_graph= Graph, dataset_uri=URIRef):
     dqv_ns=Namespace("http://www.w3.org/ns/dqv#")
-    quality_measurements= data_catalog.subjects(dqv_ns.computedOn, dataset_uri)
+    quality_measurements= catalog_graph.subjects(dqv_ns.computedOn, dataset_uri)
     return quality_measurements
 
 
 
-def supply_chain_analysis(data_catalog=Graph, dataset_uri= URIRef):
+def supply_chain_analysis(catalog_graph=Graph, dataset_uri= URIRef):
     dqv_ns=Namespace("http://www.w3.org/ns/dqv#")
-    identifier=str(data_catalog.value(URIRef(dataset_uri), DCTERMS.identifier))
+    identifier=str(catalog_graph.value(URIRef(dataset_uri), DCTERMS.identifier))
     filename= "./docs/figures/"+ identifier+"_supply_chain"
 
-    was_derived_from= data_catalog.objects(dataset_uri, (PROV.wasDerivedFrom* '+'))
+    was_derived_from= catalog_graph.objects(dataset_uri, (PROV.wasDerivedFrom* '+'))
     ds_w_qm=0 # dataset with data quality measurement
     ds_wo_qm= 0# dataset without quality
     for wdf in was_derived_from:
 
-        if (None, dqv_ns.computedOn, wdf) in data_catalog:
+        if (None, dqv_ns.computedOn, wdf) in catalog_graph:
             ds_w_qm= ds_w_qm +1
         else:
             ds_wo_qm= ds_wo_qm+1

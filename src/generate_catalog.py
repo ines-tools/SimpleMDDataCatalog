@@ -8,11 +8,11 @@ from import_catalog import parse_catalog, create_index, create_dataset_pages, cr
 
 def generate_catalog(repo_url: str, input_file: str= './docs/catalog.ttl', output_dir: str= './docs/'):
 
-    data_catalog= parse_catalog(input_file=input_file)
-    create_index(catalog_graph= data_catalog, output_dir=output_dir, repo_url=repo_url)
-    create_dataset_pages(catalog_graph=data_catalog, output_dir=output_dir)
-    create_concept_pages(catalog_graph=data_catalog, output_dir=output_dir)
-    create_metric_pages(catalog_graph=data_catalog, output_dir=output_dir)
+    catalog_graph= parse_catalog(input_file=input_file)
+    create_index(catalog_graph= catalog_graph, output_dir=output_dir, repo_url=repo_url)
+    create_dataset_pages(catalog_graph=catalog_graph, output_dir=output_dir)
+    create_concept_pages(catalog_graph=catalog_graph, output_dir=output_dir)
+    create_metric_pages(catalog_graph=catalog_graph, output_dir=output_dir)
 
     
 # input_file='./docs/catalog.ttl'

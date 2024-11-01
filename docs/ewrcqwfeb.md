@@ -29,8 +29,8 @@ first version
 |||
 | :--- | :--- |
 |last modified|2024-10-21|
-|spatial cover|Europe|
-|temporal cover|1980-2022|
+|spatial cover|n13b084061b21469a9249684455f5cbc6b10|
+|temporal cover|1980 - 2020|
 |version|0.4|
 
 ## Data lineage

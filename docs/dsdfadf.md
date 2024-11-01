@@ -28,8 +28,8 @@ unknown
 |||
 | :--- | :--- |
 |last modified|2024-10-21|
-|spatial cover|Belgium|
-|temporal cover|2019|
+|spatial cover|n13b084061b21469a9249684455f5cbc6b5|
+|temporal cover|2019 - 2019|
 |version|3.4|
 
 ## Data lineage
