@@ -19,7 +19,7 @@ def was_derived_from_graphic(catalog_graph=Graph, uri=URIRef):
     was_derived_from= catalog_graph.objects(URIRef(uri), PROV.wasDerivedFrom)
     g = ig.Graph(directed=True)
 
-    g.add_vertex(identifier, label=label, color='red')
+    g.add_vertex(identifier, label=label, color='light blue')
 
     counter=0
     for i in was_derived_from:
@@ -33,6 +33,25 @@ def was_derived_from_graphic(catalog_graph=Graph, uri=URIRef):
         g.add_edge(source= identifier, target=identifier2)
         counter= counter +1
 
+        wdf_indirect= catalog_graph.objects(i, PROV.wasDerivedFrom*'+')
+
+        for j in wdf_indirect:
+            counter= counter +1
+
+            label_j= str(catalog_graph.value(URIRef(j), DCTERMS.title))
+            if label_j=='None':
+                label_j= str(j).split("#")[1]
+            identifier_j= str(catalog_graph.value(URIRef(j),DCTERMS.identifier))
+            g.add_vertex(identifier_j, label=label_j, vertex_color='light blue')
+
+            j_derives_from=catalog_graph.subjects(PROV.wasDerivedFrom, URIRef(j))
+            for k in j_derives_from:
+                identifier_k=str(catalog_graph.value(URIRef(k), DCTERMS.identifier))
+                if identifier_k=='None':
+                    identifier_k=str(k).split('#')[1]
+                g.add_edge(source=identifier_k, target= identifier_j)    
+
+        
     dataset_color= ["red"] 
     lineage_color=["light blue"]
     vertex_color = dataset_color + lineage_color * counter
