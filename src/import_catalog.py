@@ -55,19 +55,20 @@ def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
     index_md.new_line(index_md.new_inline_link(link= catalog_file_path[7:],text= "The machine readable version of the catalog (ttl) can be found here." ))
     # add publisher
     index_md.new_header(level=2, title="Publisher")
-    publisher= str(catalog_graph.value(catalog_uri, DCTERMS.publisher))
+    publisher= catalog_graph.value(catalog_uri, DCTERMS.publisher)
     if type(publisher)==BNode:
-        publisher=str(catalog_graph.value(catalog_uri, DCTERMS.publisher/FOAF.name))
+        publisher=catalog_graph.value(catalog_uri, DCTERMS.publisher/FOAF.name)
     
-    index_md.new_line(publisher)
+    index_md.new_line(str(publisher))
         
         
     # add license
     index_md.new_header(level=2, title="License")
-    license =str(catalog_graph.value(catalog_uri, DCTERMS.license))
     
-    if validators.uri.uri(license):
-        license=str(catalog_graph.value(catalog_uri, DCTERMS.license/DCTERMS.title)) 
+    license =catalog_graph.value(catalog_uri, DCTERMS.license)
+    
+    if type(license)==BNode:
+        license=catalog_graph.value(catalog_uri, DCTERMS.license/DCTERMS.title) 
 
 
 

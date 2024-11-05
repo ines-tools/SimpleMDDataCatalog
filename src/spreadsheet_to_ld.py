@@ -11,7 +11,7 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl',
 
     uri=Namespace(uri)
     datasets_df = pd.read_excel(input_sheet, 'Datasets', converters={'dcterms:identifier': str, 'prov:wasDerivedFrom':str, 'dcat:distrbution':str, 'dcterms:temporal/time:hasBeginning': str,'dcterms:temporal/time:hasEnd': str })
-    distributions_df = pd.read_excel(input_sheet, 'Distributions')
+    distributions_df = pd.read_excel(input_sheet, 'Distributions',)
     concepts_df= pd.read_excel(input_sheet, 'Concepts')
     metrics_df= pd.read_excel(input_sheet, 'Metrics')
     quality_measurements_df = pd.read_excel(input_sheet, 'QualityMeasurements')
@@ -263,14 +263,15 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl',
                 prov_uri= identifier_to_uri(identifier= k.strip(), 
                                             namespace= uri )
                 data_catalog.add((dataset_uri, PROV.wasDerivedFrom, prov_uri))
-        # add distributions
-        dist =str(row['dcat:distribution'])
-        dist_list= list(dist.split(","))
-        for l in dist_list:
-            if l != "nan" :
-                dist_uri= identifier_to_uri(identifier= l.strip(), 
-                                            namespace= uri )
-                data_catalog.add((dataset_uri, DCAT.distribution, dist_uri))
+        # add distributions this one will be deprecated, and be replaced by a relationship defined in the distributions
+        if 'dcat:distribution' in row:
+            dist =str(row['dcat:distribution'])
+            dist_list= list(dist.split(","))
+            for l in dist_list:
+                if l != "nan" :
+                    dist_uri= identifier_to_uri(identifier= l.strip(), 
+                                                namespace= uri )
+                    data_catalog.add((dataset_uri, DCAT.distribution, dist_uri))
 
     for m, row in distributions_df.iterrows():
         distribution_uri= identifier_to_uri(row['dcterms:identifier'],ns)
@@ -281,9 +282,19 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl',
         
         # add identifier
         data_catalog.add((distribution_uri, DCTERMS.identifier, Literal(str(row['dcterms:identifier']))))
+
+        # add title
+        if str(row['dcterms:title']) != 'nan':
+            data_catalog.add((distribution_uri, DCTERMS.title,Literal(str(row['dcterms:title']))))
+
+        # add description
+        if str(row['dcterms:description']) != 'nan':
+            data_catalog.add((distribution_uri, DCTERMS.title,Literal(str(row['dcterms:description']))))    
+
         
         # add accessURL
-        data_catalog.add((distribution_uri, DCAT.accessURL, Literal(row['dcat:accessURL'])))
+        if str(row['dcat:accessURL']) != 'nan':
+            data_catalog.add((distribution_uri, DCAT.accessURL, Literal(row['dcat:accessURL'])))
 
         # add format
 
@@ -297,6 +308,11 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl',
         data_catalog.add((distribution_uri,
                         DCTERMS.modified, 
                         Literal(row['dcterms:modified'],datatype= XSD.date)))
+        
+        # add datasets
+
+        if 'inv-dcat:distribution' in row:
+            data_catalog.add((URIRef(identifier_to_uri(identifier=row['inv-dcat:distribution'],namespace=ns)),DCAT.distribution, distribution_uri))
         
     for n , row in metrics_df.iterrows():
         
@@ -329,8 +345,16 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl',
 
     return data_catalog
 
+# # mopo catalog
+
+# uri="https://datacatalog.github.io/test_this#"
+# input_sheet= '/home/joep/Documents/uuidea/git/Mopo_European_Usecase_Data_catalog/catalog.xlsx'
+# output_graph= '/home/joep/Documents/uuidea/git/Mopo_European_Usecase_Data_catalog/docs/datacatalog.ttl'
+# spreadsheet_to_ld_catalog(input_sheet=input_sheet,output_graph= output_graph, uri=uri)
+
+# test catalog
 
 uri="https://datacatalog.github.io/test_this#"
 input_sheet= './tests/catalog.xlsx'
-# output_graph= './docs/datacatalog.ttl'
-spreadsheet_to_ld_catalog( uri=uri, input_sheet=input_sheet)
+output_graph= './docs/datacatalog.ttl'
+spreadsheet_to_ld_catalog(input_sheet=input_sheet,output_graph= output_graph, uri=uri)

@@ -5,9 +5,11 @@ import pandas as pd
 import os
 import igraph as ig
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
 
 
-def was_derived_from_graphic(catalog_graph=Graph, uri=URIRef):
+def was_derived_from_graphic(catalog_graph: Graph, uri: URIRef):
     os.makedirs("./docs/figures/", exist_ok=True)
 
     identifier=str(catalog_graph.value(URIRef(uri), DCTERMS.identifier))
@@ -136,8 +138,7 @@ def create_theme_word_cloud(catalog_graph= Graph):
     for a, x in bag.values:
         d[a] = x
 
-    import matplotlib.pyplot as plt
-    from wordcloud import WordCloud
+    
 
     wordcloud = WordCloud(background_color='white')
     wordcloud.generate_from_frequencies(frequencies=d)
