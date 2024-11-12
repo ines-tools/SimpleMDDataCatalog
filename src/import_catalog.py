@@ -379,6 +379,9 @@ def create_concept_pages(catalog_graph=Graph,output_dir=str):
         
         concept_file.create_md_file()
 
+
+# create datasetseries pages        
+
 def create_metric_pages(catalog_graph=Graph,output_dir=str):
     adms_ns= Namespace("http://www.w3.org/ns/adms#")
     dqv_ns=Namespace("http://www.w3.org/ns/dqv#")
@@ -431,6 +434,66 @@ def get_lineage(catalog_graph: Graph, dataset=URIRef):
     
     return indirect_lineage
             
+def create_datasetseries_pages(catalog_graph: Graph, output_dir: str):
+    """Creates markdown pages for each dataset series in the catalog."""
+
+    for s, p, o in catalog_graph.triples((None, RDF.type, DCAT.DatasetSeries)):
+
+        identifier = catalog_graph.value(s, DCTERMS.identifier)
+        title = catalog_graph.value(s, DCTERMS.title)
+        description = catalog_graph.value(s,DCTERMS.description)
+        license = catalog_graph.value(s, DCTERMS.license)
+        if type(license)==BNode:
+            license=catalog_graph.value(s, DCTERMS.license/DCTERMS.title)
+
+        publisher = catalog_graph.value(s,DCTERMS.publisher)
+        if type(publisher)==BNode:
+            publisher=catalog_graph.value(s,DCTERMS.publisher/FOAF.name)
+
+
+        # initiate md object
+        mdFile = MdUtils(
+            file_name=output_dir+identifier,
+            title=title)
+
+        # title and description
+        mdFile.new_header(level=1  ,title= 'description')
+        mdFile.new_line(description)
+
+        # publisher info
+
+        if publisher !=None:
+            mdFile.new_header(level=2, title='Publisher')
+            publisher_list = [
+                "", "",
+                'Publisher', publisher
+            ]
+            mdFile.new_table(columns=2, 
+                            rows= int(len(publisher_list)/2), 
+                            text=publisher_list,
+                            text_align='left')
+
+        # license
+        if license!=None:
+            mdFile.new_header(level= 2, title='License')
+            mdFile.new_paragraph(license)
+
+       
+        # Datasets in series
+        mdFile.new_header(level=2, title='Datasets in this Series')
+        datasets = catalog_graph.subjects(DCAT.inSeries, s)
+        dataset_list=[] 
+        for ds in datasets:
+            dataset_list.append(get_local_link(uri=ds, property=DCTERMS.identifier, label= DCTERMS.title, catalog_graph=catalog_graph))
+
+        mdFile.new_table(columns=1, 
+                         rows= len(dataset_list),
+                         text=dataset_list,
+                         text_align='left')
+
+
+
+        mdFile.create_md_file()
 
 
    

@@ -12,10 +12,10 @@ Table of contents
 * [Datasets organized by theme](#datasets-organized-by-theme)
 	* [theme: [capacity factor](973I.md)](#theme-capacity-factor973imd)
 	* [theme: [onshore](weruEF8.md)](#theme-onshoreweruef8md)
-	* [theme: [wind](fajfafl.md)](#theme-windfajfaflmd)
 	* [theme: [lineage](fdcshjnfdscahjn.md)](#theme-lineagefdcshjnfdscahjnmd)
-	* [theme: [test](iu34jkAWD.md)](#theme-testiu34jkawdmd)
 	* [theme: [catalog](sdfjlhgfvrkhlsfd.md)](#theme-catalogsdfjlhgfvrkhlsfdmd)
+	* [theme: [wind](fajfafl.md)](#theme-windfajfaflmd)
+	* [theme: [test](iu34jkAWD.md)](#theme-testiu34jkawdmd)
 	* [About this catalog](#about-this-catalog)
 
 # Description
@@ -46,22 +46,24 @@ Here you will find datasets organized by theme. The headers of each theme are li
 ## theme: [onshore](weruEF8.md)
   
 [existing wind on-shore](ewrcqwfeb.md)
-## theme: [wind](fajfafl.md)
-  
-[tst data](dsdfadf.md)  
-[existing wind on-shore](ewrcqwfeb.md)
 ## theme: [lineage](fdcshjnfdscahjn.md)
   
 [tst data](dsdfadf.md)  
 [derived data](73956.md)
-## theme: [test](iu34jkAWD.md)
-  
-[test data catalog](None.md)  
-[test data](12345.md)
 ## theme: [catalog](sdfjlhgfvrkhlsfd.md)
   
 [test data](12345.md)  
 [derived data](73956.md)
+## theme: [wind](fajfafl.md)
+  
+[tst data](dsdfadf.md)  
+[existing wind on-shore](ewrcqwfeb.md)  
+[making a longer lineage chain](vgsgr.md)
+## theme: [test](iu34jkAWD.md)
+  
+[test data catalog](None.md)  
+[making a longer lineage chain](vgsgr.md)  
+[test data](12345.md)
 ## About this catalog
   
 This catalog was generated using the SimpleMDDataCatalog package that is is maintained [here](https://github.com/uuidea/SimpleMDDataCatalog).

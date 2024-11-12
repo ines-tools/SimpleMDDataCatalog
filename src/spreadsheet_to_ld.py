@@ -16,6 +16,7 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl',
     metrics_df= pd.read_excel(input_sheet, 'Metrics')
     quality_measurements_df = pd.read_excel(input_sheet, 'QualityMeasurements')
     data_catalog_df =pd.read_excel(input_sheet, 'DataCatalog')
+    dataset_series_df = pd.read_excel(input_sheet, 'DatasetSeries')
 
     ns=Namespace(uri)
 
@@ -273,6 +274,11 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl',
                                                 namespace= uri )
                     data_catalog.add((dataset_uri, DCAT.distribution, dist_uri))
 
+        if 'dcat:inSeries' in row:
+            data_catalog.add((dataset_uri, DCAT.inSeries, identifier_to_uri(row['dcat:inSeries'], namespace=ns)))
+
+
+
     for m, row in distributions_df.iterrows():
         distribution_uri= identifier_to_uri(row['dcterms:identifier'],ns)
 
@@ -309,10 +315,12 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl',
                         DCTERMS.modified, 
                         Literal(row['dcterms:modified'],datatype= XSD.date)))
         
-        # add datasets
+        # add distributions
 
         if 'inv-dcat:distribution' in row:
             data_catalog.add((URIRef(identifier_to_uri(identifier=row['inv-dcat:distribution'],namespace=ns)),DCAT.distribution, distribution_uri))
+        
+
         
     for n , row in metrics_df.iterrows():
         
@@ -337,6 +345,84 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl',
         data_catalog.add((qm_uri, dqv_ns.value, Literal(row['dqv:value']))) # ,datatype= data_catalog.value(metric_uri, dqv_ns.expectedDataType) the datatype is obtained by looking at the expected datatype of the metric
         data_catalog.add((qm_uri, PROV.generatedAtTime, Literal(row['prov:generatedAtTime'], datatype= 'xsd:dateTime')))
 
+
+    for n, row in dataset_series_df.iterrows():
+        if str(row['dcterms:identifier'])=='nan':
+            raise Exception("ERROR: DataSeries must have an identifier")
+        series_uri = identifier_to_uri(row['dcterms:identifier'], ns)
+
+        # declare DataSeries
+        data_catalog.add((series_uri, RDF.type, DCAT.DatasetSeries))
+
+        # add identifier
+        data_catalog.add((series_uri, DCTERMS.identifier, Literal(row['dcterms:identifier'])))
+
+        # add title
+        if str(row['dcterms:title'])=='nan':
+            raise Exception("ERROR: DataSeries must have a Title")
+        data_catalog.add((series_uri, DCTERMS.title, Literal(row['dcterms:title'])))
+
+        # add description
+        if str(row['dcterms:description'])!='nan':
+            data_catalog.add((series_uri, DCTERMS.description, Literal(row['dcterms:description'])))
+
+        # add publisher (if applicable)
+        publisher_bnode = BNode()
+        if row['dcterms:publisher'] != 'nan':
+            if validators.uri.uri(str(row['dcterms:publisher'])):
+                data_catalog.add((series_uri, DCTERMS.publisher, literal_or_uri(row['dcterms:publisher'])))
+            else:
+                data_catalog.add((series_uri, DCTERMS.publisher, publisher_bnode))
+                data_catalog.add((publisher_bnode, RDF.type, FOAF.Agent))
+                data_catalog.add((publisher_bnode, FOAF.name, Literal(row['dcterms:publisher'])))
+
+        cp=BNode()
+        if row['dcat:contactPoint'] !='nan':
+            if validators.uri.uri(str(row['dcat:contactPoint'])):
+                data_catalog.add((dataset_uri,
+                        DCAT.contactPoint, 
+                        Literal(row['dcat:contactPoint'] )))
+            else:
+                data_catalog.add((dataset_uri, DCAT.contactPoint, cp))
+                data_catalog.add((cp,RDF.type, VCARD.Kind))
+                data_catalog.add((cp, VCARD.hasEmail, Literal(row['dcat:contactPoint']) ))
+
+        # data_catalog.add((dataset_uri,
+        #                 DCAT.contactPoint, 
+        #                 literal_or_uri(row['dcat:contactPoint'])))
+        
+        # add license
+
+        if str(row['dcterms:license'])!= 'nan':
+            license_bnode=BNode()
+            
+            if validators.uri.uri(str(row['dcterms:license'])):
+                data_catalog.add((dataset_uri,
+                        DCTERMS.license, 
+                        literal_or_uri(str(row['dcterms:license']))))
+            else :
+                data_catalog.add((dataset_uri, DCTERMS.license, license_bnode))
+                data_catalog.add((license_bnode, RDF.type, DCTERMS.LicenseDocument))
+                data_catalog.add((license_bnode, DCTERMS.title, Literal(row['dcterms:license'])))   
+
+
+        if str(row['dcat:theme'])!= 'nan':
+            theme_list= list((str(row['dcat:theme']).split(",")))
+        
+            for j in theme_list:
+                j= j.lstrip()
+                theme= literal_or_uri(j)
+                if type(theme)==Literal:
+                    theme_uri=data_catalog.value(predicate= SKOS.prefLabel, object=theme)
+
+                    if theme_uri==None:
+                        print('Warning: \''+ theme +'\' has not been defined in the concepts and will be ignored as a theme')
+                    else :
+                        data_catalog.add((dataset_uri, DCAT.theme, theme_uri))     
+                elif type(theme)==URIRef:
+                    data_catalog.add((dataset_uri, DCAT.theme, theme)) 
+
+        
 
 
 

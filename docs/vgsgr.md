@@ -9,14 +9,15 @@ lineage chain
 
 ||
 | :--- |
-|no information available|
+|[wind](fajfafl.md)|
+|[test](iu34jkAWD.md)|
 
 ## Publisher
 
 |||
 | :--- | :--- |
 |Publisher|SimpleMDDataCatalog|
-|Contact|nan|
+|Contact|example.example.com|
 
 ## About the data
 
@@ -34,6 +35,10 @@ lineage chain
 |no lineage information available|
   
 ![Lineage overview](figures/vgsgr_lineage.svg)
+## License
+
+
+cc-by 4.0
 ## Distributions
 
 |identifier|format|version|last modified|access url|
