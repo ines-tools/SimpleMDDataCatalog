@@ -378,12 +378,13 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl',
 
         cp=BNode()
         if row['dcat:contactPoint'] !='nan':
+  
             if validators.uri.uri(str(row['dcat:contactPoint'])):
-                data_catalog.add((dataset_uri,
+                data_catalog.add((series_uri,
                         DCAT.contactPoint, 
                         Literal(row['dcat:contactPoint'] )))
             else:
-                data_catalog.add((dataset_uri, DCAT.contactPoint, cp))
+                data_catalog.add((series_uri, DCAT.contactPoint, cp))
                 data_catalog.add((cp,RDF.type, VCARD.Kind))
                 data_catalog.add((cp, VCARD.hasEmail, Literal(row['dcat:contactPoint']) ))
 
@@ -397,36 +398,44 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl',
             license_bnode=BNode()
             
             if validators.uri.uri(str(row['dcterms:license'])):
-                data_catalog.add((dataset_uri,
+                data_catalog.add((series_uri,
                         DCTERMS.license, 
                         literal_or_uri(str(row['dcterms:license']))))
             else :
-                data_catalog.add((dataset_uri, DCTERMS.license, license_bnode))
+                data_catalog.add((series_uri, DCTERMS.license, license_bnode))
                 data_catalog.add((license_bnode, RDF.type, DCTERMS.LicenseDocument))
                 data_catalog.add((license_bnode, DCTERMS.title, Literal(row['dcterms:license'])))   
 
 
-        if str(row['dcat:theme'])!= 'nan':
-            theme_list= list((str(row['dcat:theme']).split(",")))
-        
+        if str(row['dcat:theme']) != 'nan':
+            # Convert the theme string to a list of themes, splitting by commas
+            theme_list = [str(item).strip() for item in str(row['dcat:theme']).split(",")]
+
             for j in theme_list:
-                j= j.lstrip()
-                theme= literal_or_uri(j)
-                if type(theme)==Literal:
-                    theme_uri=data_catalog.value(predicate= SKOS.prefLabel, object=theme)
+                # Strip any leading whitespace from each theme
+                j = j.lstrip()
 
-                    if theme_uri==None:
-                        print('Warning: \''+ theme +'\' has not been defined in the concepts and will be ignored as a theme')
-                    else :
-                        data_catalog.add((dataset_uri, DCAT.theme, theme_uri))     
-                elif type(theme)==URIRef:
-                    data_catalog.add((dataset_uri, DCAT.theme, theme)) 
+                # Determine if the theme is a literal or URI reference
+                theme = literal_or_uri(j)
 
-        
+                # Check if the theme is a Literal
+                if isinstance(theme, Literal):
+                    # Look up the URI for the theme using its preferred label
+                    theme_uri = data_catalog.value(predicate=SKOS.prefLabel, object=theme)
 
+                    # If the theme URI is not found, print a warning and ignore it as a theme
+                    if theme_uri is None:
+                        print('Warning: \'' + str(theme) + '\' has not been defined in the concepts and will be ignored as a theme')
+                    else:
+                        # Add the theme URI to the data catalog for the given series
+                        data_catalog.add((series_uri, DCAT.theme, theme_uri))
 
+                # Check if the theme is a URI reference
+                elif isinstance(theme, URIRef):
+                    # If it is a URI reference, directly add it as a theme to the data catalog
+                    data_catalog.add((series_uri, DCAT.theme, theme))
 
-    data_catalog.serialize(destination= output_graph, format = 'ttl') 
+            data_catalog.serialize(destination= output_graph, format = 'ttl') 
 
 
     return data_catalog

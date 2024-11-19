@@ -162,36 +162,7 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
         identifier = graph.value(s, DCTERMS.identifier)
         title = graph.value(s, DCTERMS.title)
         description = graph.value(s,DCTERMS.description)
-        license = graph.value(s, DCTERMS.license)
-        if type(license)==BNode:
-            license=graph.value(s, DCTERMS.license/DCTERMS.title)
-        publisher = graph.value(s,DCTERMS.publisher)
-        if type(publisher)==BNode:
-            publisher=graph.value(s,DCTERMS.publisher/FOAF.name)
-        contactPoint = graph.value(s,DCAT.contactPoint)
-        if type(contactPoint)==BNode:
-            contactPoint=graph.value(s,DCAT.contactPoint/VCARD.hasEmail)
-        version = graph.value(s,DCAT.version)
-        status = graph.value(s,adms_ns.status)
-        modified = graph.value(s,DCTERMS.modified)
-        spatial = graph.value(s,DCTERMS.spatial)
-        if type(spatial)== BNode:
-            spatial=spatial = graph.value(s,DCTERMS.spatial/SKOS.prefLabel)
-            
-        
-        temporal_begin = graph.value(s,DCTERMS.temporal/TIME.hasBeginning)
-        temporal_end= graph.value(s,DCTERMS.temporal/TIME.hasEnd)
-
-        theme = graph.objects(s, DCAT.theme)
-        theme_list= [''] # first entry has to be empty for table to look nice
-        for th in theme:
-            theme_list.append(get_local_link(th,property=DCTERMS.identifier, label= SKOS.prefLabel, catalog_graph=catalog_graph)) 
-        if len(theme_list) == 1:
-            theme_list.append('no information available')
-         
-
-            
-        
+       
         # initiate md object
         mdFile = MdUtils(
             file_name=output_dir+identifier,
@@ -200,93 +171,14 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
         mdFile.new_header(level=1  ,title= 'description')
         mdFile.new_line(description)
 
-        # theme
-        mdFile.new_header(level= 2, title='keywords')
-        mdFile.new_table(columns=1, 
-                         rows= len(theme_list),
-                         text=theme_list,
-                         text_align='left')
-
-        # status
-        if status != None:
-            mdFile.new_header(level=2, title='Status')
-            mdFile.new_paragraph(status)
-
-        # publisher info
-
-        if publisher !=None:
-            mdFile.new_header(level=2, title='Publisher')
-            publisher_list = [
-                "", "",
-                'Publisher', publisher,
-                'Contact', contactPoint,
-            ]
-            mdFile.new_table(columns=2, 
-                            rows= 3, 
-                            text=publisher_list,
-                            text_align='left')
+        mdFile= add_publishing_info(graph=catalog_graph, page=mdFile, resource=s)
+        mdFile= add_about_data(graph=catalog_graph, page=mdFile, resource=s)
         
-        # about dataset
+        # data quality
+        mdFile=add_data_quality_info(graph=catalog_graph, page=mdFile, resource=s)
 
-        if modified==None:
-            modified="unknown"
-        if spatial == None :
-            spatial="unknown"    
-        if temporal_begin== None:
-            temporal_begin="unknown"
-        if temporal_end== None:
-            temporal_end="unknown"
-        # if version== None:
-        #     version== "unknown"
-
-        mdFile.new_header(level=2, title='About the data')
-        about_list= ["", "",
-                     "last modified", modified, 
-                     "spatial cover", spatial,
-                     "temporal cover", str(str(temporal_begin)+ " - "+str(temporal_end)),
-                     "version", version
-                     ]
-        mdFile.new_table(columns=2, 
-                         rows=int(len(about_list)/2), 
-                         text=about_list,
-                         text_align='left')
-
-    
-
-        # lineage
-
-        wasDerivedFrom = graph.objects(s,PROV.wasDerivedFrom)
-        wdf_list = ['was derived from'] # first entry has to be empty for table to look nice
-        has_lineage=True #assume lineage is known
-        
-        for wdf in wasDerivedFrom:
-            
-            if anything_known(catalog_graph=catalog_graph, uri=wdf):
-                wdf_list.append(get_local_link(uri=wdf, property=DCTERMS.identifier, label=DCTERMS.title, catalog_graph=catalog_graph))
-                
-            else :
-                wdf_list.append(str(wdf)+': No additional information this dataset was provided.')    
-        if len(wdf_list) == 1:
-            wdf_list.append('no lineage information available')
-            has_lineage=False # lineage is not known
-            
-
-        mdFile.new_header(level= 2, title='Data lineage')
-        mdFile.new_table(columns=1, 
-                         rows= len(wdf_list), 
-                         text=wdf_list,
-                         text_align='left')
-        if len(wdf_list)>1:
-            image_path=was_derived_from_graphic(catalog_graph=catalog_graph, uri=s)[7:]
-            print(image_path)
-            mdFile.new_line(mdFile.new_inline_image(text="Lineage overview", path=image_path))
-
-        # license
-        if license!=None:
-            mdFile.new_header(level= 2, title='License')
-            mdFile.new_paragraph(license)
-        
-        
+        # data lineage
+        mdFile= add_lineage_info(graph=catalog_graph, page=mdFile, resource=s)
 
         # Distributions
         mdFile.new_header(level=2, title='Distributions')
@@ -304,45 +196,6 @@ def create_dataset_pages(catalog_graph: Graph, output_dir: str):
             ]
 
         mdFile.new_table(columns=5, rows= int(len(dist_list)/5), text= dist_list)
-
-
-        # data quality
-        mdFile.new_header(level=2, title="Data Quality")
-        qm_list= [ "metric", "value", "time of evaluation", "dimension"]
-
-        quality_measurements= get_data_quality(catalog_graph=catalog_graph, dataset_uri=s)
-        for qm in quality_measurements:
-            metric_link= get_local_link(
-                uri= catalog_graph.value(qm, dqv_ns.isMeasurementOf), 
-                property=DCTERMS.identifier, 
-                label= SKOS.prefLabel,
-                catalog_graph=catalog_graph)
-            value= str(catalog_graph.value(qm, dqv_ns.value))
-            time= str(catalog_graph.value(qm, PROV.generatedAtTime))
-            dimensions= catalog_graph.objects(qm, dqv_ns.isMeasurementOf/dqv_ns.inDimension)
-            dimension=str()
-            for dim in dimensions:
-                
-                if len(dimension)==0:
-                    dimension= dimension+str(dim)
-                else:
-                    dimension= dimension+", "+str(dim)
-                
-            qm_list= qm_list +[ 
-                metric_link,
-                value,
-                time,
-                dimension
-            ]
-        mdFile.new_table(columns=4, rows= int(len(qm_list)/4), text= qm_list)
-
-        if has_lineage:
-
-            mdFile.new_header(level=2, title="supply chain analysis")
-            pie_file=supply_chain_analysis(catalog_graph=catalog_graph,dataset_uri=s)
-
-            mdFile.new_line(mdFile.new_inline_image(text="supply chain analysis",path=str(pie_file)[7:]))
-
 
         mdFile.create_md_file()
 
@@ -437,19 +290,20 @@ def get_lineage(catalog_graph: Graph, dataset=URIRef):
 def create_datasetseries_pages(catalog_graph: Graph, output_dir: str):
     """Creates markdown pages for each dataset series in the catalog."""
 
+    adms_ns= Namespace("http://www.w3.org/ns/adms#")
+    dqv_ns=Namespace("http://www.w3.org/ns/dqv#")
+    VCARD=Namespace('http://www.w3.org/2006/vcard/ns#')
+    catalog_graph.bind("adms", Namespace(adms_ns))
+    catalog_graph.bind("dqv", dqv_ns)
+    catalog_graph.bind("vcard",VCARD)
+
     for s, p, o in catalog_graph.triples((None, RDF.type, DCAT.DatasetSeries)):
 
         identifier = catalog_graph.value(s, DCTERMS.identifier)
         title = catalog_graph.value(s, DCTERMS.title)
         description = catalog_graph.value(s,DCTERMS.description)
         license = catalog_graph.value(s, DCTERMS.license)
-        if type(license)==BNode:
-            license=catalog_graph.value(s, DCTERMS.license/DCTERMS.title)
-
-        publisher = catalog_graph.value(s,DCTERMS.publisher)
-        if type(publisher)==BNode:
-            publisher=catalog_graph.value(s,DCTERMS.publisher/FOAF.name)
-
+       
 
         # initiate md object
         mdFile = MdUtils(
@@ -462,21 +316,10 @@ def create_datasetseries_pages(catalog_graph: Graph, output_dir: str):
 
         # publisher info
 
-        if publisher !=None:
-            mdFile.new_header(level=2, title='Publisher')
-            publisher_list = [
-                "", "",
-                'Publisher', publisher
-            ]
-            mdFile.new_table(columns=2, 
-                            rows= int(len(publisher_list)/2), 
-                            text=publisher_list,
-                            text_align='left')
+        mdFile= add_publishing_info(graph=catalog_graph, page=mdFile, resource=s)
 
-        # license
-        if license!=None:
-            mdFile.new_header(level= 2, title='License')
-            mdFile.new_paragraph(license)
+        # themes
+        mdFile= add_themes(graph=catalog_graph, page=mdFile, resource=s)       
 
        
         # Datasets in series
@@ -490,13 +333,168 @@ def create_datasetseries_pages(catalog_graph: Graph, output_dir: str):
                          rows= len(dataset_list),
                          text=dataset_list,
                          text_align='left')
+        
+
 
 
 
         mdFile.create_md_file()
 
 
+def add_publishing_info(graph= Graph, page= MdUtils, resource= URIRef)-> MdUtils :
+    VCARD=Namespace('http://www.w3.org/2006/vcard/ns#')
+    # creates a header and a table with publisher and contact info and license 
+    license = graph.value(resource, DCTERMS.license)
+    if type(license)==BNode:
+        license=graph.value(resource, DCTERMS.license/DCTERMS.title)
+    publisher = graph.value(resource,DCTERMS.publisher)
+    if type(publisher)==BNode:
+        publisher=graph.value(resource,DCTERMS.publisher/FOAF.name)
+    contactPoint = graph.value(resource ,DCAT.contactPoint)
+    if type(contactPoint)==BNode:
+        contactPoint=graph.value(resource,DCAT.contactPoint/VCARD.hasEmail)
+    
+    if publisher !=None:
+        publisher= 'unknown'
+    if license !=None:
+        license= 'unknown'    
+    page.new_header(level=2, title='Publisher')
+    publisher_list = [
+        "", "",
+        'Publisher', publisher,
+        'Contact', contactPoint,
+        'license', license
+    ]
+    page.new_table(columns=2, 
+                    rows= 4, 
+                    text=publisher_list,
+                    text_align='left')
+
+    return page
    
+
+def add_themes(graph= Graph, page= MdUtils, resource= URIRef)->MdUtils:
+
+    theme = graph.objects(resource, DCAT.theme)
+    theme_list= [''] # first entry has to be empty for table to look nice
+    for th in theme:
+        theme_list.append(get_local_link(th,property=DCTERMS.identifier, label= SKOS.prefLabel, catalog_graph=graph)) 
+    if len(theme_list) == 1:
+        theme_list.append('no information available')
+    page.new_header(level=2, title='keywords')
+    page.new_table(columns=1, 
+                     rows= len(theme_list),
+                     text=theme_list,
+                     text_align='left')
+
+    return page
+
+def add_about_data(graph= Graph, page= MdUtils, resource= URIRef)->MdUtils:
+    adms_ns= Namespace("http://www.w3.org/ns/adms#")
+    version = graph.value(resource,DCAT.version)
+    status = graph.value(resource,adms_ns.status)
+    modified = graph.value(resource,DCTERMS.modified)
+    spatial = graph.value(resource,DCTERMS.spatial)
+    if type(spatial)== BNode:
+        spatial=spatial = graph.value(resource,DCTERMS.spatial/SKOS.prefLabel)
+        
+    
+    temporal_begin = graph.value(resource,DCTERMS.temporal/TIME.hasBeginning)
+    temporal_end= graph.value(resource,DCTERMS.temporal/TIME.hasEnd)
+
+    # about dataset
+    about_list= ["", "",]
+
+    if modified!=None:
+        about_list.extend(["last modified", str(modified) ])
+    if spatial != None :
+        about_list.extend(["spatial cover", str(spatial)])
+    if temporal_begin!= None:
+        temporal_begin="unknown"
+    if temporal_end== None:
+        temporal_end="unknown"
+    about_list.extend(["temporal cover", str(str(temporal_begin)+ " - "+str(temporal_end))])    
+    if version!= None:
+        about_list.extend(["version", str(version)])
+    if status !=None:
+        about_list.extend(["status", str(status)])
+
+    page.new_header(level=2, title='About the data')
+    print(about_list)
+    
+    page.new_table(columns=2, 
+                     rows=int(len(about_list)/2), 
+                     text=about_list,
+                     text_align='left')
+
+    return page
+
+def add_lineage_info(graph= Graph, page= MdUtils, resource= URIRef)->MdUtils:
+    wasDerivedFrom = graph.objects(resource,PROV.wasDerivedFrom)
+    wdf_list = ['was derived from'] # first entry has to be empty for table to look nice
+    has_lineage=True #assume lineage is known
+    
+    for wdf in wasDerivedFrom:
+        
+        if anything_known(catalog_graph=graph, uri=wdf):
+            wdf_list.append(get_local_link(uri=wdf, property=DCTERMS.identifier, label=DCTERMS.title, catalog_graph=graph))
+            
+        else :
+            wdf_list.append(str(wdf)+': No additional information this dataset was provided.')    
+    if len(wdf_list) == 1:
+        wdf_list.append('no lineage information available')
+        has_lineage=False # lineage is not known
+        
+    page.new_header(level= 2, title='Data lineage')
+    page.new_table(columns=1, 
+                     rows= len(wdf_list), 
+                     text=wdf_list,
+                     text_align='left')
+    if len(wdf_list)>1:
+        image_path=was_derived_from_graphic(catalog_graph=graph, uri=resource)[7:]
+        print(image_path)
+        page.new_line(page.new_inline_image(text="Lineage overview", path=image_path))
+
+    if has_lineage:
+
+        page.new_header(level=2, title="supply chain analysis")
+        pie_file=supply_chain_analysis(catalog_graph=graph,dataset_uri=resource)
+        page.new_line(page.new_inline_image(text="supply chain analysis",path=str(pie_file)[7:]))    
+
+    return page
+
+def add_data_quality_info(graph= Graph, page= MdUtils, resource= URIRef)->MdUtils:
+    dqv_ns=Namespace("http://www.w3.org/ns/dqv#")
+    page.new_header(level=2, title="Data Quality")
+    qm_list= [ "metric", "value", "time of evaluation", "dimension"]
+    quality_measurements= get_data_quality(catalog_graph=graph, dataset_uri=resource)
+    for qm in quality_measurements:
+        metric_link= get_local_link(
+            uri= graph.value(qm, dqv_ns.isMeasurementOf), 
+            property=DCTERMS.identifier, 
+            label= SKOS.prefLabel,
+            catalog_graph=graph)
+        value= str(graph.value(qm, dqv_ns.value))
+        time= str(graph.value(qm, PROV.generatedAtTime))
+        dimensions= graph.objects(qm, dqv_ns.isMeasurementOf/dqv_ns.inDimension)
+        dimension=str()
+        for dim in dimensions:
+            
+            if len(dimension)==0:
+                dimension= dimension+str(dim)
+            else:
+                dimension= dimension+", "+str(dim)
+            
+        qm_list= qm_list +[ 
+            metric_link,
+            value,
+            time,
+            dimension
+        ]
+    page.new_table(columns=4, rows= int(len(qm_list)/4), text= qm_list)
+
+    return page
+
 #### testing
 
 # input_file= './tests/datacatalog.ttl'

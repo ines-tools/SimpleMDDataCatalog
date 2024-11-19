@@ -9,7 +9,15 @@ this is a test series to show how series can be used
 
 |||
 | :--- | :--- |
-|Publisher|SimpleMDDataCatalog|
+|Publisher|unknown|
+|Contact|example@example.com|
+|license|unknown|
+
+## keywords
+
+||
+| :--- |
+|[test](iu34jkAWD.md)|
 
 ## Datasets in this Series
 

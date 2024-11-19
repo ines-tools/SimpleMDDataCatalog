@@ -56,14 +56,14 @@ Here you will find datasets organized by theme. The headers of each theme are li
 [derived data](73956.md)
 ## theme: [wind](fajfafl.md)
   
+[VRE data DTU](mhchgbqwefh.md)  
 [tst data](dsdfadf.md)  
-[existing wind on-shore](ewrcqwfeb.md)  
-[making a longer lineage chain](vgsgr.md)
+[existing wind on-shore](ewrcqwfeb.md)
 ## theme: [test](iu34jkAWD.md)
   
 [test data catalog](None.md)  
-[making a longer lineage chain](vgsgr.md)  
-[test data](12345.md)
+[test data](12345.md)  
+[test dataset series](fakusdf.md)
 ## About this catalog
   
 This catalog was generated using the SimpleMDDataCatalog package that is is maintained [here](https://github.com/uuidea/SimpleMDDataCatalog).

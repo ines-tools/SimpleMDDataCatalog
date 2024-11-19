@@ -81,9 +81,14 @@
 <https://datacatalog.github.io/test_this#mhchgbqwefh> a dcat:DatasetSeries ;
     dcterms:description "Variable Renewable Energy data of european renewable energy resources" ;
     dcterms:identifier "mhchgbqwefh" ;
+    dcterms:license [ a dcterms:LicenseDocument ;
+            dcterms:title "cc-by-sa 3.0" ] ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:name "DTU" ] ;
-    dcterms:title "VRE data DTU" .
+    dcterms:title "VRE data DTU" ;
+    dcat:contactPoint [ a vcard:Kind ;
+            vcard:hasEmail "example@example.com" ] ;
+    dcat:theme <https://datacatalog.github.io/test_this#fajfafl> .
 
 <https://datacatalog.github.io/test_this#mwqd83k93k> a dqv:Metric ;
     dcterms:identifier "mwqd83k93k" ;
@@ -186,22 +191,12 @@
 <https://datacatalog.github.io/test_this#vgsgr> a dcat:Dataset ;
     dcterms:description "lineage chain" ;
     dcterms:identifier "vgsgr" ;
-    dcterms:license [ a dcterms:LicenseDocument ;
-            dcterms:title "cc-by 4.0" ],
-        [ a dcterms:LicenseDocument ;
-            dcterms:title "cc-by-sa 3.0" ] ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:name "SimpleMDDataCatalog" ] ;
     dcterms:title "making a longer lineage chain" ;
     dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "example.example.com" ],
-        [ a vcard:Kind ;
-            vcard:hasEmail "example@example.com" ],
-        [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#fakusdf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#fajfafl>,
-        <https://datacatalog.github.io/test_this#iu34jkAWD> .
+    dcat:inSeries <https://datacatalog.github.io/test_this#fakusdf> .
 
 <https://datacatalog.github.io/test_this#12345> a dcat:Dataset ;
     dcterms:description "a test dataset" ;
@@ -265,7 +260,12 @@
 <https://datacatalog.github.io/test_this#fakusdf> a dcat:DatasetSeries ;
     dcterms:description "this is a test series to show how series can be used" ;
     dcterms:identifier "fakusdf" ;
+    dcterms:license [ a dcterms:LicenseDocument ;
+            dcterms:title "cc-by 4.0" ] ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:name "SimpleMDDataCatalog" ] ;
-    dcterms:title "test dataset series" .
+    dcterms:title "test dataset series" ;
+    dcat:contactPoint [ a vcard:Kind ;
+            vcard:hasEmail "example@example.com" ] ;
+    dcat:theme <https://datacatalog.github.io/test_this#iu34jkAWD> .
 

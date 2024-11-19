@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2024-11-12T13:19:47.104313</dc:date>
+    <dc:date>2024-11-18T21:17:46.669269</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -45,7 +45,7 @@ L 90.040941 206.717307
 L 84.929686 190.744672 
 L 100.774547 196.239249 
 L 95.407744 201.478278 
-" clip-path="url(#pabd32aa235)" style="fill: #bebebe; stroke: #bebebe; stroke-width: 2"/>
+" clip-path="url(#pb1abd2aa7d)" style="fill: #bebebe; stroke: #bebebe; stroke-width: 2"/>
     <path d="M 76.197971 98.356604 
 L 76.197971 169.3 
 L 76.197971 98.356604 
@@ -53,7 +53,7 @@ L 68.697971 98.356604
 L 76.197971 83.356604 
 L 83.697971 98.356604 
 L 76.197971 98.356604 
-" clip-path="url(#pabd32aa235)" style="fill: #bebebe; stroke: #bebebe; stroke-width: 2"/>
+" clip-path="url(#pb1abd2aa7d)" style="fill: #bebebe; stroke: #bebebe; stroke-width: 2"/>
     <path d="M 273.592256 201.478278 
 L 193.231715 283.798724 
 L 273.592256 201.478278 
@@ -61,7 +61,7 @@ L 268.225453 196.239249
 L 284.070314 190.744672 
 L 278.959059 206.717307 
 L 273.592256 201.478278 
-" clip-path="url(#pabd32aa235)" style="fill: #bebebe; stroke: #bebebe; stroke-width: 2"/>
+" clip-path="url(#pb1abd2aa7d)" style="fill: #bebebe; stroke: #bebebe; stroke-width: 2"/>
    </g>
    <g id="VertexCollection_1">
     <path d="M 184.5 305.243396 
@@ -74,7 +74,7 @@ C 173.317079 286.248648 172 289.428357 172 292.743396
 C 172 296.058435 173.317079 299.238145 175.661165 301.582231 
 C 178.005252 303.926317 181.184961 305.243396 184.5 305.243396 
 z
-" clip-path="url(#pabd32aa235)" style="fill: #ff0000; stroke: #000000"/>
+" clip-path="url(#pb1abd2aa7d)" style="fill: #ff0000; stroke: #000000"/>
     <path d="M 76.197971 194.3 
 C 79.51301 194.3 82.69272 192.982921 85.036806 190.638835 
 C 87.380893 188.294748 88.697971 185.115039 88.697971 181.8 
@@ -85,7 +85,7 @@ C 65.01505 175.305252 63.697971 178.484961 63.697971 181.8
 C 63.697971 185.115039 65.01505 188.294748 67.359137 190.638835 
 C 69.703223 192.982921 72.882933 194.3 76.197971 194.3 
 z
-" clip-path="url(#pabd32aa235)" style="fill: #add8e6; stroke: #000000"/>
+" clip-path="url(#pb1abd2aa7d)" style="fill: #add8e6; stroke: #000000"/>
     <path d="M 76.197971 83.356604 
 C 79.51301 83.356604 82.69272 82.039525 85.036806 79.695439 
 C 87.380893 77.351352 88.697971 74.171643 88.697971 70.856604 
@@ -96,7 +96,7 @@ C 65.01505 64.361855 63.697971 67.541565 63.697971 70.856604
 C 63.697971 74.171643 65.01505 77.351352 67.359137 79.695439 
 C 69.703223 82.039525 72.882933 83.356604 76.197971 83.356604 
 z
-" clip-path="url(#pabd32aa235)" style="fill: #add8e6; stroke: #000000"/>
+" clip-path="url(#pb1abd2aa7d)" style="fill: #add8e6; stroke: #000000"/>
     <path d="M 292.802029 194.3 
 C 296.117067 194.3 299.296777 192.982921 301.640863 190.638835 
 C 303.98495 188.294748 305.302029 185.115039 305.302029 181.8 
@@ -107,10 +107,10 @@ C 281.619107 175.305252 280.302029 178.484961 280.302029 181.8
 C 280.302029 185.115039 281.619107 188.294748 283.963194 190.638835 
 C 286.30728 192.982921 289.48699 194.3 292.802029 194.3 
 z
-" clip-path="url(#pabd32aa235)" style="fill: #add8e6; stroke: #000000"/>
+" clip-path="url(#pb1abd2aa7d)" style="fill: #add8e6; stroke: #000000"/>
    </g>
    <g id="text_1">
-    <g clip-path="url(#pabd32aa235)">
+    <g clip-path="url(#pb1abd2aa7d)">
      <!-- derived data -->
      <g transform="translate(146.391562 321.054646) scale(0.12 -0.12)">
       <defs>
@@ -277,7 +277,7 @@ z
     </g>
    </g>
    <g id="text_2">
-    <g clip-path="url(#pabd32aa235)">
+    <g clip-path="url(#pb1abd2aa7d)">
      <!-- test data -->
      <g transform="translate(49.254221 210.11125) scale(0.12 -0.12)">
       <defs>
@@ -326,7 +326,7 @@ z
     </g>
    </g>
    <g id="text_3">
-    <g clip-path="url(#pabd32aa235)">
+    <g clip-path="url(#pb1abd2aa7d)">
      <!-- making a longer lineage chain -->
      <g transform="translate(-14.742341 99.167854) scale(0.12 -0.12)">
       <defs>
@@ -529,7 +529,7 @@ z
     </g>
    </g>
    <g id="text_4">
-    <g clip-path="url(#pabd32aa235)">
+    <g clip-path="url(#pb1abd2aa7d)">
      <!-- tst data -->
      <g transform="translate(269.550154 210.11125) scale(0.12 -0.12)">
       <use xlink:href="#DejaVuSans-74"/>
@@ -548,7 +548,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="pabd32aa235">
+  <clipPath id="pb1abd2aa7d">
    <rect x="45" y="43.2" width="279" height="277.2"/>
   </clipPath>
  </defs>
