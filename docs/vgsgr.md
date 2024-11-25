@@ -9,15 +9,15 @@ lineage chain
 
 |||
 | :--- | :--- |
-|Publisher|unknown|
+|Publisher|SimpleMDDataCatalog|
 |Contact|nan|
-|license|None|
+|license|unknown|
 
 ## About the data
 
 |||
 | :--- | :--- |
-|temporal cover|None - unknown|
+|temporal cover|unknown - unknown|
 
 ## Data Quality
 

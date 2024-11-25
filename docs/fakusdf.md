@@ -9,9 +9,9 @@ this is a test series to show how series can be used
 
 |||
 | :--- | :--- |
-|Publisher|unknown|
+|Publisher|SimpleMDDataCatalog|
 |Contact|example@example.com|
-|license|unknown|
+|license|cc-by 4.0|
 
 ## keywords
 

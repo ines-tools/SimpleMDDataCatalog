@@ -3,8 +3,7 @@ from validators import uri
 import validators
 from rdflib import Graph, Namespace, URIRef, Literal, BNode
 from rdflib.namespace import FOAF, DCTERMS, DCAT, PROV, OWL, RDFS, RDF, XMLNS, SKOS, SOSA, ORG, SSN, XSD, TIME
-from uri_handling import literal_or_uri, identifier_to_uri, str_abbrev_namespace_to_full_namespace
-
+from SimpleMDDataCatalog.uri_handling import literal_or_uri, identifier_to_uri, str_abbrev_namespace_to_full_namespace
 
 
 def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl', input_sheet: str='./catalog.xlsx') -> Graph:

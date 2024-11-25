@@ -3,8 +3,8 @@ from validators import uri
 import validators
 from rdflib import Graph, Namespace, URIRef, Literal, BNode
 from rdflib.namespace import FOAF, DCTERMS, DCAT, PROV, OWL, RDFS, RDF, XMLNS, SKOS, SOSA, ORG, SSN, XSD
-from uri_handling import literal_or_uri, identifier_to_uri, str_abbrev_namespace_to_full_namespace
-from import_catalog import parse_catalog, create_index, create_dataset_pages, create_concept_pages, get_lineage, create_metric_pages, create_datasetseries_pages
+from SimpleMDDataCatalog.uri_handling import literal_or_uri, identifier_to_uri, str_abbrev_namespace_to_full_namespace
+from SimpleMDDataCatalog.import_catalog import parse_catalog, create_index, create_dataset_pages, create_concept_pages, get_lineage, create_metric_pages, create_datasetseries_pages
 
 def generate_catalog(repo_url: str, input_file: str= './docs/catalog.ttl', output_dir: str= './docs/'):
 
@@ -24,7 +24,7 @@ def generate_catalog(repo_url: str, input_file: str= './docs/catalog.ttl', outpu
 
 # test repo
 
-repo_url= 'https://github.com/uuidea/SimpleMDDataCatalog'
-input_file='./docs/datacatalog.ttl'
+# repo_url= 'https://github.com/uuidea/SimpleMDDataCatalog'
+# input_file='./docs/datacatalog.ttl'
 
-generate_catalog(repo_url=repo_url, input_file=input_file)
+# generate_catalog(repo_url=repo_url, input_file=input_file)

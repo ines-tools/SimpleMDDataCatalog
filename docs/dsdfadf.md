@@ -9,9 +9,9 @@ another test data set
 
 |||
 | :--- | :--- |
-|Publisher|unknown|
+|Publisher|SimpleMDDataCatalog|
 |Contact|test@test.com|
-|license|unknown|
+|license|cc-by 4.0|
 
 ## About the data
 
@@ -19,7 +19,7 @@ another test data set
 | :--- | :--- |
 |last modified|2024-10-21|
 |spatial cover|Belgium|
-|temporal cover|unknown - 2019|
+|temporal cover|2019 - 2019|
 |version|3.4|
 |status|unknown|
 

@@ -10,7 +10,7 @@ from mdutils.tools.Table import Table
 from mdutils.tools.Html import Html
 import os
 import pandas as pd
-from analysis_functions import was_derived_from_graphic, get_data_quality, supply_chain_analysis, create_theme_word_cloud
+from SimpleMDDataCatalog.analysis_functions import was_derived_from_graphic, get_data_quality, supply_chain_analysis, create_theme_word_cloud
 
 def extract_org_repo(repo_url=str):
     split_up_list = repo_url.split("/")
@@ -354,9 +354,9 @@ def add_publishing_info(graph= Graph, page= MdUtils, resource= URIRef)-> MdUtils
     if type(contactPoint)==BNode:
         contactPoint=graph.value(resource,DCAT.contactPoint/VCARD.hasEmail)
     
-    if publisher !=None:
+    if publisher ==None:
         publisher= 'unknown'
-    if license !=None:
+    if license ==None:
         license= 'unknown'    
     page.new_header(level=2, title='Publisher')
     publisher_list = [
@@ -409,7 +409,7 @@ def add_about_data(graph= Graph, page= MdUtils, resource= URIRef)->MdUtils:
         about_list.extend(["last modified", str(modified) ])
     if spatial != None :
         about_list.extend(["spatial cover", str(spatial)])
-    if temporal_begin!= None:
+    if temporal_begin== None:
         temporal_begin="unknown"
     if temporal_end== None:
         temporal_end="unknown"

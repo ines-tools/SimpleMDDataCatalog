@@ -9,9 +9,9 @@ Variable Renewable Energy data of european renewable energy resources
 
 |||
 | :--- | :--- |
-|Publisher|unknown|
+|Publisher|DTU|
 |Contact|example@example.com|
-|license|unknown|
+|license|cc-by-sa 3.0|
 
 ## keywords
 

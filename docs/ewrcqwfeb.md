@@ -9,9 +9,9 @@ Data set contains data on capacity factors of on-shore wind across different GIS
 
 |||
 | :--- | :--- |
-|Publisher|unknown|
+|Publisher|SimpleMDDataCatalog|
 |Contact|info@mopo.eu|
-|license|unknown|
+|license|cc-by 4.0|
 
 ## About the data
 
@@ -19,7 +19,7 @@ Data set contains data on capacity factors of on-shore wind across different GIS
 | :--- | :--- |
 |last modified|2024-10-21|
 |spatial cover|Europe|
-|temporal cover|unknown - 2020|
+|temporal cover|1980 - 2020|
 |version|0.4|
 |status|first version|
 
