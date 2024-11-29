@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "SimpleMDDataCatalog"
-version = "0.0.4"
+version = "0.0.10"
 authors = [
   { name="Joep van Genuchten", email="joep@uuidea.eu" },
 ]
@@ -19,7 +19,6 @@ classifiers = [
 
 dependencies = [
     "pandas",
-    "os",
     "rdflib",
     "igraph",
     "matplotlib","wordcloud","validators"

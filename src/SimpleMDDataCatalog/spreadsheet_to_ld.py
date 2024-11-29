@@ -4,9 +4,13 @@ import validators
 from rdflib import Graph, Namespace, URIRef, Literal, BNode
 from rdflib.namespace import FOAF, DCTERMS, DCAT, PROV, OWL, RDFS, RDF, XMLNS, SKOS, SOSA, ORG, SSN, XSD, TIME
 from SimpleMDDataCatalog.uri_handling import literal_or_uri, identifier_to_uri, str_abbrev_namespace_to_full_namespace
+import pathlib
 
 
-def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl', input_sheet: str='./catalog.xlsx') -> Graph:
+
+def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', input_sheet: str='catalog.xlsx') -> Graph:
+    path = pathlib.Path("docs/")
+    path.mkdir(parents=True, exist_ok=True)
 
     uri=Namespace(uri)
     datasets_df = pd.read_excel(input_sheet, 'Datasets', converters={'dcterms:identifier': str, 'prov:wasDerivedFrom':str, 'dcat:distrbution':str, 'dcterms:temporal/time:hasBeginning': str,'dcterms:temporal/time:hasEnd': str })
@@ -448,7 +452,7 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= './docs/catalog.ttl',
 
 # test catalog
 
-uri="https://datacatalog.github.io/test_this#"
-input_sheet= './tests/catalog.xlsx'
-output_graph= './docs/datacatalog.ttl'
-spreadsheet_to_ld_catalog(input_sheet=input_sheet,output_graph= output_graph, uri=uri)
+# uri="https://datacatalog.github.io/test_this#"
+# input_sheet= './tests/catalog.xlsx'
+# output_graph= './docs/datacatalog.ttl'
+# spreadsheet_to_ld_catalog(input_sheet=input_sheet,output_graph= output_graph, uri=uri)

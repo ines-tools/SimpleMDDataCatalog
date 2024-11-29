@@ -6,7 +6,7 @@ from rdflib.namespace import FOAF, DCTERMS, DCAT, PROV, OWL, RDFS, RDF, XMLNS, S
 from SimpleMDDataCatalog.uri_handling import literal_or_uri, identifier_to_uri, str_abbrev_namespace_to_full_namespace
 from SimpleMDDataCatalog.import_catalog import parse_catalog, create_index, create_dataset_pages, create_concept_pages, get_lineage, create_metric_pages, create_datasetseries_pages
 
-def generate_catalog(repo_url: str, input_file: str= './docs/catalog.ttl', output_dir: str= './docs/'):
+def generate_catalog(repo_url: str, input_file: str= 'docs/catalog.ttl', output_dir: str= 'docs/'):
 
     catalog_graph= parse_catalog(input_file=input_file)
     create_index(catalog_graph= catalog_graph, output_dir=output_dir, repo_url=repo_url)

@@ -7,11 +7,13 @@ import igraph as ig
 import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
+import pathlib
+
 
 
 def was_derived_from_graphic(catalog_graph: Graph, uri: URIRef):
-    os.makedirs("./docs/figures/", exist_ok=True)
-
+    path = pathlib.Path("docs/")
+    path.mkdir(parents=True, exist_ok=True)
     identifier=str(catalog_graph.value(URIRef(uri), DCTERMS.identifier))
     label= str(catalog_graph.value(URIRef(uri), DCTERMS.title))
     filename= "./docs/figures/"+ identifier+"_lineage"
@@ -86,7 +88,9 @@ def get_data_quality(catalog_graph= Graph, dataset_uri=URIRef):
 def supply_chain_analysis(catalog_graph=Graph, dataset_uri= URIRef):
     dqv_ns=Namespace("http://www.w3.org/ns/dqv#")
     identifier=str(catalog_graph.value(URIRef(dataset_uri), DCTERMS.identifier))
-    filename= "./docs/figures/"+ identifier+"_supply_chain"
+    filename= "docs/figures/"+ identifier+"_supply_chain"
+    path = pathlib.Path("docs/figures/")
+    path.mkdir(parents=True, exist_ok=True)
 
     was_derived_from= catalog_graph.objects(dataset_uri, (PROV.wasDerivedFrom* '+'))
     ds_w_qm=0 # dataset with data quality measurement
@@ -145,6 +149,8 @@ def create_theme_word_cloud(catalog_graph= Graph):
     plt.figure()
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
-    cloud_file_path= "./docs/figures/"+ "wordcloud.svg"
+    cloud_file_path= "docs/figures/"+ "wordcloud.svg"
+    path = pathlib.Path("docs/figures/")
+    path.mkdir(parents=True, exist_ok=True)
     plt.savefig(cloud_file_path)
     return cloud_file_path

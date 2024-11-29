@@ -11,6 +11,7 @@ from mdutils.tools.Html import Html
 import os
 import pandas as pd
 from SimpleMDDataCatalog.analysis_functions import was_derived_from_graphic, get_data_quality, supply_chain_analysis, create_theme_word_cloud
+import pathlib
 
 def extract_org_repo(repo_url=str):
     split_up_list = repo_url.split("/")
@@ -31,8 +32,8 @@ def anything_known(catalog_graph: Graph, uri=URIRef):
 
 
 def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
-    # repo_name= extract_org_repo(repo_url=repo_url)
-    os.makedirs(output_dir, exist_ok=True)
+    path = pathlib.Path(output_dir)
+    path.mkdir(parents=True, exist_ok=True)
     catalogs= catalog_graph.subjects(RDF.type, DCAT.Catalog)
     catalog_file_path = output_dir+'catalog.ttl'
     # catalog_graph.serialize(destination=catalog_file_path)
@@ -52,7 +53,7 @@ def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
     index_md.new_header(level=1, title="Description")
     index_md.new_paragraph(text=catalog_description)
 
-    index_md.new_line(index_md.new_inline_link(link= catalog_file_path[7:],text= "The machine readable version of the catalog (ttl) can be found here." ))
+    index_md.new_line(index_md.new_inline_link(link= catalog_file_path[5:],text= "The machine readable version of the catalog (ttl) can be found here." ))
     # add publisher
     index_md.new_header(level=2, title="Publisher")
     publisher= catalog_graph.value(catalog_uri, DCTERMS.publisher)
@@ -99,7 +100,7 @@ def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
     index_md.new_header(level=1, title= "Datasets organized by theme")
     index_md.new_line("the word cloud gives a sense of the themes that are covered by the datasets in this data catalog.")
     word_cloud= create_theme_word_cloud(catalog_graph=catalog_graph)
-    word_cloud_path=str(word_cloud)[7:]
+    word_cloud_path=str(word_cloud)[5:]
     index_md.new_line(index_md.new_inline_image(text="word cloud of dataset themes and their occurrences",
                                                 path=word_cloud_path))
     index_md.new_line('Here you will find datasets organized by theme. The headers of each theme are links you can click to learn more about the definition')
@@ -451,7 +452,7 @@ def add_lineage_info(graph= Graph, page= MdUtils, resource= URIRef)->MdUtils:
                      text=wdf_list,
                      text_align='left')
     if len(wdf_list)>1:
-        image_path=was_derived_from_graphic(catalog_graph=graph, uri=resource)[7:]
+        image_path=was_derived_from_graphic(catalog_graph=graph, uri=resource)[5:]
         print(image_path)
         page.new_line(page.new_inline_image(text="Lineage overview", path=image_path))
 
@@ -459,7 +460,7 @@ def add_lineage_info(graph= Graph, page= MdUtils, resource= URIRef)->MdUtils:
 
         page.new_header(level=2, title="supply chain analysis")
         pie_file=supply_chain_analysis(catalog_graph=graph,dataset_uri=resource)
-        page.new_line(page.new_inline_image(text="supply chain analysis",path=str(pie_file)[7:]))    
+        page.new_line(page.new_inline_image(text="supply chain analysis",path=str(pie_file)[5:]))    
 
     return page
 
