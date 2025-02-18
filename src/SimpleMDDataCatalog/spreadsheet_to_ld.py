@@ -3,10 +3,8 @@ from validators import uri
 import validators
 from rdflib import Graph, Namespace, URIRef, Literal, BNode
 from rdflib.namespace import FOAF, DCTERMS, DCAT, PROV, OWL, RDFS, RDF, XMLNS, SKOS, SOSA, ORG, SSN, XSD, TIME
-from SimpleMDDataCatalog.uri_handling import literal_or_uri, identifier_to_uri, str_abbrev_namespace_to_full_namespace
+from uri_handling import literal_or_uri, identifier_to_uri, str_abbrev_namespace_to_full_namespace #SimpleMDDataCatalog.
 import pathlib
-
-
 
 def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', input_sheet: str='catalog.xlsx') -> Graph:
     path = pathlib.Path("docs/")
@@ -20,6 +18,7 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
     quality_measurements_df = pd.read_excel(input_sheet, 'QualityMeasurements')
     data_catalog_df =pd.read_excel(input_sheet, 'DataCatalog')
     dataset_series_df = pd.read_excel(input_sheet, 'DatasetSeries')
+    odrl_ns=Namespace('http://www.w3.org/ns/odrl/2/')
 
     ns=Namespace(uri)
 
@@ -30,10 +29,8 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
     data_catalog.bind("adms", Namespace(adms_ns))
     data_catalog.bind("dqv", dqv_ns)
     data_catalog.bind("vcard", VCARD)
+    data_catalog.bind('odrl', odrl_ns)
     
-
-
-
     # start with concepts so we can rely on rdf graph navigation to match themes
     for n, row in concepts_df.iterrows():
         if str(row['dcterms:identifier'])=='nan':
@@ -56,8 +53,7 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
     # adding data catalog
     if len(data_catalog_df.index)>1:
         print("WARNING: Spreadsheet contains more than 1 entry for data catalog, only the first entry is used")
-   
-    
+       
     identifier= data_catalog_df.iloc[0]['dcterms:identifier']
     if identifier=='nan':
         raise Exception("error: the data catalog must have an identifier")
@@ -98,7 +94,6 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
                 data_catalog.add((license_bnode, RDF.type, DCTERMS.LicenseDocument))
                 data_catalog.add((license_bnode, DCTERMS.title, Literal(license)))    
     
-
     theme_list= list(themes.split(","))
     for j in theme_list:
         j= j.lstrip()
@@ -111,10 +106,7 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
             else :
                 data_catalog.add((catalog_uri, DCAT.theme, theme_uri))     
         elif type(theme)==URIRef:
-            data_catalog.add((catalog_uri, DCAT.theme, theme)) 
-
-
-    
+            data_catalog.add((catalog_uri, DCAT.theme, theme))   
 
     for i, row in datasets_df.iterrows():
 
@@ -280,6 +272,13 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
         if 'dcat:inSeries' in row:
             data_catalog.add((dataset_uri, DCAT.inSeries, identifier_to_uri(row['dcat:inSeries'], namespace=ns)))
 
+        if 'odrl:hasPolicy' in row:
+            pbn = BNode() #add blank node for policy
+            data_catalog.add((dataset_uri, odrl_ns, pbn))
+            data_catalog.add((pbn, RDF.type, odrl_ns.Policy))
+            data_catalog.add((pbn, DCTERMS.title, row['odrl:hasPolicy']))
+
+
 
 
     for m, row in distributions_df.iterrows():
@@ -438,7 +437,7 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
                     # If it is a URI reference, directly add it as a theme to the data catalog
                     data_catalog.add((series_uri, DCAT.theme, theme))
 
-            data_catalog.serialize(destination= output_graph, format = 'ttl') 
+    data_catalog.serialize(destination= output_graph, format = 'ttl') 
 
 
     return data_catalog
@@ -452,7 +451,7 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
 
 # test catalog
 
-# uri="https://datacatalog.github.io/test_this#"
-# input_sheet= './tests/catalog.xlsx'
-# output_graph= './docs/datacatalog.ttl'
-# spreadsheet_to_ld_catalog(input_sheet=input_sheet,output_graph= output_graph, uri=uri)
+uri="https://datacatalog.github.io/test_this#"
+input_sheet= './tests/catalog_ai.xlsx'
+output_graph= './docs/datacatalog.ttl'
+spreadsheet_to_ld_catalog(input_sheet=input_sheet,output_graph= output_graph, uri=uri)

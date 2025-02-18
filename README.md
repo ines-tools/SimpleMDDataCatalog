@@ -201,3 +201,34 @@ a specific quality metric.
 | dqv:isMeasurementOf  | The dcterms:identifier of the Metric that this measurement measured against                                                                             | no        |
 | dqv:value            | The value of the quality measurement.                                                                                                                   | no        |
 | prov:generatedAtTime | The date/datetime at which the measurement was done.                                                                                                    | yes       |
+
+
+## DatasetSeries
+
+This tab contains the data set series. Each row is a different series. The definition of [DatasetSeries](https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset_Series) according to DCAT is:
+
+
+```
+A collection of datasets that are published separately, but share some characteristics that group them. 
+```
+
+For DatasetSeries, the following information can be entered:
+| attribute           | instruction                                                                                                                                                         | optional? |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| dcterms:identifier  | A unique identifier without any spaces. It is recommended to use a uuid these can be generated using a tool like [this](https://www.uuidgenerator.net/)             | no        |
+| dcterms:title       | The title of the data set as text                                                                                                                                   | no        |
+| dcterms:description | A more elaborate description of the dataset                                                                                                                         | yes       |
+| dcterms:publisher   | Either a url to the website of the publishing organization or the name of the publisher                                                                             | yes       |
+| dcat:contactPoint   | Either a url to a website with contact information or an email address                                                                                              | yes       |
+| dcterms:licence     | Either a url to a license document or the name of a common license (like cc-by-4.0)                                                                                 | yes       |
+| dcat:version        | Version information of the dataset. semantic versioning example: 1.0.4                                                                                              | yes       |
+| dcat:theme          | A comma separated list of key-words. These key-words also need to be defined in the 'Concepts' tab (make sure they are spelled the same, case sensitive), see below | yes       |
+| dcterms:spatial     | A description of the region the dataset covers. For example: Ireland                                                                                                | yes       |
+| dcterms:temporal/time:hasBeginning    | The  start of the time that is covered by the dataset. For example: 2024                                                                                              | yes       |
+| dcterms:temporal/time:hasEnd    | The end of the time that is covered by the dataset. For example: 2024                                                                                           | yes       |
+| adms:status         | Status information of the dataset. For example: "test" or "deprecated"                                                                                              | yes       |
+| prov:wasDerivedFrom | Data lineage information. A comma separated list of urls and/or dcterms:identifiers of other datasets that were used to produce this one. For example: 12345, 56789 | yes       |
+| dcat:distribution   | The distributions that are available of this dataset. A comma separated list of dcterms:identifiers of entries in the Distributions tab (see below)                  | yes       |
+| dcterms:modified    | The date at which the dataset was last modified                                                                                                                     | yes       |
+
+

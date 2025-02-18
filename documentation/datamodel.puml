@@ -13,6 +13,8 @@ class "dcat:Dataset" as dataset {
     dcterms:modified xsd:date
 }
 
+class "dcat:DatasetSeries" as series
+
 class "dcat:Catalog" as catalog{
     dcterms:title xsd:string 1..1
     dcterms:identifier xsd:string 1..1
@@ -82,6 +84,10 @@ dataset --> kind : "dcat:contactPoint"
 dataset --> license :"dcterms:License"
 dataset -->periodoftime : "dcterms:temporal"
 dataset --> location : "dcterms:spatial"
+
+dataset <|-- series
+
+dataset --> series : "dcat:inSeries"
 
 qualitymeasurement --> dataset : "dqv:computedOn"
 qualitymeasurement --> metric : "dqv:inDimension"

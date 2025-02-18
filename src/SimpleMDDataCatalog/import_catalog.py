@@ -29,8 +29,6 @@ def anything_known(catalog_graph: Graph, uri=URIRef):
 
     return something_is_known
 
-
-
 def create_index(catalog_graph: Graph, output_dir: str, repo_url :str = None):
     path = pathlib.Path(output_dir)
     path.mkdir(parents=True, exist_ok=True)
@@ -133,8 +131,6 @@ def get_local_link(uri: URIRef, property: URIRef, label: URIRef, catalog_graph= 
     ds_title= str(catalog_graph.value(uri, label))
     link= "["+ds_title+"]"+"("+ds_identifier+".md)"
     return link
-
-    
 
 
 def parse_catalog(input_file: str):
@@ -334,9 +330,6 @@ def create_datasetseries_pages(catalog_graph: Graph, output_dir: str):
                          rows= len(dataset_list),
                          text=dataset_list,
                          text_align='left')
-        
-
-
 
 
         mdFile.create_md_file()
