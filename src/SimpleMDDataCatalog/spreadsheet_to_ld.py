@@ -17,7 +17,8 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
                                             'dcat:distrbution':str, 
                                             'dcterms:temporal/time:hasBeginning': str,
                                             'dcterms:temporal/time:hasEnd': str, 
-                                            'dcterms:publisher': str })
+                                            'dcterms:publisher': str,
+                                            'dcat:contactPoint': str})
     distributions_df = pd.read_excel(input_sheet, 'Distributions')
     concepts_df= pd.read_excel(input_sheet, 'Concepts')
     metrics_df= pd.read_excel(input_sheet, 'Metrics')
@@ -115,6 +116,7 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
         elif type(theme)==URIRef:
             data_catalog.add((catalog_uri, DCAT.theme, theme))   
 
+    print(datasets_df['dcat:contactPoint'])    
     for i, row in datasets_df.iterrows():
 
         if str(row['dcterms:identifier'])=='nan':
@@ -155,15 +157,17 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
                 data_catalog.add((publisher_bnode , FOAF.name, Literal(row['dcterms:publisher'])))    
         # add  contactPoint
         cp=BNode()
-        if row['dcat:contactPoint'] !='nan':
+        print(row['dcat:contactPoint'] !='nan')
+        # print(row['dcat:contactPoint'])
+        if str(row['dcat:contactPoint']) !='nan':
             if validators.uri.uri(str(row['dcat:contactPoint'])):
                 data_catalog.add((dataset_uri,
                         DCAT.contactPoint, 
-                        Literal(row['dcat:contactPoint'] )))
+                        literal_or_uri(row['dcat:contactPoint'] )))
             else:
                 data_catalog.add((dataset_uri, DCAT.contactPoint, cp))
                 data_catalog.add((cp,RDF.type, VCARD.Kind))
-                data_catalog.add((cp, VCARD.hasEmail, Literal(row['dcat:contactPoint']) ))
+                data_catalog.add((cp, VCARD.hasEmail, Literal(row['dcat:contactPoint'],datatype=XSD.string) ))
 
         # data_catalog.add((dataset_uri,
         #                 DCAT.contactPoint, 
@@ -253,7 +257,7 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
         
         # add modified
 
-        if str(row['dcterms:modified']) != 'NaT':
+        if str(row['dcterms:modified']) != 'nan':
             data_catalog.add((dataset_uri,
                         DCTERMS.modified, 
                         Literal(row['dcterms:modified'],datatype= XSD.date)))
@@ -386,7 +390,7 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
                 data_catalog.add((publisher_bnode, FOAF.name, Literal(row['dcterms:publisher'])))
 
         cp=BNode()
-        if row['dcat:contactPoint'] !='nan':
+        if str(row['dcat:contactPoint']) !='nan':
   
             if validators.uri.uri(str(row['dcat:contactPoint'])):
                 data_catalog.add((series_uri,

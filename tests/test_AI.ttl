@@ -51,8 +51,6 @@
             foaf:name "DTU" ] ;
     dcterms:title "Regulatory Compliance Strategy for UC1" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#adskfugelbf> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -66,8 +64,6 @@
             foaf:name "Fraunhofer" ] ;
     dcterms:title "Regulatory Compliance Strategy  for UC3" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#qrfhnelcwfhwf> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -81,8 +77,6 @@
             foaf:name "TU Delft" ] ;
     dcterms:title "Regulatory Compliance Strategy for UC2" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#gfsdfgi> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -96,8 +90,6 @@
             foaf:name "TU Delft" ] ;
     dcterms:title "Validation data set for UC2" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#gfsdfgi> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -111,8 +103,6 @@
             foaf:name "INESC-TEC" ] ;
     dcterms:title "Test and Validation Procedures for UC4" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#qrerfcwkhul> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -126,8 +116,6 @@
             foaf:name "Fraunhofer" ] ;
     dcterms:title "Training data set  for UC3" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#qrfhnelcwfhwf> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -141,8 +129,6 @@
             foaf:name "TU Delft" ] ;
     dcterms:title "Training Data Collection and Processing  Procedures for UC2" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#gfsdfgi> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -156,8 +142,6 @@
             foaf:name "Fraunhofer" ] ;
     dcterms:title "Validation data set for UC3" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#qrfhnelcwfhwf> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -171,8 +155,6 @@
             foaf:name "Fraunhofer" ] ;
     dcterms:title "Prompt Response Log  for UC3" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#qrfhnelcwfhwf> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -187,7 +169,7 @@
     dcterms:title "AI System for UC1" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
+            vcard:hasEmail "test@example.com"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#adskfugelbf> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -201,8 +183,6 @@
             foaf:name "Fraunhofer" ] ;
     dcterms:title "AI System for UC3" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#qrfhnelcwfhwf> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -216,8 +196,6 @@
             foaf:name "TU Delft" ] ;
     dcterms:title "Prompt Response Log for UC2" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#gfsdfgi> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -231,8 +209,6 @@
             foaf:name "TU Delft" ] ;
     dcterms:title "Test and Validation Procedures for UC2" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#gfsdfgi> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -246,8 +222,6 @@
             foaf:name "Fraunhofer" ] ;
     dcterms:title "Training Data Collection and Processing  Procedures  for UC3" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#qrfhnelcwfhwf> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -261,8 +235,6 @@
             foaf:name "INESC-TEC" ] ;
     dcterms:title "Training data set  for UC4" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#qrerfcwkhul> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -276,8 +248,6 @@
             foaf:name "INESC-TEC" ] ;
     dcterms:title "Regulatory Compliance Strategy for UC4" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#qrerfcwkhul> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -291,8 +261,6 @@
             foaf:name "Fraunhofer" ] ;
     dcterms:title "Test and Validation Procedures  for UC3" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#qrfhnelcwfhwf> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -306,8 +274,6 @@
             foaf:name "TU Delft" ] ;
     dcterms:title "AI System for UC2" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#gfsdfgi> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -321,8 +287,6 @@
             foaf:name "TU Delft" ] ;
     dcterms:title "Training data set for UC2" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#gfsdfgi> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -336,8 +300,6 @@
             foaf:name "DTU" ] ;
     dcterms:title "Training Data Collection and Processing  Procedures for UC1" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#adskfugelbf> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -351,8 +313,6 @@
             foaf:name "DTU" ] ;
     dcterms:title "Test and Validation Procedures for UC1" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#adskfugelbf> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -366,8 +326,6 @@
             foaf:name "INESC-TEC" ] ;
     dcterms:title "Prompt Response Log" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#qrerfcwkhul> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -381,8 +339,6 @@
             foaf:name "DTU" ] ;
     dcterms:title "Prompt Response Log for UC1" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#adskfugelbf> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -397,7 +353,7 @@
     dcterms:title "Training data set for UC1" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
+            vcard:hasEmail "test@example.com"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#adskfugelbf> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -411,8 +367,6 @@
             foaf:name "INESC-TEC" ] ;
     dcterms:title "Training Data Collection and Processing  Procedures for UC4" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#qrerfcwkhul> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -426,8 +380,6 @@
             foaf:name "INESC-TEC" ] ;
     dcterms:title "Validation data set for UC4" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#qrerfcwkhul> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -441,8 +393,6 @@
             foaf:name "DTU" ] ;
     dcterms:title "Validation data set" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#adskfugelbf> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -456,8 +406,6 @@
             foaf:name "INESC-TEC" ] ;
     dcterms:title "AI System for UC4" ;
     adms:status "Planned" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "nan"^^xsd:string ] ;
     dcat:inSeries <https://www.test.com#qrerfcwkhul> ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
@@ -470,7 +418,7 @@
             foaf:name "DTU" ] ;
     dcterms:title "Multi Energy and Sector Coupling" ;
     dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "NaN"^^xsd:double ] ;
+            vcard:hasEmail "test@example.com" ] ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
 
@@ -481,8 +429,6 @@
     dcterms:publisher [ a foaf:Agent ;
             foaf:name "TU Delft" ] ;
     dcterms:title "Transmission Congestion Management" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "NaN"^^xsd:double ] ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
 
@@ -493,8 +439,6 @@
     dcterms:publisher [ a foaf:Agent ;
             foaf:name "INESC-TEC" ] ;
     dcterms:title "Energy efficiency, management and sharing for local energy communities" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "NaN"^^xsd:double ] ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
 
@@ -505,8 +449,6 @@
     dcterms:publisher [ a foaf:Agent ;
             foaf:name "Fraunhofer" ] ;
     dcterms:title "DER integration into Distribution Systems" ;
-    dcat:contactPoint [ a vcard:Kind ;
-            vcard:hasEmail "NaN"^^xsd:double ] ;
     dcat:theme <https://www.test.com#cqweuhtvqqet>,
         <https://www.test.com#vqweelhnvqe> .
 
