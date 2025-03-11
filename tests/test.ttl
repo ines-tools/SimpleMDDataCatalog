@@ -6,43 +6,43 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://datacatalog.github.io/test_this#ghqwerhubst> a dcat:Catalog ;
+<https://www.test.com#ghqwerhubst> a dcat:Catalog ;
     dcterms:description "This data catalog contains the metadata of all relevant datasets produced durng the AI-EFFECT Horizon Europe project" ;
     dcterms:license [ a dcterms:LicenseDocument ;
             dcterms:title "cc-by-sa 4.0" ] ;
     dcterms:title "AI-EFFECT Data Catalog" ;
-    dcat:resource <https://datacatalog.github.io/test_this#afjhfsdfb>,
-        <https://datacatalog.github.io/test_this#cewjlkmbnqerw>,
-        <https://datacatalog.github.io/test_this#dhsbfgf>,
-        <https://datacatalog.github.io/test_this#gsdgserg>,
-        <https://datacatalog.github.io/test_this#gsfjjbvgvfc>,
-        <https://datacatalog.github.io/test_this#hlrlhka>,
-        <https://datacatalog.github.io/test_this#hshstjngarejbkl>,
-        <https://datacatalog.github.io/test_this#iqurenerq>,
-        <https://datacatalog.github.io/test_this#jnvflkbaer>,
-        <https://datacatalog.github.io/test_this#jqerlqgwe>,
-        <https://datacatalog.github.io/test_this#jrghgkjaf>,
-        <https://datacatalog.github.io/test_this#jsttusg>,
-        <https://datacatalog.github.io/test_this#kaehmadfb>,
-        <https://datacatalog.github.io/test_this#kfjhfkzcvljkb>,
-        <https://datacatalog.github.io/test_this#mbfwqhkgl>,
-        <https://datacatalog.github.io/test_this#mvfaglgkvdd>,
-        <https://datacatalog.github.io/test_this#oiuhkhbcvz>,
-        <https://datacatalog.github.io/test_this#qwercerc>,
-        <https://datacatalog.github.io/test_this#reahhsveg>,
-        <https://datacatalog.github.io/test_this#rintuituny>,
-        <https://datacatalog.github.io/test_this#sadfasdfh>,
-        <https://datacatalog.github.io/test_this#sfbugafe>,
-        <https://datacatalog.github.io/test_this#sfdcgwaef>,
-        <https://datacatalog.github.io/test_this#sfhcgafg>,
-        <https://datacatalog.github.io/test_this#strjgdfsvva>,
-        <https://datacatalog.github.io/test_this#svdculkhre>,
-        <https://datacatalog.github.io/test_this#wlkeurweqor>,
-        <https://datacatalog.github.io/test_this#zvfduharlj> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:resource <https://www.test.com#afjhfsdfb>,
+        <https://www.test.com#cewjlkmbnqerw>,
+        <https://www.test.com#dhsbfgf>,
+        <https://www.test.com#gsdgserg>,
+        <https://www.test.com#gsfjjbvgvfc>,
+        <https://www.test.com#hlrlhka>,
+        <https://www.test.com#hshstjngarejbkl>,
+        <https://www.test.com#iqurenerq>,
+        <https://www.test.com#jnvflkbaer>,
+        <https://www.test.com#jqerlqgwe>,
+        <https://www.test.com#jrghgkjaf>,
+        <https://www.test.com#jsttusg>,
+        <https://www.test.com#kaehmadfb>,
+        <https://www.test.com#kfjhfkzcvljkb>,
+        <https://www.test.com#mbfwqhkgl>,
+        <https://www.test.com#mvfaglgkvdd>,
+        <https://www.test.com#oiuhkhbcvz>,
+        <https://www.test.com#qwercerc>,
+        <https://www.test.com#reahhsveg>,
+        <https://www.test.com#rintuituny>,
+        <https://www.test.com#sadfasdfh>,
+        <https://www.test.com#sfbugafe>,
+        <https://www.test.com#sfdcgwaef>,
+        <https://www.test.com#sfhcgafg>,
+        <https://www.test.com#strjgdfsvva>,
+        <https://www.test.com#svdculkhre>,
+        <https://www.test.com#wlkeurweqor>,
+        <https://www.test.com#zvfduharlj> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#afjhfsdfb> a dcat:Dataset ;
+<https://www.test.com#afjhfsdfb> a dcat:Dataset ;
     dcterms:description "Regulatory Compliance Strategy" ;
     dcterms:identifier "afjhfsdfb" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -54,11 +54,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#adskfugelbf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#adskfugelbf> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#cewjlkmbnqerw> a dcat:Dataset ;
+<https://www.test.com#cewjlkmbnqerw> a dcat:Dataset ;
     dcterms:description "Regulatory Compliance Strategy" ;
     dcterms:identifier "cewjlkmbnqerw" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -70,11 +70,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#qrfhnelcwfhwf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#qrfhnelcwfhwf> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#dhsbfgf> a dcat:Dataset ;
+<https://www.test.com#dhsbfgf> a dcat:Dataset ;
     dcterms:description "Regulatory Compliance Strategy" ;
     dcterms:identifier "dhsbfgf" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -86,11 +86,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#gfsdfgi> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#gfsdfgi> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#gsdgserg> a dcat:Dataset ;
+<https://www.test.com#gsdgserg> a dcat:Dataset ;
     dcterms:description "Validation data set" ;
     dcterms:identifier "gsdgserg" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -102,11 +102,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#gfsdfgi> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#gfsdfgi> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#gsfjjbvgvfc> a dcat:Dataset ;
+<https://www.test.com#gsfjjbvgvfc> a dcat:Dataset ;
     dcterms:description "Test and Validation Procedures" ;
     dcterms:identifier "gsfjjbvgvfc" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -118,11 +118,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#qrerfcwkhul> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#qrerfcwkhul> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#hlrlhka> a dcat:Dataset ;
+<https://www.test.com#hlrlhka> a dcat:Dataset ;
     dcterms:description "Training data set" ;
     dcterms:identifier "hlrlhka" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -134,11 +134,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#qrfhnelcwfhwf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#qrfhnelcwfhwf> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#hshstjngarejbkl> a dcat:Dataset ;
+<https://www.test.com#hshstjngarejbkl> a dcat:Dataset ;
     dcterms:description "Training Data Collection and Processing  Procedures" ;
     dcterms:identifier "hshstjngarejbkl" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -150,11 +150,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#gfsdfgi> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#gfsdfgi> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#iqurenerq> a dcat:Dataset ;
+<https://www.test.com#iqurenerq> a dcat:Dataset ;
     dcterms:description "Validation data set" ;
     dcterms:identifier "iqurenerq" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -166,11 +166,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#qrfhnelcwfhwf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#qrfhnelcwfhwf> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#jnvflkbaer> a dcat:Dataset ;
+<https://www.test.com#jnvflkbaer> a dcat:Dataset ;
     dcterms:description "Prompt Response Log" ;
     dcterms:identifier "jnvflkbaer" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -182,11 +182,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#qrfhnelcwfhwf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#qrfhnelcwfhwf> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#jqerlqgwe> a dcat:Dataset ;
+<https://www.test.com#jqerlqgwe> a dcat:Dataset ;
     dcterms:description "AI System for UC1" ;
     dcterms:identifier "jqerlqgwe" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -198,11 +198,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#adskfugelbf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#adskfugelbf> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#jrghgkjaf> a dcat:Dataset ;
+<https://www.test.com#jrghgkjaf> a dcat:Dataset ;
     dcterms:description "AI System for UC3" ;
     dcterms:identifier "jrghgkjaf" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -214,11 +214,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#qrfhnelcwfhwf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#qrfhnelcwfhwf> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#jsttusg> a dcat:Dataset ;
+<https://www.test.com#jsttusg> a dcat:Dataset ;
     dcterms:description "Prompt Response Log" ;
     dcterms:identifier "jsttusg" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -230,11 +230,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#gfsdfgi> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#gfsdfgi> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#kaehmadfb> a dcat:Dataset ;
+<https://www.test.com#kaehmadfb> a dcat:Dataset ;
     dcterms:description "Test and Validation Procedures" ;
     dcterms:identifier "kaehmadfb" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -246,11 +246,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#gfsdfgi> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#gfsdfgi> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#kfjhfkzcvljkb> a dcat:Dataset ;
+<https://www.test.com#kfjhfkzcvljkb> a dcat:Dataset ;
     dcterms:description "Training Data Collection and Processing  Procedures" ;
     dcterms:identifier "kfjhfkzcvljkb" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -262,11 +262,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#qrfhnelcwfhwf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#qrfhnelcwfhwf> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#mbfwqhkgl> a dcat:Dataset ;
+<https://www.test.com#mbfwqhkgl> a dcat:Dataset ;
     dcterms:description "Training data set" ;
     dcterms:identifier "mbfwqhkgl" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -278,11 +278,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#qrerfcwkhul> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#qrerfcwkhul> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#mvfaglgkvdd> a dcat:Dataset ;
+<https://www.test.com#mvfaglgkvdd> a dcat:Dataset ;
     dcterms:description "Regulatory Compliance Strategy" ;
     dcterms:identifier "mvfaglgkvdd" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -294,11 +294,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#qrerfcwkhul> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#qrerfcwkhul> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#oiuhkhbcvz> a dcat:Dataset ;
+<https://www.test.com#oiuhkhbcvz> a dcat:Dataset ;
     dcterms:description "Test and Validation Procedures" ;
     dcterms:identifier "oiuhkhbcvz" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -310,11 +310,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#qrfhnelcwfhwf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#qrfhnelcwfhwf> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#qwercerc> a dcat:Dataset ;
+<https://www.test.com#qwercerc> a dcat:Dataset ;
     dcterms:description "AI System for UC2" ;
     dcterms:identifier "qwercerc" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -326,11 +326,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#gfsdfgi> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#gfsdfgi> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#reahhsveg> a dcat:Dataset ;
+<https://www.test.com#reahhsveg> a dcat:Dataset ;
     dcterms:description "Training data set" ;
     dcterms:identifier "reahhsveg" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -342,11 +342,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#gfsdfgi> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#gfsdfgi> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#rintuituny> a dcat:Dataset ;
+<https://www.test.com#rintuituny> a dcat:Dataset ;
     dcterms:description "Training Data Collection and Processing  Procedures" ;
     dcterms:identifier "rintuituny" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -358,11 +358,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#adskfugelbf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#adskfugelbf> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#sadfasdfh> a dcat:Dataset ;
+<https://www.test.com#sadfasdfh> a dcat:Dataset ;
     dcterms:description "Test and Validation Procedures" ;
     dcterms:identifier "sadfasdfh" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -374,11 +374,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#adskfugelbf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#adskfugelbf> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#sfbugafe> a dcat:Dataset ;
+<https://www.test.com#sfbugafe> a dcat:Dataset ;
     dcterms:description "Prompt Response Log" ;
     dcterms:identifier "sfbugafe" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -390,11 +390,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#qrerfcwkhul> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#qrerfcwkhul> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#sfdcgwaef> a dcat:Dataset ;
+<https://www.test.com#sfdcgwaef> a dcat:Dataset ;
     dcterms:description "Prompt Response Log" ;
     dcterms:identifier "sfdcgwaef" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -406,11 +406,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#adskfugelbf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#adskfugelbf> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#sfhcgafg> a dcat:Dataset ;
+<https://www.test.com#sfhcgafg> a dcat:Dataset ;
     dcterms:description "Training data set" ;
     dcterms:identifier "sfhcgafg" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -422,11 +422,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#adskfugelbf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#adskfugelbf> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#strjgdfsvva> a dcat:Dataset ;
+<https://www.test.com#strjgdfsvva> a dcat:Dataset ;
     dcterms:description "Training Data Collection and Processing  Procedures" ;
     dcterms:identifier "strjgdfsvva" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -438,11 +438,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#qrerfcwkhul> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#qrerfcwkhul> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#svdculkhre> a dcat:Dataset ;
+<https://www.test.com#svdculkhre> a dcat:Dataset ;
     dcterms:description "Validation data set" ;
     dcterms:identifier "svdculkhre" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -454,11 +454,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#qrerfcwkhul> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#qrerfcwkhul> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#wlkeurweqor> a dcat:Dataset ;
+<https://www.test.com#wlkeurweqor> a dcat:Dataset ;
     dcterms:description "Validation data set" ;
     dcterms:identifier "wlkeurweqor" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -470,11 +470,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#adskfugelbf> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#adskfugelbf> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#zvfduharlj> a dcat:Dataset ;
+<https://www.test.com#zvfduharlj> a dcat:Dataset ;
     dcterms:description "AI System for UC4" ;
     dcterms:identifier "zvfduharlj" ;
     dcterms:license [ a dcterms:LicenseDocument ;
@@ -486,11 +486,11 @@
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:inSeries <https://datacatalog.github.io/test_this#qrerfcwkhul> ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:inSeries <https://www.test.com#qrerfcwkhul> ;
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#adskfugelbf> a dcat:DatasetSeries ;
+<https://www.test.com#adskfugelbf> a dcat:DatasetSeries ;
     dcterms:description "This series contains all the datasets related to the creation of AI systems for the  multi-energy and sector coupling usecase of the AI-EFFECT project." ;
     dcterms:identifier "adskfugelbf" ;
     dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
@@ -499,10 +499,10 @@
     dcterms:title "Multi Energy and Sector Coupling" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#gfsdfgi> a dcat:DatasetSeries ;
+<https://www.test.com#gfsdfgi> a dcat:DatasetSeries ;
     dcterms:description "This series contains all the datasets related to the creation of AI systems for the  transmission congestion management  usecase of the AI-EFFECT project." ;
     dcterms:identifier "gfsdfgi" ;
     dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
@@ -511,10 +511,10 @@
     dcterms:title "Transmission Congestion Management" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#qrerfcwkhul> a dcat:DatasetSeries ;
+<https://www.test.com#qrerfcwkhul> a dcat:DatasetSeries ;
     dcterms:description "This series contains all the datasets related to the creation of AI systems for the  Energy efficiency, management and sharing for local energy communities usecase of the AI-EFFECT project." ;
     dcterms:identifier "qrerfcwkhul" ;
     dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
@@ -523,10 +523,10 @@
     dcterms:title "Energy efficiency, management and sharing for local energy communities" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#qrfhnelcwfhwf> a dcat:DatasetSeries ;
+<https://www.test.com#qrfhnelcwfhwf> a dcat:DatasetSeries ;
     dcterms:description "This series contains all the datasets related to the creation of AI systems for the  DER integration into Distribution Systems usecase of the AI-EFFECT project." ;
     dcterms:identifier "qrfhnelcwfhwf" ;
     dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
@@ -535,16 +535,16 @@
     dcterms:title "DER integration into Distribution Systems" ;
     dcat:contactPoint [ a vcard:Kind ;
             vcard:hasEmail "NaN"^^xsd:double ] ;
-    dcat:theme <https://datacatalog.github.io/test_this#cqweuhtvqqet>,
-        <https://datacatalog.github.io/test_this#vqweelhnvqe> .
+    dcat:theme <https://www.test.com#cqweuhtvqqet>,
+        <https://www.test.com#vqweelhnvqe> .
 
-<https://datacatalog.github.io/test_this#cqweuhtvqqet> a skos:Concept ;
+<https://www.test.com#cqweuhtvqqet> a skos:Concept ;
     dcterms:identifier "cqweuhtvqqet" ;
     skos:definition "Energy" ;
     skos:example "electricity" ;
     skos:prefLabel "Energy" .
 
-<https://datacatalog.github.io/test_this#vqweelhnvqe> a skos:Concept ;
+<https://www.test.com#vqweelhnvqe> a skos:Concept ;
     dcterms:identifier "vqweelhnvqe" ;
     skos:definition " the capability of computational systems to perform tasks typically associated with human intelligence, such as learning, reasoning, problem-solving, perception, and decision-making." ;
     skos:prefLabel "AI" .
