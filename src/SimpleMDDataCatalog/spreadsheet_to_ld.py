@@ -11,8 +11,14 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
     path.mkdir(parents=True, exist_ok=True)
 
     uri=Namespace(uri)
-    datasets_df = pd.read_excel(input_sheet, 'Datasets', converters={'dcterms:identifier': str, 'prov:wasDerivedFrom':str, 'dcat:distrbution':str, 'dcterms:temporal/time:hasBeginning': str,'dcterms:temporal/time:hasEnd': str })
-    distributions_df = pd.read_excel(input_sheet, 'Distributions',)
+    datasets_df = pd.read_excel(input_sheet, 'Datasets', 
+                                converters={'dcterms:identifier': str, 
+                                            'prov:wasDerivedFrom':str, 
+                                            'dcat:distrbution':str, 
+                                            'dcterms:temporal/time:hasBeginning': str,
+                                            'dcterms:temporal/time:hasEnd': str, 
+                                            'dcterms:publisher': str })
+    distributions_df = pd.read_excel(input_sheet, 'Distributions')
     concepts_df= pd.read_excel(input_sheet, 'Concepts')
     metrics_df= pd.read_excel(input_sheet, 'Metrics')
     quality_measurements_df = pd.read_excel(input_sheet, 'QualityMeasurements')
@@ -64,7 +70,8 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
         raise Exception("error: the data catalog must have a title")
     description= data_catalog_df.iloc[0]['dcterms:description']
     license =data_catalog_df.iloc[0]['dcterms:license']
-    publisher= data_catalog_df.iloc[0]['dcterms:publisher']
+    publisher= str(data_catalog_df.iloc[0]['dcterms:publisher'])
+    
     themes= data_catalog_df.iloc[0]['dcat:theme']
 
     data_catalog.add((catalog_uri, RDF.type, DCAT.Catalog))
@@ -80,7 +87,7 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
         else:
             data_catalog.add((catalog_uri, DCTERMS.publisher, publisher_bnode))
             data_catalog.add((publisher_bnode, RDF.type, FOAF.Agent))
-            data_catalog.add((publisher_bnode, FOAF.name, Literal(publisher)))
+            data_catalog.add((publisher_bnode, FOAF.name, Literal(publisher, datatype=str)))
 
     if str(license)!= 'nan':
             license_bnode=BNode()
@@ -145,7 +152,7 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
             else:
                 data_catalog.add((dataset_uri, DCTERMS.publisher, publisher_bnode))
                 data_catalog.add((publisher_bnode, RDF.type, FOAF.Agent))
-                data_catalog.add((publisher_bnode , FOAF.name, Literal(publisher)))    
+                data_catalog.add((publisher_bnode , FOAF.name, Literal(row['dcterms:publisher'])))    
         # add  contactPoint
         cp=BNode()
         if row['dcat:contactPoint'] !='nan':
@@ -442,16 +449,3 @@ def spreadsheet_to_ld_catalog(uri: str, output_graph: str= 'docs/catalog.ttl', i
 
     return data_catalog
 
-# # mopo catalog
-
-# uri="https://datacatalog.github.io/test_this#"
-# input_sheet= '/home/joep/Documents/uuidea/git/Mopo_European_Usecase_Data_catalog/catalog.xlsx'
-# output_graph= '/home/joep/Documents/uuidea/git/Mopo_European_Usecase_Data_catalog/docs/datacatalog.ttl'
-# spreadsheet_to_ld_catalog(input_sheet=input_sheet,output_graph= output_graph, uri=uri)
-
-# test catalog
-
-uri="https://datacatalog.github.io/test_this#"
-input_sheet= './tests/catalog_ai.xlsx'
-output_graph= './docs/datacatalog.ttl'
-spreadsheet_to_ld_catalog(input_sheet=input_sheet,output_graph= output_graph, uri=uri)

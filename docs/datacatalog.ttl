@@ -49,7 +49,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "DTU" ] ;
     dcterms:title "Regulatory Compliance Strategy for UC1" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -65,7 +65,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "Fraunhofer" ] ;
     dcterms:title "Regulatory Compliance Strategy  for UC3" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -81,7 +81,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "TU Delft" ] ;
     dcterms:title "Regulatory Compliance Strategy for UC2" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -97,7 +97,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "TU Delft" ] ;
     dcterms:title "Validation data set for UC2" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -113,7 +113,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "INESC-TEC" ] ;
     dcterms:title "Test and Validation Procedures for UC4" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -129,7 +129,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "Fraunhofer" ] ;
     dcterms:title "Training data set  for UC3" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -145,7 +145,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "TU Delft" ] ;
     dcterms:title "Training Data Collection and Processing  Procedures for UC2" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -161,7 +161,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "Fraunhofer" ] ;
     dcterms:title "Validation data set for UC3" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -177,7 +177,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "Fraunhofer" ] ;
     dcterms:title "Prompt Response Log  for UC3" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -193,7 +193,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "DTU" ] ;
     dcterms:title "AI System for UC1" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -209,7 +209,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "Fraunhofer" ] ;
     dcterms:title "AI System for UC3" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -225,7 +225,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "TU Delft" ] ;
     dcterms:title "Prompt Response Log for UC2" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -241,7 +241,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "TU Delft" ] ;
     dcterms:title "Test and Validation Procedures for UC2" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -257,7 +257,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "Fraunhofer" ] ;
     dcterms:title "Training Data Collection and Processing  Procedures  for UC3" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -273,7 +273,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "INESC-TEC" ] ;
     dcterms:title "Training data set  for UC4" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -289,7 +289,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "INESC-TEC" ] ;
     dcterms:title "Regulatory Compliance Strategy for UC4" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -305,7 +305,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "Fraunhofer" ] ;
     dcterms:title "Test and Validation Procedures  for UC3" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -321,7 +321,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "TU Delft" ] ;
     dcterms:title "AI System for UC2" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -337,7 +337,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "TU Delft" ] ;
     dcterms:title "Training data set for UC2" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -353,7 +353,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "DTU" ] ;
     dcterms:title "Training Data Collection and Processing  Procedures for UC1" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -369,7 +369,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "DTU" ] ;
     dcterms:title "Test and Validation Procedures for UC1" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -385,7 +385,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "INESC-TEC" ] ;
     dcterms:title "Prompt Response Log" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -401,7 +401,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "DTU" ] ;
     dcterms:title "Prompt Response Log for UC1" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -417,7 +417,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "DTU" ] ;
     dcterms:title "Training data set for UC1" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -433,7 +433,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "INESC-TEC" ] ;
     dcterms:title "Training Data Collection and Processing  Procedures for UC4" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -449,7 +449,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "INESC-TEC" ] ;
     dcterms:title "Validation data set for UC4" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -465,7 +465,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "DTU" ] ;
     dcterms:title "Validation data set" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
@@ -481,7 +481,7 @@
             dcterms:title "cc-by 4.0" ] ;
     dcterms:modified "nan"^^xsd:date ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:name "NaN"^^xsd:double ] ;
+            foaf:name "INESC-TEC" ] ;
     dcterms:title "AI System for UC4" ;
     adms:status "Planned" ;
     dcat:contactPoint [ a vcard:Kind ;
